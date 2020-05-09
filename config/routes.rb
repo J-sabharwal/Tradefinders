@@ -7,14 +7,10 @@ Rails.application.routes.draw do
     get '/data', to: 'tests#index'
     # get '/users', to: 'user#index'
     
-    resources :user
-    
-    resources :company, only: [:show] do
-      get '/trade', to: 'company#getCompaniesByTrade'
-    end
-
     # This is like "rails magic" way of generating routs
-    resources :review
+    resources :user
+    resources :company
+    resources :reviews
 
     # This is manually hooking the routes.
     # The ":" on the HTML indicated that everything after this is treated as Parameters
