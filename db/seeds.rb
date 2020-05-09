@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# bin/rake db:reset <- to reset seeds
+
 puts "Re-creating Companies ... "
 
 Company.destroy_all

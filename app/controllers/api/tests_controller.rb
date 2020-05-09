@@ -1,7 +1,8 @@
 class Api::TestsController < ApplicationController
   def index
+    @company = Company.all
     render :json => {
-      message: "hello!"
+      company: @company
     }
   end
 end
