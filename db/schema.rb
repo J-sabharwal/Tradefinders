@@ -33,12 +33,12 @@ ActiveRecord::Schema.define(version: 2020_05_09_025026) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.string "user_id"
-    t.string "company_id"
-    t.string "cleanliness"
-    t.string "reliability"
-    t.string "value"
-    t.string "workmanship"
+    t.integer "user_id"
+    t.integer "company_id"
+    t.integer "cleanliness"
+    t.integer "reliability"
+    t.integer "value"
+    t.integer "workmanship"
     t.string "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
