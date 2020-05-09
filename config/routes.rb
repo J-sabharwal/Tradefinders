@@ -7,9 +7,8 @@ Rails.application.routes.draw do
     get '/data', to: 'tests#index'
     
     resources :user
-    resources :company, only: [:show] do
-      get '/trade', to: 'company#getCompaniesByTrade'
-    end
+    resources :company
+    resources :reviews
   end
 
   get '*path', to: "static_pages#fallback_index_html", constraints: ->(request) do
