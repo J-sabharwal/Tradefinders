@@ -1,6 +1,24 @@
-## NOTE: This repo has not been updated in a while.
+# Tradefinder
 
-You may find that the versions of React, Rails, and Ruby are _NOT_ the most current. Feel free to update this repo and make a PR with new versions. Also, please let me know if you run into any bugs.
+Tradefinder description, replace later.
+
+## Setup
+
+You need TWO terminals for this.
+
+In the terminal that will host the server.
+- run `bundle` to install the dependencies. 
+- Run `bin/rake db:setup` to create the databases.
+- Run `bin/rake db:reset` to reset the databases after messing with data.
+- Run `bin/rails s` to run the server.
+
+In the other terminal, `cd` into `client`. We will run the client server on here.
+- Run `npm install`. 
+- Copy the `.env.example` file and name it `.env`. 
+- Then run `npm start` and go to `localhost:3000` in your browser.
+
+
+Below is the original README.md from the boilerplate:
 
 # React + Rails No-Fluff Boilerplate
 
@@ -25,7 +43,7 @@ Here are some projects that have been built using this boilerplate.
 
 First, fork this boilerplate so you get your own copy of it. Once you have done that, you can clone your new repo to your machine, and get started.
 
-You need **TWO** terminals for this.
+You need TWO terminals for this.
 
 In one terminal, run `bundle` to install the dependencies. Run `bin/rake db:setup` to create the databases (called rails_project_development by default). Run `bin/rails s` to run the server.
 
@@ -59,7 +77,7 @@ class Api::TestsController < ApplicationController
 
 and it lives in the `api` folder! Put all your controllers in there!
 
-## Deployment to Heroku
+<!-- ## Deployment to Heroku
 
 This boilerplate is _almost_ all set up to deal with deploying to Heroku. If you have the Heroku CLI tools installed you can run `heroku create` to create the Heroku project.
 
@@ -83,4 +101,4 @@ To make your app work properly with React Router (if you end up using it) on Her
 
 ## Contact
 
-Please contact me at `nima@lighthouselabs.com` if you have any questions or requests, or post an issue to this repo.
+Please contact me at `nima@lighthouselabs.com` if you have any questions or requests, or post an issue to this repo. -->
