@@ -6,16 +6,22 @@ Tradefinder description, replace later.
 
 You need TWO terminals for this.
 
-In the terminal that will host the server.
+In the terminal that will host the Ruby on Rails API server.
 - run `bundle` to install the dependencies. 
 - Run `bin/rake db:setup` to create the databases.
 - Run `bin/rake db:reset` to reset the databases after messing with data.
-- Run `bin/rails s` to run the server.
+- ~~Run `bin/rails s` to run the server.~~
+- Run `rails server -b 0.0.0.0 -p 3001` when you are trying to run the server inside vagrant. 
+  - This will allow you browser and other programs on the host machine to access the API server.
+- Go to `0.0.0.0:3001` to access the Rails server.
+- An example API access is on `http://0.0.0.0:3001/api/data`
+  - Will be moved to `http://0.0.0.0:3001/api/datatest` later.
 
-In the other terminal, `cd` into `client`. We will run the client server on here.
+In the other terminal, `cd` into `client`. We will run the React server on here.
 - Run `npm install`. 
 - Copy the `.env.example` file and name it `.env`. 
-- Then run `npm start` and go to `localhost:3000` in your browser.
+- Run `npm start` to start the server.
+- Go to `0.0.0.0:3000` in your browser to see the result.
 
 
 Below is the original README.md from the boilerplate:
