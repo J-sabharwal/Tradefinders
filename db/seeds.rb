@@ -8,9 +8,9 @@
 
 puts "Re-creating Companies ... "
 
-Companies.destroy_all
+Company.destroy_all
 
-companies.create!({
+Company.create!({
   name: 'AAA Plumbers',
   email: 'AAAPlums@gmail.com',
   description: 'For all your plumbing needs, available to work on bathrooms, kitchens, and central heating. Domestic and Commercial hire',
@@ -18,15 +18,15 @@ companies.create!({
   trade_type: 'Plumbing'
 })
 
-companies.create!({
+Company.create!({
   name: 'BBB Plumbers',
   email: 'BBBPlums@gmail.com',
-  description: 'For all your plumbing needs, available to work on bathrooms, kitchens. But super cheap!'
+  description: 'For all your plumbing needs, available to work on bathrooms, kitchens. But super cheap!',
   phone_number: '623-854-9874',
   trade_type: 'Plumbing'
 })
 
-companies.create!({
+Company.create!({
   name: 'Mario Plumbers',
   email: 'Mario@gmail.com',
   description: 'For all your plumbing needs, available to work on mushroom world only',
@@ -34,7 +34,7 @@ companies.create!({
   trade_type: 'Plumbing'
 })
 
-companies.create!({
+Company.create!({
   name: 'Luigi Plumbers',
   email: 'Luigi@gmail.com',
   description: 'Cheaper than Mario! Double the quality',
@@ -42,7 +42,7 @@ companies.create!({
   trade_type: 'Plumbing'
 })
 
-companies.create!({
+Company.create!({
   name: '123 Electricians',
   email: '123Guys@123guys.com',
   description: 'Available for hire',
@@ -50,7 +50,7 @@ companies.create!({
   trade_type: 'Electrical'
 })
 
-companies.create!({
+Company.create!({
   name: 'Grand Designs',
   email: 'interiors@GDesigns.com',
   description: 'Houses, Venues, Shopfronts',
@@ -58,7 +58,7 @@ companies.create!({
   trade_type: 'Painter/Decorator'
 })
 
-companies.create!({
+Company.create!({
   name: 'Impressive Ideas',
   email: 'II@hotmail.com',
   description: 'Designing for over 40 years.',
