@@ -68,4 +68,197 @@ Company.create!({
   trade_type: 'Painter/Decorator'
 })
 
+User.destroy_all
+
+User.create!({
+  name: 'Joe Bloggs',
+  email: 'joe@thebloggs.com',
+  password: 'password123'
+})
+
+User.create!({
+  name: 'Teresa May',
+  email: 'maymay@pm.com',
+  password: 'password123'
+})
+
+User.create!({
+  name: 'Anthony Chambers',
+  email: 'ant@google.com',
+  password: 'password123'
+})
+
+User.create!({
+  name: 'Jane Smith',
+  email: 'jane@googlemail.com',
+  password: 'password123'
+})
+
+User.create!({
+  name: 'Sarah Harper',
+  email: 'sarah@hotmail.com',
+  password: 'password123'
+})
+
+User.create!({
+  name: 'Jessica Rabbit',
+  email: 'jessica@roger.com',
+  password: 'password123'
+})
+
+User.create!({
+  name: 'Andy Allen',
+  email: 'AA@yahoo.com',
+  password: 'password123'
+})
+
+Review.destroy_all
+
+Review.create!({
+  user_id: 1,
+  company_id: 2,
+  cleanliness: 4,
+  reliability: 5,
+  value: 3,
+  workmanship: 4,
+  comment: "Good Job"
+})
+
+Review.create!({
+  user_id: 2,
+  company_id: 2,
+  cleanliness: 3,
+  reliability: 4,
+  value: 2,
+  workmanship: 3,
+  comment: "Good Job"
+})
+
+Review.create!({
+  user_id: 3,
+  company_id: 3,
+  cleanliness: 3,
+  reliability: 3,
+  value: 2,
+  workmanship: 4,
+  comment: "Good Job"
+})
+
+Review.create!({
+  user_id: 4,
+  company_id: 4,
+  cleanliness: 5,
+  reliability: 5,
+  value: 1,
+  workmanship: 5,
+  comment: "Good Job"
+})
+
+Review.create!({
+  user_id: 5,
+  company_id: 5,
+  cleanliness: 3,
+  reliability: 3,
+  value: 4,
+  workmanship: 3,
+  comment: "Good Job"
+})
+
+Review.create!({
+  user_id: 6,
+  company_id: 2,
+  cleanliness: 2,
+  reliability: 1,
+  value: 1,
+  workmanship: 1,
+  comment: "Not great"
+})
+
+Review.create!({
+  user_id: 7,
+  company_id: 1,
+  cleanliness: 5,
+  reliability: 5,
+  value: 4,
+  workmanship: 5,
+  comment: "Great Job"
+})
+
+Review.create!({
+  user_id: 8,
+  company_id: 4,
+  cleanliness: 4,
+  reliability: 4,
+  value: 2,
+  workmanship: 4,
+  comment: "Great Job"
+})
+
+Review.create!({
+  user_id: 9,
+  company_id: 3,
+  cleanliness: 3,
+  reliability: 1,
+  value: 3,
+  workmanship: 1,
+  comment: "It's ok"
+})
+
+Review.create!({
+  user_id: 10,
+  company_id: 3,
+  cleanliness: 5,
+  reliability: 5,
+  value: 4,
+  workmanship: 5,
+  comment: "Great Job"
+})
+
+Photo.destroy_all
+
+Photo.create!({
+review_id: 1,
+photo_url: 'https://www.reimerhvac.com/wp-content/uploads/2015/08/plumbing-buffalo-ny-affordable-services.jpg'
+})
+
+Photo.create!({
+review_id: 2,
+photo_url: 'https://www.reimerhvac.com/wp-content/uploads/2015/08/plumbing-buffalo-ny-affordable-services.jpg'
+})
+
+Photo.create!({
+review_id: 2,
+photo_url: 'https://www.reimerhvac.com/wp-content/uploads/2015/08/plumbing-buffalo-ny-affordable-services.jpg'
+})
+
+Photo.create!({
+review_id: 4,
+photo_url: 'https://www.reimerhvac.com/wp-content/uploads/2015/08/plumbing-buffalo-ny-affordable-services.jpg'
+})
+
+Photo.create!({
+review_id: 5,
+photo_url: 'https://www.reimerhvac.com/wp-content/uploads/2015/08/plumbing-buffalo-ny-affordable-services.jpg'
+})
+
+Photo.create!({
+review_id: 6,
+photo_url: 'https://www.reimerhvac.com/wp-content/uploads/2015/08/plumbing-buffalo-ny-affordable-services.jpg'
+})
+
+Photo.create!({
+review_id: 7,
+photo_url: 'https://www.reimerhvac.com/wp-content/uploads/2015/08/plumbing-buffalo-ny-affordable-services.jpg'
+})
+
+Photo.create!({
+review_id: 7,
+photo_url: 'https://www.reimerhvac.com/wp-content/uploads/2015/08/plumbing-buffalo-ny-affordable-services.jpg'
+})
+
+Photo.create!({
+review_id: 9,
+photo_url: 'https://www.reimerhvac.com/wp-content/uploads/2015/08/plumbing-buffalo-ny-affordable-services.jpg'
+})
+
 puts "Complete!"
