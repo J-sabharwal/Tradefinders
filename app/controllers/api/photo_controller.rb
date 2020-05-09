@@ -1,14 +1,15 @@
 class Api::PhotoController < ApplicationController
   def index
-    @users = User.all
+    @photos = Photo.all
     render :json => {
-      users: @users
+      photos: @photos
     }
   end 
 
   def show
+    @photo = Photo.find params[:id]
     render :json => {
-      company: User.all
+      review: @photo
     }
   end
 
