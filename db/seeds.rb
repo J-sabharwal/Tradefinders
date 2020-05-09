@@ -175,7 +175,7 @@ Review.create!({
 })
 
 Review.create!({
-  user_id: 7,
+  user_id: 4,
   company_id: 1,
   cleanliness: 5,
   reliability: 5,
@@ -185,7 +185,7 @@ Review.create!({
 })
 
 Review.create!({
-  user_id: 8,
+  user_id: 3,
   company_id: 4,
   cleanliness: 4,
   reliability: 4,
@@ -195,7 +195,7 @@ Review.create!({
 })
 
 Review.create!({
-  user_id: 9,
+  user_id: 2,
   company_id: 3,
   cleanliness: 3,
   reliability: 1,
@@ -205,7 +205,7 @@ Review.create!({
 })
 
 Review.create!({
-  user_id: 10,
+  user_id: 1,
   company_id: 3,
   cleanliness: 5,
   reliability: 5,
