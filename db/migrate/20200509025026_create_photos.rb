@@ -1,10 +1,10 @@
 class CreatePhotos < ActiveRecord::Migration[5.2]
   def change
     create_table :photos do |t|
-      t.integer :review_id
+      t.references :review, index: true, foreign_key: true
       t.string :photo_url
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end

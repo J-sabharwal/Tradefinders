@@ -7,7 +7,7 @@ class CreateCompanies < ActiveRecord::Migration[5.2]
       t.string :phone_number
       t.string :trade_type
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end
