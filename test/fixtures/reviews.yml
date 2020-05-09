@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: MyString
+  company_id: MyString
+  cleanliness: MyString
+  reliability: MyString
+  value: MyString
+  workmanship: MyString
+
+two:
+  user_id: MyString
+  company_id: MyString
+  cleanliness: MyString
+  reliability: MyString
+  value: MyString
+  workmanship: MyString
