@@ -16,35 +16,25 @@ class Company extends Component {
   
   async componentDidMount() {
     const {match: {params}} = this.props;
-    const companyDeets = axios.get(`/api/company/${params.id}`)
-    const companyReviews = axios.get(`/api/review?company_id=${params.id}`) 
-    // const companyPhotos = axios.get(`/api/company/${params.id}`)
-
     console.log(params)
 
-    // axios.get(`/api/company/${params.id}`) 
-    // .then((response) => {
-      
-    Promise.all([companyDeets, companyReviews])
-      .then((all) => {
-      console.log(all.data)
-      this.setState(prev => ({
-        ...prev,
-        company: all.data.company,
-        review: all.data.review
-      }));
-    // }) 
+         
+    // Promise.all([companyDeets, companyReviews])
+    //   .then((all) => {
+    //   console.log(all.data)
+    //   this.setState(prev => ({
+    //     ...prev,
+    //     company: all.data.company,
+    //     review: all.data.review
+    //   }));
 
-    // axios.get(`/api/review?company_id=${params.id}`) 
-    // .then((response) => {
+    axios.get(`/api/company/${params.id}`) 
+    .then((response) => {
       
-    //   console.log(response.data)
-    //   this.setState({
-    //     review: response.data.reviews
-    //     // let averageRating = review.cleanliness + review.reliability + review.value + review.workmanship
-          
-        
-    //   });
+      console.log(response.data)
+      this.setState({
+        company: response.data.company
+      });
     }) 
   }
 
