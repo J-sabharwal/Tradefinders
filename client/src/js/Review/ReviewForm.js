@@ -76,6 +76,11 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
+import InputLabel from "@material-ui/core/InputLabel";
+import FormHelperText from "@material-ui/core/FormHelperText";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
+import NativeSelect from "@material-ui/core/NativeSelect";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -86,7 +91,56 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const a = Array.from(Array(11).keys());
+
+
+const reviewChoices = [
+  {
+    value: 0,
+    label: "Please Select",
+  },
+  {
+    value: 1,
+    label: 1,
+  },
+  {
+    value: 2,
+    label: 2,
+  },
+  {
+    value: 3,
+    label: 3,
+  },
+  {
+    value: 4,
+    label: 4,
+  },
+  {
+    value: 5,
+    label: 5,
+  },
+  {
+    value: 6,
+    label: 6,
+  },
+  {
+    value: 7,
+    label: 7,
+  },
+  {
+    value: 8,
+    label: 8,
+  },
+  {
+    value: 9,
+    label: 9,
+  },
+  {
+    value: 10,
+    label: 10,
+  }
+];
+
+
 
 export default function MultilineTextFields() {
   const classes = useStyles();
@@ -95,11 +149,21 @@ export default function MultilineTextFields() {
   // const [scoreCommunication, setScoreCommunication] = React.useState(0);
   // const [scorePrice, setScorePrice] = React.useState(0);
 
-  const handleChange = (event) => {
-    setScorePunctuality(event.target.value);
+  const [state, setState] = React.useState({
+    age: "",
+    name: "hai"
+  });
+
+  const handleChange = event => {
+    const name = event.target.name;
+    setState({
+      ...state,
+      [name]: event.target.value
+    });
   };
 
-  console.log(a);
+
+  console.log(reviewChoices);
 
   return (
     <form className={classes.root} noValidate autoComplete="off">
@@ -113,12 +177,32 @@ export default function MultilineTextFields() {
           helperText="Please select your currency"
           variant="outlined"
         >
-          {a.map((number) => (
-            <MenuItem key={number} value={number}>
-              {number}
-            </MenuItem>
+          {reviewChoices.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
           ))}
         </TextField>
+      </div>
+      <div>
+        <FormControl variant="outlined" className={classes.formControl}>
+          <InputLabel htmlFor="outlined-age-native-simple">Punctuality</InputLabel>
+          <Select
+            native
+            value={state.age}
+            onChange={handleChange}
+            label="Age"
+            inputProps={{
+              name: "age",
+              id: "outlined-age-native-simple"
+            }}
+          >
+            <option aria-label="None" value="" />
+            <option value={1}>1</option>
+            <option value={2}>2</option>
+            <option value={3}>3</option>
+          </Select>
+        </FormControl>
       </div>
     </form>
   );
