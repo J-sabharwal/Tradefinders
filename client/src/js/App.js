@@ -35,7 +35,7 @@ class App extends Component {
     return (
       <>
         <ButtonAppBar />
-        <section>
+        <section className="background">
           <img alt="" className="home-pic" src={handymen} />
           <Selects />
         </section>
