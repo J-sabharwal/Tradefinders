@@ -4,8 +4,7 @@ import axios from 'axios';
 import '../styles/App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import CompanyDetails from './Company/CompanyDetails';
-
-import logo from '../images/logo.png';
+import NavBar from './navBar';
 
 class App extends Component {
   constructor(props) {
@@ -31,7 +30,10 @@ class App extends Component {
   render() {
     return (
       <>
-        <nav className="App-header">
+      <div>
+        <NavBar/>
+      </div>
+        {/* <nav className="App-header">
           <img alt="" className="App-logo" src={logo} />
           <Button
             variant="contained"
@@ -41,7 +43,7 @@ class App extends Component {
             {" "}
             Hammer Time!
           </Button>
-        </nav>
+        </nav> */}
         <div className="App">
           <h1>{this.state.user.name}</h1>
           <h3>{this.state.user.email}</h3>
