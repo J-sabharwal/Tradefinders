@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
+import { Button } from "@material-ui/core";
 // import Select from '@material-ui/core/Select';
 import NativeSelect from '@material-ui/core/NativeSelect';
 
@@ -19,10 +20,11 @@ const useStyles = makeStyles((theme) => ({
 export default function Selects() {
   const classes = useStyles();
   const [state, setState] = React.useState({
-    trade: '',
+    trade: "",
+    location: "",
   });
 
-  const handleChange = (event) => {
+  const handleTradeChange = (event) => {
     const trade = event.target.name;
     setState({
       ...state,
@@ -30,25 +32,61 @@ export default function Selects() {
     });
   };
 
+  const handleLocationChange = (event) => {
+    const location = event.target.name;
+    setState({
+      ...state,
+      [location]: event.target.value,
+    });
+  };
+
   return (
-    <div>
-      <FormControl className={classes.formControl}>
-        <InputLabel htmlFor="age-native-helper">Trade</InputLabel>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <FormControl style={{ width: "25vw" }} className={classes.formControl}>
+        <InputLabel htmlFor="trade-native-helper">Trade</InputLabel>
         <NativeSelect
           value={state.trade}
-          onChange={handleChange}
+          onChange={handleTradeChange}
           inputProps={{
-            name: 'trade',
-            id: 'age-native-helper',
+            name: "trade",
+            id: "trade-native-helper",
           }}
         >
           <option aria-label="None" value="" />
-          <option value={'Plumber'}>Plumber</option>
-          <option value={'Electrician'}>Electrician</option>
-          <option value={'Painter'}>Painter</option>
+          <option value={"Plumber"}>Plumber</option>
+          <option value={"Electrician"}>Electrician</option>
+          <option value={"Painter"}>Painter</option>
         </NativeSelect>
         <FormHelperText>Choose desired trade</FormHelperText>
       </FormControl>
+
+      <FormControl style={{ width: "25vw" }} className={classes.formControl}>
+        <InputLabel htmlFor="location-native-helper">Location</InputLabel>
+        <NativeSelect
+          value={state.location}
+          onChange={handleLocationChange}
+          inputProps={{
+            name: "location",
+            id: "location-native-helper",
+          }}
+        >
+          <option aria-label="None" value="" />
+          <option value={"Vancouver"}>Vancouver</option>
+          <option value={"Richmond"}>Richmond</option>
+          <option value={"Surrey"}>Surrey</option>
+        </NativeSelect>
+        <FormHelperText>Choose your location</FormHelperText>
+      </FormControl>
+
+      <Button variant="contained" color="secondary">
+        Search
+      </Button>
     </div>
   );
 }
