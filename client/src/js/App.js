@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Button } from "@material-ui/core";
 import axios from 'axios';
 import '../styles/App.css';
 
@@ -27,16 +28,21 @@ class App extends Component {
 
   render() {
     return (
-    <>
-      <nav className="App-header">  
-        <img alt="" className="App-logo" src={logo} />
-           <button onClick={this.fetchData}> Hammer Time!
-             </button>
-       </nav>
+      <>
+        <nav className="App-header">
+          <img alt="" className="App-logo" src={logo} />
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={this.fetchData}
+          >
+            {" "}
+            Hammer Time!
+          </Button>
+        </nav>
         <div className="App">
-          
-        <h1>{this.state.user.name}</h1>
-        <h3>{this.state.user.email}</h3> 
+          <h1>{this.state.user.name}</h1>
+          <h3>{this.state.user.email}</h3>
         </div>
       </>
     );
