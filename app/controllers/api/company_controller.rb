@@ -1,18 +1,28 @@
 class Api::CompanyController < ApplicationController
- def index
-  @company = Company.all
+  def index
+    @companies = Company.all
+
+    #TODO Find an easier way to implement this.
+    if params[:trade_type]
+      @companies = @companies.where(trade_type: params[:trade_type])
+    end
+
     render :json => {
-      companies: @company
-    }
- end
-  def show
-    @company = Company.all
-    render :json => {
-      companies: @company
+      params: params,
+      companies: @companies,
     }
   end
 
-  def getCompaniesByTrade
-    @company = Company.find params[:trade_type]
+  def show
+    @company = Company.find params[:id]
+    render :json => {
+      company: @company,
+    }
+  end
+
+  def create
+  end
+
+  def destroy
   end
 end
