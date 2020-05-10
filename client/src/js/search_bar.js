@@ -46,6 +46,7 @@ export default function Selects() {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        paddingBottom: "20px"
       }}
     >
       <FormControl style={{ width: "25vw" }} className={classes.formControl}>
