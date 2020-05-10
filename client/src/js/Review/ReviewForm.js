@@ -66,15 +66,13 @@ const scores = [
 
 export default function ReviewForm() {
   const classes = useStyles();
-  const [score, setScore] = React.useState(0);
+  const [scorePunctuality, setScorePunctuality] = React.useState(0);
+  const [scoreCleanliness, setScoreCleanliness] = React.useState(0);
+  const [scoreCommunication, setScoreCommunication] = React.useState(0);
+  const [scorePrice, setScorePrice] = React.useState(0);
 
-  const handleChange = (event) => {
-    console.log(event.target.value);
-    setScore(event.target.value);
-    setScore(5);
-  };
 
-  //   Punctuality
+  // Punctuality
 
   // Cleanliness
 
@@ -90,9 +88,11 @@ export default function ReviewForm() {
         <TextField
           id="outlined-select-currency"
           select
-          label="Rating"
-          value={score}
-          onChange={handleChange}
+          label="Punctuality"
+          value={scorePunctuality}
+          onChange={(event) => {
+            setScorePunctuality(event.target.value);
+          }}
           helperText="Rated out of 10"
           variant="outlined"
         >
@@ -107,9 +107,49 @@ export default function ReviewForm() {
         <TextField
           id="outlined-select-currency"
           select
-          label="Rating"
-          value={score}
-          onChange={handleChange}
+          label="Cleanliness"
+          value={scoreCleanliness}
+          onChange={(event) => {
+            setScoreCleanliness(event.target.value);
+          }}
+          helperText="Rated out of 10"
+          variant="outlined"
+        >
+          {scores.map((option) => (
+            <MenuItem key={option.value} value={option.value}>
+              {option.label}
+            </MenuItem>
+          ))}
+        </TextField>
+      </div>
+      <div>
+        <TextField
+          id="outlined-select-currency"
+          select
+          label="Communication"
+          value={scoreCommunication}
+          onChange={(event) => {
+            setScoreCommunication(event.target.value);
+          }}
+          helperText="Rated out of 10"
+          variant="outlined"
+        >
+          {scores.map((option) => (
+            <MenuItem key={option.value} value={option.value}>
+              {option.label}
+            </MenuItem>
+          ))}
+        </TextField>
+      </div>
+      <div>
+        <TextField
+          id="outlined-select-currency"
+          select
+          label="Price"
+          value={scorePrice}
+          onChange={(event) => {
+            setScorePrice(event.target.value);
+          }}
           helperText="Rated out of 10"
           variant="outlined"
         >
