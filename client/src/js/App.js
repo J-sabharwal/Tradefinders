@@ -4,28 +4,29 @@ import axios from 'axios';
 import '../styles/App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import CompanyDetails from './Company/CompanyDetails';
+import ReviewForm from './Review/ReviewForm';
 
 import logo from '../images/logo.png';
 
 class App extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       user: {}
-    }
+    };
   }
 
   fetchData = () => {
     axios.get('/api/user') // You can simply make your requests to "/api/whatever you want"
-    .then((response) => {
+      .then((response) => {
       // handle success
-      console.log(response.data.users.company) // The entire response from the Rails API
+        console.log(response.data.users.company); // The entire response from the Rails API
 
-      console.log(response.data.users[0].name) // Just the message
-      this.setState({
-        user: response.data.users[0]
+        console.log(response.data.users[0].name); // Just the message
+        this.setState({
+          user: response.data.users[0]
+        });
       });
-    }) 
   }
 
   render() {
@@ -48,8 +49,12 @@ class App extends Component {
         </div>
         <Router>
           <div className="company-details">
-            <Route exact path='/company/:id' component={CompanyDetails}
-              />
+            <Route exact path='/company/:id' component={CompanyDetails}/>
+          </div>
+        </Router>
+        <Router>
+          <div className="review-form">
+            <Route exact path='/review/:company_id/new' component={ReviewForm}/>
           </div>
         </Router>
       </>

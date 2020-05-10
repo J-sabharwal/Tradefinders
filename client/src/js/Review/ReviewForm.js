@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import { Button } from "@material-ui/core";
 import axios from 'axios';
 import '../../styles/App.css';
 
-
-class Company extends Component {
+class ReviewForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -28,14 +26,14 @@ class Company extends Component {
     //     review: all.data.review
     //   }));
 
-    axios.get(`/api/company/${params.id}`)
-      .then((response) => {
+    // axios.get(`/api/company/${params.id}`)
+    // .then((response) => {
       
-        console.log(response.data);
-        this.setState({
-          company: response.data.company
-        });
-      });
+    //   console.log(response.data)
+    //   this.setState({
+    //     company: response.data.company
+    //   });
+    // })
   }
 
   render() {
@@ -57,4 +55,4 @@ class Company extends Component {
 
 }
 
-export default Company;
+export default ReviewForm;
