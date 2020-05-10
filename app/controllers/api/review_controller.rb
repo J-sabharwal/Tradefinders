@@ -2,14 +2,14 @@ class Api::ReviewController < ApplicationController
   def index
     @reviews = Review.all
     render :json => {
-      reviews: @reviews
+      reviews: @reviews,
     }
-  end 
+  end
 
   def show
     @review = Review.find params[:id]
     render :json => {
-      review: @review
+      review: @review,
     }
   end
 
@@ -24,7 +24,7 @@ class Api::ReviewController < ApplicationController
   #     review: "lel"
   #   }
   # end
-  
+
   # def reviews_for_company_1
   #   @reviews_for_company_1 = Review.find_by(company_id: 1)
   #   render :json => {

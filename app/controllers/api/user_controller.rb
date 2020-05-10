@@ -2,13 +2,13 @@ class Api::UserController < ApplicationController
   def index
     @users = User.all
     render :json => {
-      params: params
+      params: params,
     }
-  end 
+  end
 
   def show
     render :json => {
-      company: User.all
+      company: User.all,
     }
   end
 

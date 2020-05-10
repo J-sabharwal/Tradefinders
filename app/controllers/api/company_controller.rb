@@ -4,13 +4,13 @@ class Api::CompanyController < ApplicationController
       @companies = Company.where(trade_type: params[:trade_type])
       render :json => {
         params: params,
-        companies: @companies
+        companies: @companies,
       }
-    else 
+    else
       @companies = Company.all
       render :json => {
         params: params,
-        companies: @companies
+        companies: @companies,
       }
     end
   end
@@ -18,7 +18,7 @@ class Api::CompanyController < ApplicationController
   def show
     @company = Company.all
     render :json => {
-      companies: @company
+      companies: @company,
     }
   end
 
