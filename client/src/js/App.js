@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Button } from "@material-ui/core";
 import axios from 'axios';
 import '../styles/App.css';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import CompanyDetails from './Company/CompanyDetails';
 
 import logo from '../images/logo.png';
 
@@ -44,6 +46,12 @@ class App extends Component {
           <h1>{this.state.user.name}</h1>
           <h3>{this.state.user.email}</h3>
         </div>
+        <Router>
+          <div className="company-details">
+            <Route exact path='/company/:id' component={CompanyDetails}
+              />
+          </div>
+        </Router>
       </>
     );
   }
