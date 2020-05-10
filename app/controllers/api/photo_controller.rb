@@ -9,7 +9,7 @@ class Api::PhotoController < ApplicationController
   def show
     @photo = Photo.find params[:id]
     render :json => {
-      review: @photo,
+      photo: @photo,
     }
   end
 
