@@ -2,6 +2,7 @@ class Api::CompanyController < ApplicationController
   def index
     @companies = Company.all
 
+    #TODO Find an easier way to implement this.
     if params[:trade_type]
       @companies = @companies.where(trade_type: params[:trade_type])
     end

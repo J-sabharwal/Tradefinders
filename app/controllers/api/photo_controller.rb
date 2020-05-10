@@ -1,7 +1,13 @@
 class Api::PhotoController < ApplicationController
   def index
     @photos = Photo.all
+
+    if params[:review_id]
+      @photos = @photos.where(review_id: params[:review_id])
+    end
+
     render :json => {
+      params: params,
       photos: @photos,
     }
   end

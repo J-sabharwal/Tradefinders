@@ -1,7 +1,17 @@
 class Api::ReviewController < ApplicationController
   def index
     @reviews = Review.all
+
+    if params[:user_id]
+      @reviews = @reviews.where(user_id: params[:user_id])
+    end
+
+    if params[:company_id]
+      @reviews = @reviews.where(company_id: params[:company_id])
+    end
+
     render :json => {
+      params: params,
       reviews: @reviews,
     }
   end
