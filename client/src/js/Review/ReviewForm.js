@@ -3,21 +3,22 @@ import React from 'react';
 import axios from "axios";
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
-import InputLabel from "@material-ui/core/InputLabel";
-import FormHelperText from "@material-ui/core/FormHelperText";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
-import NativeSelect from "@material-ui/core/NativeSelect";
+// import InputLabel from "@material-ui/core/InputLabel";
+// import FormHelperText from "@material-ui/core/FormHelperText";
+// import FormControl from "@material-ui/core/FormControl";
+// import Select from "@material-ui/core/Select";
+// import NativeSelect from "@material-ui/core/NativeSelect";
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 
 
 //TODO I should probably move those styles somewhere else. No idea where yet.
+// Brad - I think this is good for now! We can always refactor later.
 const useStyles = makeStyles((theme) => ({
   root: {
     '& .MuiTextField-root': {
-      margin: theme.spacing(1),
-      width: '25ch',
+      margin: theme.spacing(2),
+      width: '30ch',
     },
   },
 }));
@@ -88,8 +89,8 @@ export default function ReviewForm() {
   };
 
   return (
-    <form className={classes.root} noValidate autoComplete="off" >
-      <div>
+    <div>
+      <form className={classes.root} noValidate autoComplete="off">
         <TextField
           id="outlined-select-score"
           select
@@ -107,8 +108,7 @@ export default function ReviewForm() {
             </MenuItem>
           ))}
         </TextField>
-      </div>
-      <div>
+
         <TextField
           id="outlined-select-score"
           select
@@ -126,8 +126,7 @@ export default function ReviewForm() {
             </MenuItem>
           ))}
         </TextField>
-      </div>
-      <div>
+
         <TextField
           id="outlined-select-score"
           select
@@ -145,8 +144,7 @@ export default function ReviewForm() {
             </MenuItem>
           ))}
         </TextField>
-      </div>
-      <div>
+
         <TextField
           id="outlined-select-score"
           select
@@ -164,36 +162,47 @@ export default function ReviewForm() {
             </MenuItem>
           ))}
         </TextField>
-      </div>
-      <div>
-        <TextField
-          id="outlined-multiline-static"
-          label="Comments"
-          multiline
-          rows={4}
-          placeholder="Please talk about anything you would like others to know."
-          variant="outlined"
-          onChange={(event) => {
-            setCommentText(event.target.value);
-          }}
-        />
-      </div>
-      <div>
-        <TextField
-          id="outlined-static"
-          label="Attached Photo"
-          placeholder="Please attach a link for a photo."
-          variant="outlined"
-          onChange={(event) => {
-            setPhotoLink(event.target.value);
-          }}
-        />
-      </div>
-      <div>
-        <Button variant="contained" color="primary" type="submit" onClick={handleSubmit}>
-          Submit
-        </Button>
-      </div>
-    </form>
+        <div>
+          <TextField
+            id="outlined-static"
+            label="Attached Photo"
+            placeholder="Please attach a link for a photo."
+            variant="outlined"
+            onChange={(event) => {
+              setPhotoLink(event.target.value);
+            }}
+          />
+        </div>
+        <div>
+          <TextField
+            style={{
+              width: "50%",
+            }}
+            id="outlined-multiline-static"
+            label="Comments"
+            multiline
+            rows={4}
+            placeholder="Please talk about anything you would like others to know."
+            variant="outlined"
+            onChange={(event) => {
+              setCommentText(event.target.value);
+            }}
+          />
+
+          {/* <RaisedButton type="submit" label="login" className="button-submit" primary={true} /> */}
+          <Button
+            style={{
+              marginTop: '40px',
+            }}
+            variant="contained"
+            color="secondary"
+            type="submit"
+            onClick={handleSubmit}
+          >
+            Submit
+          </Button>
+        </div>
+      </form>
+    </div>
   );
 }

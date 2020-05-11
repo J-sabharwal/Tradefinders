@@ -8,6 +8,10 @@ import { Button } from "@material-ui/core";
 // import Select from '@material-ui/core/Select';
 import NativeSelect from '@material-ui/core/NativeSelect';
 
+import handymen from '../images/handymen.jpg';
+import '../styles/SearchBar.css'
+
+
 const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
@@ -18,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Selects() {
+export default function SearchBar() {
   const classes = useStyles();
   const [state, setState] = React.useState({
     trade: "",
@@ -57,6 +61,8 @@ export default function Selects() {
   }
 
   return (
+    <>
+      <img alt="" className="home-pic" src={handymen} />
     <div
       style={{
         display: "flex",
@@ -104,6 +110,7 @@ export default function Selects() {
       <Button variant="contained" color="secondary" onClick={companySearch}> 
         Search
       </Button>
-    </div>
+      </div>
+      </>
   );
 }
