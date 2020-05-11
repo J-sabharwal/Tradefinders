@@ -18,6 +18,7 @@ Company.create!({
   description: "For all your plumbing needs, available to work on bathrooms, kitchens, and central heating. Domestic and Commercial hire",
   phone_number: "623-854-9875",
   trade_type: "plumbing",
+  location: "Richmond"
 })
 
 Company.create!({
@@ -26,6 +27,7 @@ Company.create!({
   description: "For all your plumbing needs, available to work on bathrooms, kitchens. But super cheap!",
   phone_number: "623-854-9874",
   trade_type: "plumbing",
+  location: "Vancouver"
 })
 
 Company.create!({
@@ -34,6 +36,7 @@ Company.create!({
   description: "For all your plumbing needs, available to work on mushroom world only",
   phone_number: "623-824-9872",
   trade_type: "plumbing",
+  location: "Surrey"
 })
 
 Company.create!({
@@ -42,6 +45,7 @@ Company.create!({
   description: "Cheaper than Mario! Double the quality",
   phone_number: "623-824-9879",
   trade_type: "plumbing",
+  location: "Vancouver"
 })
 
 Company.create!({
@@ -50,6 +54,7 @@ Company.create!({
   description: "Available for hire",
   phone_number: "234-123-9875",
   trade_type: "electrical",
+  location: "Richmond"
 })
 
 Company.create!({
@@ -58,6 +63,7 @@ Company.create!({
   description: "Houses, Venues, Shopfronts",
   phone_number: "890-456-1234",
   trade_type: "painter/decorator",
+  location: "Vancouver"
 })
 
 Company.create!({
@@ -66,6 +72,7 @@ Company.create!({
   description: "Designing for over 40 years.",
   phone_number: "778-895-1234",
   trade_type: "painter/decorator",
+  location: "Surrey"
 })
 
 User.destroy_all
