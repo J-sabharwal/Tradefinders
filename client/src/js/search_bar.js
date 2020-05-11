@@ -52,7 +52,7 @@ export default function Selects() {
     Promise.all([companiesByTrade, companiesByLocation])
         .then((response) => {
           console.log(response[0].data.companies);
-          console.log(response[0].data.companyloc);
+          console.log(response[1].data.companies);
         });
   }
 

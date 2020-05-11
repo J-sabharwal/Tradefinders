@@ -6,7 +6,7 @@ class Api::CompanyController < ApplicationController
     if params[:trade_type]
       @companies = @companies.where(trade_type: params[:trade_type].downcase)
     elsif params[:location]
-      @companies = @companies.where(location: params[:location].downcase)
+      @companies = @companies.where(location: params[:location])
     end
 
     render :json => {
