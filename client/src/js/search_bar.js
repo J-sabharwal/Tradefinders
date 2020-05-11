@@ -47,12 +47,12 @@ export default function Selects() {
     const companiesByTrade = axios
       .get(`/api/company?trade_type=${state.trade}`);
     const companiesByLocation = axios
-      .get(`/api/company?location_type=${state.location}`);
+      .get(`/api/company?location=${state.location}`);
     
     Promise.all([companiesByTrade, companiesByLocation])
         .then((response) => {
           console.log(response[0].data.companies);
-          console.log(response[1].data.companies);
+          console.log(response[0].data.companyloc);
         });
   }
 
