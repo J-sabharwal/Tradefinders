@@ -56,26 +56,31 @@ export default function ReviewForm() {
   const [scoreValue, setScoreValue] = React.useState(0);
   const [scoreWorkmanship, setScoreWorkmanship] = React.useState(0);
   const [commentText, setCommentText] = React.useState("");
+  const [photoLink, setPhotoLink] = React.useState("");
 
   const handleSubmit = event => {
     event.preventDefault();
+    console.log(photoLink);
 
     //TODO Currently user_id and company_id are hard coded.
     //     Later, I will need to get the user_id from the cookie, and company_id from the url.
     //     But we need to setup the routes again later. Currently it's still a bit of a mess.
 
-    axios
-      .post("/api/review",null, {params: {
-        user_id: 1,
-        company_id: 1,
-        cleanliness: scoreCleanliness,
-        reliability: scoreReliability,
-        value: scoreValue,
-        workmanship: scoreWorkmanship,
-        comment: commentText,
-      }}).then((response) => {
-        console.log(response);
-      });
+    
+    axios.post("/api/review",null, {params: {
+      user_id: 1,
+      company_id: 1,
+      cleanliness: scoreCleanliness,
+      reliability: scoreReliability,
+      value: scoreValue,
+      workmanship: scoreWorkmanship,
+      comment: commentText,
+    }}).then((response) => {
+      console.log(response.data.new_review);
+      axios.post("/api/photo", null, {params: {
+        review_id: response.data.new_review.id
+      }}).then(());
+    });
 
   };
 
@@ -171,9 +176,18 @@ export default function ReviewForm() {
         />
       </div>
       <div>
-        {/* <RaisedButton type="submit" label="login" className="button-submit" primary={true} /> */}
-        <Button variant="contained" color="primary" type="submit"
-          onClick={handleSubmit}>
+        <TextField
+          id="outlined-static"
+          label="Attached Photo"
+          placeholder="Please attach a link for a photo."
+          variant="outlined"
+          onChange={(event) => {
+            setPhotoLink(event.target.value);
+          }}
+        />
+      </div>
+      <div>
+        <Button variant="contained" color="primary" type="submit" onClick={handleSubmit}>
           Submit
         </Button>
       </div>
