@@ -10,7 +10,7 @@ import EmailIcon from '@material-ui/icons/Email';
 import InfoTwoToneIcon from '@material-ui/icons/InfoTwoTone';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-import { makeStyles } from '@material-ui/core/styles';
+// import { makeStyles } from '@material-ui/core/styles';
 
 
 class Company extends Component {

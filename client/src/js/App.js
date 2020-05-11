@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import axios from "axios";
+// import axios from "axios";
 import "../styles/App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import CompanyDetails from "./Company/CompanyDetails";
@@ -18,19 +18,7 @@ class App extends Component {
     };
   }
 
-  fetchData = () => {
-    axios
-      .get("/api/user") // You can simply make your requests to "/api/whatever you want"
-      .then((response) => {
-        // handle success
-        console.log(response.data.users.company); // The entire response from the Rails API
-
-        console.log(response.data.users[0].name); // Just the message
-        this.setState({
-          user: response.data.users[0],
-        });
-      });
-  };
+ 
 
   render() {
     return (
