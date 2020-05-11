@@ -10,7 +10,11 @@ import EmailIcon from '@material-ui/icons/Email';
 import InfoTwoToneIcon from '@material-ui/icons/InfoTwoTone';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Paper from '@material-ui/core/Paper';
+import { makeStyles   } from '@material-ui/core/styles';
 
 
 class Company extends Component {
@@ -26,17 +30,40 @@ class Company extends Component {
     const {match: {params}} = this.props;
     const companyDeets = axios.get(`/api/company/${params.id}`);
     const companyReviews = axios.get(`/api/review?company_id=${params.id}`);
-    // console.log(params)
-   
+    
     Promise.all([companyDeets, companyReviews])
-      .then((all) => {
-        console.log(all);
-        this.setState(prev => ({
-          ...prev,
-          company: all[0].data.company,
-          review: all[1].data
-        }));
-      });
+    .then((all) => {
+      // console.log(all);
+      this.setState(prev => ({
+        ...prev,
+        company: all[0].data.company,
+        review: all[1].data
+      }));
+
+      // console.log(this.state.review.reviews)
+      const photo = this.state.review.reviews.map(rev => {
+        axios.get(`/api/photo?review_id=${rev.id}`)
+          .then(response => {
+            // console.log(response.data)
+            this.setState(prev => ({
+              ...prev,
+              photo: response.data.photos
+            }))
+          })
+      })
+    });
+  }
+
+  renderReviewData(){
+    // console.log(this.state.review.reviews)
+
+    return this.state.review.reviews && this.state.review.reviews.map(rev => {
+      return (
+        <Card key={rev.id} className="avg-review-comment" align="center">
+          <CardContent>{rev.comment}</CardContent>
+        </Card>
+      )
+    })
   }
 
   render() {
@@ -71,6 +98,9 @@ class Company extends Component {
         <Typography className="avg-rating" align="right" variant="body1">
           ({this.state.review.total_avg} / 5 Rating)
         </Typography>
+        </Grid>
+        <Grid item xs={6} sm={12}>
+            {this.renderReviewData()}
         </Grid>
         </Container>
       </>
