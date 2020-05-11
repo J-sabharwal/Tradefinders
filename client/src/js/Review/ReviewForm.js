@@ -104,7 +104,7 @@ export default function ReviewForm() {
           onChange={(event) => {
             setScoreCleanliness(event.target.value);
           }}
-          helperText="Did they do a good job?"
+          helperText="Did they clean up after themselves?"
           variant="outlined"
         >
           {scores.map((option) => (
