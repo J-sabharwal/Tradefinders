@@ -60,7 +60,7 @@ class Company extends Component {
           </Typography>
           </div>
           <div className="avg-ratings" >
-            <Box display="flex" flexDirection="row" p={1}borderColor="transparent">
+            <Box borderColor="transparent">
               <Rating name="half-rating-read" size="large" value={this.state.review.total_avg ? this.state.review.total_avg : 0.0} precision={0.2} readOnly />
             </Box>
           </div>
