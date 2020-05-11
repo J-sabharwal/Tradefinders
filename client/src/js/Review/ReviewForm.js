@@ -13,7 +13,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 
 //TODO I should probably move those styles somewhere else. No idea where yet.
-// Brad - I think this is good for now! We can always refactor later. 
+// Brad - I think this is good for now! We can always refactor later.
 const useStyles = makeStyles((theme) => ({
   root: {
     '& .MuiTextField-root': {
@@ -57,26 +57,34 @@ export default function ReviewForm() {
   const [scoreValue, setScoreValue] = React.useState(0);
   const [scoreWorkmanship, setScoreWorkmanship] = React.useState(0);
   const [commentText, setCommentText] = React.useState("");
+  const [photoLink, setPhotoLink] = React.useState("");
 
   const handleSubmit = event => {
     event.preventDefault();
+    console.log(photoLink);
 
     //TODO Currently user_id and company_id are hard coded.
     //     Later, I will need to get the user_id from the cookie, and company_id from the url.
     //     But we need to setup the routes again later. Currently it's still a bit of a mess.
 
-    axios
-      .post("/api/review",null, {params: {
-        user_id: 1,
-        company_id: 1,
-        cleanliness: scoreCleanliness,
-        reliability: scoreReliability,
-        value: scoreValue,
-        workmanship: scoreWorkmanship,
-        comment: commentText,
-      }}).then((response) => {
+    
+    axios.post("/api/review",null, {params: {
+      user_id: 1,
+      company_id: 1,
+      cleanliness: scoreCleanliness,
+      reliability: scoreReliability,
+      value: scoreValue,
+      workmanship: scoreWorkmanship,
+      comment: commentText,
+    }}).then((response) => {
+      console.log(response.data.new_review);
+      axios.post("/api/photo", null, {params: {
+        review_id: response.data.new_review.id,
+        photo_url: photoLink
+      }}).then(((response) => {
         console.log(response);
-      });
+      }));
+    });
 
   };
 
@@ -154,6 +162,17 @@ export default function ReviewForm() {
             </MenuItem>
           ))}
         </TextField>
+        <div>
+          <TextField
+            id="outlined-static"
+            label="Attached Photo"
+            placeholder="Please attach a link for a photo."
+            variant="outlined"
+            onChange={(event) => {
+              setPhotoLink(event.target.value);
+            }}
+          />
+        </div>
         <div>
           <TextField
             style={{
