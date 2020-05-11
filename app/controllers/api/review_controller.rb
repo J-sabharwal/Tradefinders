@@ -45,6 +45,18 @@ class Api::ReviewController < ApplicationController
   end
 
   def create
+    @review = Review.create(
+      user_id: params[:user_id],
+      company_id: params[:company_id],
+      cleanliness: params[:cleanliness],
+      reliability: params[:reliability],
+      value: params[:value],
+      workmanship: params[:workmanship],
+      comment: params[:comment],
+    )
+    render :json => {
+      new_review: @review,
+    }
   end
 
   def destroy
