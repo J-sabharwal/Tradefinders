@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from "axios";
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
@@ -30,6 +31,7 @@ export default function Selects() {
       ...state,
       [trade]: event.target.value,
     });
+    
   };
 
   const handleLocationChange = (event) => {
@@ -39,6 +41,20 @@ export default function Selects() {
       [location]: event.target.value,
     });
   };
+
+  // console.log(state.trade);
+  const companySearch = () => {
+    const companiesByTrade = axios
+      .get(`/api/company?trade_type=${state.trade}`);
+    const companiesByLocation = axios
+      .get(`/api/company?location_type=${state.location}`);
+    
+    Promise.all([companiesByTrade, companiesByLocation])
+        .then((response) => {
+          console.log(response[0].data.companies);
+          console.log(response[1].data.companies);
+        });
+  }
 
   return (
     <div
@@ -50,31 +66,31 @@ export default function Selects() {
       }}
     >
       <FormControl style={{ width: "25vw" }} className={classes.formControl}>
-        <InputLabel htmlFor="trade-native-helper">Trade</InputLabel>
+        <InputLabel htmlFor="age-native-helper">Trade</InputLabel>
         <NativeSelect
           value={state.trade}
           onChange={handleTradeChange}
           inputProps={{
             name: "trade",
-            id: "trade-native-helper",
+            id: "age-native-helper",
           }}
         >
           <option aria-label="None" value="" />
-          <option value={"Plumber"}>Plumber</option>
-          <option value={"Electrician"}>Electrician</option>
-          <option value={"Painter"}>Painter</option>
+          <option value={"Plumbing"}>Plumbing</option>
+          <option value={"Electrical"}>Electrical</option>
+          <option value={"Painter/Decorator"}>Painting/Decorating</option>
         </NativeSelect>
         <FormHelperText>Choose desired trade</FormHelperText>
       </FormControl>
 
       <FormControl style={{ width: "25vw" }} className={classes.formControl}>
-        <InputLabel htmlFor="location-native-helper">Location</InputLabel>
+        <InputLabel htmlFor="age-native-helper">Location</InputLabel>
         <NativeSelect
           value={state.location}
           onChange={handleLocationChange}
           inputProps={{
             name: "location",
-            id: "location-native-helper",
+            id: "age-native-helper",
           }}
         >
           <option aria-label="None" value="" />
@@ -85,7 +101,7 @@ export default function Selects() {
         <FormHelperText>Choose your location</FormHelperText>
       </FormControl>
 
-      <Button variant="contained" color="secondary">
+      <Button variant="contained" color="secondary" onClick={companySearch}> 
         Search
       </Button>
     </div>
