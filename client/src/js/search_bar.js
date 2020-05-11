@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from "axios";
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
@@ -30,7 +31,14 @@ export default function Selects() {
       ...state,
       [trade]: event.target.value,
     });
+    
   };
+
+  // console.log(state.trade);
+  axios.get(`/api/company?trade_type=${state.trade}`)
+    .then((response) => {
+    console.log(response.data);
+  });
 
   const handleLocationChange = (event) => {
     const location = event.target.name;
@@ -50,19 +58,19 @@ export default function Selects() {
       }}
     >
       <FormControl style={{ width: "25vw" }} className={classes.formControl}>
-        <InputLabel htmlFor="trade-native-helper">Trade</InputLabel>
+        <InputLabel htmlFor="-native-helper">Trade</InputLabel>
         <NativeSelect
           value={state.trade}
           onChange={handleTradeChange}
           inputProps={{
             name: "trade",
-            id: "trade-native-helper",
+            id: "age-native-helper",
           }}
         >
           <option aria-label="None" value="" />
-          <option value={"Plumber"}>Plumber</option>
-          <option value={"Electrician"}>Electrician</option>
-          <option value={"Painter"}>Painter</option>
+          <option value={"Plumbing"}>Plumbing</option>
+          <option value={"Electrical"}>Electrical</option>
+          <option value={"Painting/Decorating"}>Painting/Decorating</option>
         </NativeSelect>
         <FormHelperText>Choose desired trade</FormHelperText>
       </FormControl>
