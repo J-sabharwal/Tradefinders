@@ -78,8 +78,11 @@ export default function ReviewForm() {
     }}).then((response) => {
       console.log(response.data.new_review);
       axios.post("/api/photo", null, {params: {
-        review_id: response.data.new_review.id
-      }}).then(());
+        review_id: response.data.new_review.id,
+        photo_url: photoLink
+      }}).then(((response) => {
+        console.log(response);
+      }));
     });
 
   };
