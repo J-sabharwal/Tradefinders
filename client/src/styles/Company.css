@@ -16,7 +16,6 @@ body{
 .avg-ratings {
   display: flex;
   flex-direction: row;
-  justify-content: end;
   text-align: right;
 }
 
@@ -44,7 +43,6 @@ body{
   .avg-ratings {
     display: flex;
     flex-direction: row;
-    justify-content: end;
     float: right;
   }
 
