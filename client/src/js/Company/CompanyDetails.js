@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// import { Button } from "@material-ui/core";
 import axios from 'axios';
 import '../../styles/Company.css';
 import { Rating } from '@material-ui/lab';

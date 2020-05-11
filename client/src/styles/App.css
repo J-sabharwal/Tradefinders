@@ -35,3 +35,12 @@
     transform: rotate(360deg);
   }
 }
+
+.home-pic {
+  width: 100%;
+}
+
+.background {
+  background-color: #c3c3c9;
+  background-image: url("https://www.transparenttextures.com/patterns/concrete-wall-3.png");
+}
