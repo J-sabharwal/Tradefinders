@@ -4,6 +4,7 @@ import axios from "axios";
 import "../styles/App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import CompanyDetails from "./Company/CompanyDetails";
+import ReviewForm from './Review/ReviewForm';
 
 import ButtonAppBar from './navbar';
 import Selects from './search_bar';
