@@ -58,15 +58,11 @@ export default function ReviewForm() {
   const [commentText, setCommentText] = React.useState("");
 
   const handleSubmit = event => {
-    // let result = {
-    //   scoreCleanliness,
-    //   scoreReliability,
-    //   scoreValue,
-    //   scoreWorkmanship,
-    //   commentText,
-    // };
-    // console.log(result);
     event.preventDefault();
+
+    //TODO Currently user_id and company_id are hard coded.
+    //     Later, I will need to get the user_id from the cookie, and company_id from the url.
+    //     But we need to setup the routes again later. Currently it's still a bit of a mess.
 
     axios
       .post("/api/review",null, {params: {
