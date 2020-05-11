@@ -1,5 +1,6 @@
+/* eslint-disable camelcase */
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import axios from "axios";
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from "@material-ui/core/InputLabel";
@@ -8,6 +9,8 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import NativeSelect from "@material-ui/core/NativeSelect";
 import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
+
 
 //TODO I should probably move those styles somewhere else. No idea where yet.
 const useStyles = makeStyles((theme) => ({
@@ -54,23 +57,30 @@ export default function ReviewForm() {
   const [scoreWorkmanship, setScoreWorkmanship] = React.useState(0);
   const [commentText, setCommentText] = React.useState("");
 
-
-  // t.integer "cleanliness"
-  // t.integer "reliability"
-  // t.integer "value"
-  // t.integer "workmanship"
-  // t.string "comment"
-
   const handleSubmit = event => {
-    let result = {
-      scoreCleanliness,
-      scoreReliability,
-      scoreValue,
-      scoreWorkmanship,
-      commentText
-    };
-    console.log(result);
+    // let result = {
+    //   scoreCleanliness,
+    //   scoreReliability,
+    //   scoreValue,
+    //   scoreWorkmanship,
+    //   commentText,
+    // };
+    // console.log(result);
     event.preventDefault();
+
+    axios
+      .post("/api/review",null, {params: {
+        user_id: 1,
+        company_id: 1,
+        cleanliness: scoreCleanliness,
+        reliability: scoreReliability,
+        value: scoreValue,
+        workmanship: scoreWorkmanship,
+        comment: commentText,
+      }}).then((response) => {
+        console.log(response);
+      });
+
   };
 
   return (
