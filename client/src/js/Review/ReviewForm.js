@@ -1,5 +1,6 @@
+/* eslint-disable camelcase */
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import axios from "axios";
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from "@material-ui/core/InputLabel";
@@ -8,7 +9,10 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import NativeSelect from "@material-ui/core/NativeSelect";
 import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
 
+
+//TODO I should probably move those styles somewhere else. No idea where yet.
 const useStyles = makeStyles((theme) => ({
   root: {
     '& .MuiTextField-root': {
@@ -47,57 +51,39 @@ const scores = [
 
 export default function ReviewForm() {
   const classes = useStyles();
-  const [scorePunctuality, setScorePunctuality] = React.useState(0);
   const [scoreCleanliness, setScoreCleanliness] = React.useState(0);
-  const [scoreCommunication, setScoreCommunication] = React.useState(0);
-  const [scorePrice, setScorePrice] = React.useState(0);
-  const [reviewText, setReviewText] = React.useState("");
-
-
-  // Punctuality
-
-  // Cleanliness
-
-  // Communication
-
-  // Price
+  const [scoreReliability, setScoreReliability] = React.useState(0);
+  const [scoreValue, setScoreValue] = React.useState(0);
+  const [scoreWorkmanship, setScoreWorkmanship] = React.useState(0);
+  const [commentText, setCommentText] = React.useState("");
 
   const handleSubmit = event => {
-    let result = {
-      scorePunctuality,
-      scoreCleanliness,
-      scoreCommunication,
-      scorePrice,
-      reviewText
-    };
-    console.log(result);
     event.preventDefault();
+
+    //TODO Currently user_id and company_id are hard coded.
+    //     Later, I will need to get the user_id from the cookie, and company_id from the url.
+    //     But we need to setup the routes again later. Currently it's still a bit of a mess.
+
+    axios
+      .post("/api/review",null, {params: {
+        user_id: 1,
+        company_id: 1,
+        cleanliness: scoreCleanliness,
+        reliability: scoreReliability,
+        value: scoreValue,
+        workmanship: scoreWorkmanship,
+        comment: commentText,
+      }}).then((response) => {
+        console.log(response);
+      });
+
   };
 
   return (
     <form className={classes.root} noValidate autoComplete="off" >
       <div>
         <TextField
-          id="outlined-select-currency"
-          select
-          label="Punctuality"
-          value={scorePunctuality}
-          onChange={(event) => {
-            setScorePunctuality(event.target.value);
-          }}
-          helperText="Did they arrive on time?"
-          variant="outlined"
-        >
-          {scores.map((option) => (
-            <MenuItem key={option.value} value={option.value}>
-              {option.label}
-            </MenuItem>
-          ))}
-        </TextField>
-      </div>
-      <div>
-        <TextField
-          id="outlined-select-currency"
+          id="outlined-select-score"
           select
           label="Cleanliness"
           value={scoreCleanliness}
@@ -116,14 +102,14 @@ export default function ReviewForm() {
       </div>
       <div>
         <TextField
-          id="outlined-select-currency"
+          id="outlined-select-score"
           select
-          label="Communication"
-          value={scoreCommunication}
+          label="Reliability"
+          value={scoreReliability}
           onChange={(event) => {
-            setScoreCommunication(event.target.value);
+            setScoreReliability(event.target.value);
           }}
-          helperText="Is it easy to communicate with them?"
+          helperText="Can you rely on them to do a good job?"
           variant="outlined"
         >
           {scores.map((option) => (
@@ -135,14 +121,33 @@ export default function ReviewForm() {
       </div>
       <div>
         <TextField
-          id="outlined-select-currency"
+          id="outlined-select-score"
           select
-          label="Price"
-          value={scorePrice}
+          label="Value"
+          value={scoreValue}
           onChange={(event) => {
-            setScorePrice(event.target.value);
+            setScoreValue(event.target.value);
           }}
-          helperText="How is the price for the job?"
+          helperText="How is the value?"
+          variant="outlined"
+        >
+          {scores.map((option) => (
+            <MenuItem key={option.value} value={option.value}>
+              {option.label}
+            </MenuItem>
+          ))}
+        </TextField>
+      </div>
+      <div>
+        <TextField
+          id="outlined-select-score"
+          select
+          label="Workmanship"
+          value={scoreWorkmanship}
+          onChange={(event) => {
+            setScoreWorkmanship(event.target.value);
+          }}
+          helperText="How is the quality of the work?"
           variant="outlined"
         >
           {scores.map((option) => (
@@ -155,13 +160,13 @@ export default function ReviewForm() {
       <div>
         <TextField
           id="outlined-multiline-static"
-          label="Review"
+          label="Comments"
           multiline
           rows={4}
           placeholder="Please talk about anything you would like others to know."
           variant="outlined"
           onChange={(event) => {
-            setReviewText(event.target.value);
+            setCommentText(event.target.value);
           }}
         />
       </div>
