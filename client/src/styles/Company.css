@@ -11,20 +11,31 @@ body{
 
 .details {
   padding-bottom: 0.35em;
+  color: rgb(70, 70, 70);
+}
+
+.details-email {
+  padding-bottom: 0.35em;
+  color: rgb(70, 70, 70);
+}
+
+.details-email:hover{
+  padding-bottom: 0.35em;
+  color: darkred;
+  font-weight: bolder;
 }
 
 .avg-ratings {
-  display: flex;
+  display: grid;
   flex-direction: row;
-  justify-content: end;
   text-align: right;
 }
 
 .avg-rating { 
-  display: flex;
+  display: grid;
   flex-direction: row;
   color:rgb(57, 56, 56);
-  font-weight: bold;
+  font-weight: bolder;
   }
 
   @media only screen and (max-width: 1200px) {
@@ -42,14 +53,12 @@ body{
   }
 
   .avg-ratings {
-    display: flex;
+    display: grid;
     flex-direction: row;
-    justify-content: end;
-    float: right;
   }
 
   .avg-rating {
-    display: flex;
+    display: grid;
     flex-direction: row;
     color: rgb(57, 57, 57);
     font-weight: bold;
