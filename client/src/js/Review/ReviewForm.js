@@ -7,6 +7,7 @@ import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import NativeSelect from "@material-ui/core/NativeSelect";
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -41,26 +42,6 @@ const scores = [
   {
     value: 5,
     label: 5,
-  },
-  {
-    value: 6,
-    label: 6,
-  },
-  {
-    value: 7,
-    label: 7,
-  },
-  {
-    value: 8,
-    label: 8,
-  },
-  {
-    value: 9,
-    label: 9,
-  },
-  {
-    value: 10,
-    label: 10,
   }
 ];
 
@@ -70,6 +51,7 @@ export default function ReviewForm() {
   const [scoreCleanliness, setScoreCleanliness] = React.useState(0);
   const [scoreCommunication, setScoreCommunication] = React.useState(0);
   const [scorePrice, setScorePrice] = React.useState(0);
+  const [reviewText, setReviewText] = React.useState("");
 
 
   // Punctuality
@@ -80,10 +62,20 @@ export default function ReviewForm() {
 
   // Price
 
-
+  const handleSubmit = event => {
+    let result = {
+      scorePunctuality,
+      scoreCleanliness,
+      scoreCommunication,
+      scorePrice,
+      reviewText
+    };
+    console.log(result);
+    event.preventDefault();
+  };
 
   return (
-    <form className={classes.root} noValidate autoComplete="off">
+    <form className={classes.root} noValidate autoComplete="off" >
       <div>
         <TextField
           id="outlined-select-currency"
@@ -93,7 +85,7 @@ export default function ReviewForm() {
           onChange={(event) => {
             setScorePunctuality(event.target.value);
           }}
-          helperText="Rated out of 10"
+          helperText="Did they arrive on time?"
           variant="outlined"
         >
           {scores.map((option) => (
@@ -112,7 +104,7 @@ export default function ReviewForm() {
           onChange={(event) => {
             setScoreCleanliness(event.target.value);
           }}
-          helperText="Rated out of 10"
+          helperText="Did they do a good job?"
           variant="outlined"
         >
           {scores.map((option) => (
@@ -131,7 +123,7 @@ export default function ReviewForm() {
           onChange={(event) => {
             setScoreCommunication(event.target.value);
           }}
-          helperText="Rated out of 10"
+          helperText="Is it easy to communicate with them?"
           variant="outlined"
         >
           {scores.map((option) => (
@@ -150,7 +142,7 @@ export default function ReviewForm() {
           onChange={(event) => {
             setScorePrice(event.target.value);
           }}
-          helperText="Rated out of 10"
+          helperText="How is the price for the job?"
           variant="outlined"
         >
           {scores.map((option) => (
@@ -159,6 +151,26 @@ export default function ReviewForm() {
             </MenuItem>
           ))}
         </TextField>
+      </div>
+      <div>
+        <TextField
+          id="outlined-multiline-static"
+          label="Review"
+          multiline
+          rows={4}
+          placeholder="Please talk about anything you would like others to know."
+          variant="outlined"
+          onChange={(event) => {
+            setReviewText(event.target.value);
+          }}
+        />
+      </div>
+      <div>
+        {/* <RaisedButton type="submit" label="login" className="button-submit" primary={true} /> */}
+        <Button variant="contained" color="primary" type="submit"
+          onClick={handleSubmit}>
+          Submit
+        </Button>
       </div>
     </form>
   );
