@@ -20,6 +20,13 @@ class Api::PhotoController < ApplicationController
   end
 
   def create
+    @photo = Photo.create(
+      review_id: params[:review_id],
+      photo_url: params[:photo_url],
+    )
+    render :json => {
+      new_photo: @photo,
+    }
   end
 
   def destroy
