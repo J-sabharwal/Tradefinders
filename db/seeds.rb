@@ -234,8 +234,9 @@ Photo.create!({
 })
 
 Photo.create!({
-  review_id: 2,
-  photo_url: "https://www.reimerhvac.com/wp-content/uploads/2015/08/Plumbing-buffalo-ny-affordable-services.jpg",
+  review_id: 3,
+  photo_url: "https://www.reimerhvac.com/wp-content/uploads/2015/08/plumbing-buffalo-ny-affordable-services.jpg",
+
 })
 
 Photo.create!({

@@ -7,7 +7,6 @@ class Api::PhotoController < ApplicationController
     end
 
     render :json => {
-      params: params,
       photos: @photos,
     }
   end
