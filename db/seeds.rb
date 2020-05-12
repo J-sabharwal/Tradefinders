@@ -138,7 +138,7 @@ Review.create!({
   reliability: 4,
   value: 2,
   workmanship: 3,
-  comment: "Good Job",
+  comment: "The work was ok, not cheap though.",
 })
 
 Review.create!({
@@ -148,7 +148,7 @@ Review.create!({
   reliability: 3,
   value: 2,
   workmanship: 4,
-  comment: "Good Job",
+  comment: "Did an ok job, though for the price I paid, the quality of work should have been higher.",
 })
 
 Review.create!({
@@ -158,7 +158,7 @@ Review.create!({
   reliability: 5,
   value: 1,
   workmanship: 5,
-  comment: "Good Job",
+  comment: "Excellent work done, a bit high on the price, but for the work done. I can't complain",
 })
 
 Review.create!({
@@ -168,7 +168,7 @@ Review.create!({
   reliability: 3,
   value: 4,
   workmanship: 3,
-  comment: "Good Job",
+  comment: "Helped with a light fixture, however since then the fusebox keeps switching off. Had to call back again to fix this issue.",
 })
 
 Review.create!({
@@ -178,7 +178,7 @@ Review.create!({
   reliability: 1,
   value: 1,
   workmanship: 1,
-  comment: "Not great",
+  comment: "Hired to install the plumbing in the bathroom, which caused a leak to the downstairs. Overpriced and would not use again!",
 })
 
 Review.create!({
@@ -188,7 +188,7 @@ Review.create!({
   reliability: 5,
   value: 4,
   workmanship: 5,
-  comment: "Great Job",
+  comment: "Had a boiler leak, the plumber came without a couple of hours and fix the issue within 30 minutes. Would recommend",
 })
 
 Review.create!({
@@ -198,7 +198,7 @@ Review.create!({
   reliability: 4,
   value: 2,
   workmanship: 4,
-  comment: "Great Job",
+  comment: "Did the job, though for the work done, I don't think the price was reasonable",
 })
 
 Review.create!({
@@ -208,7 +208,7 @@ Review.create!({
   reliability: 1,
   value: 3,
   workmanship: 1,
-  comment: "It's ok",
+  comment: "Fixed a leaky toilet, can't complain",
 })
 
 Review.create!({
@@ -225,48 +225,48 @@ Photo.destroy_all
 
 Photo.create!({
   review_id: 1,
-  photo_url: "https://www.reimerhvac.com/wp-content/uploads/2015/08/Plumbing-buffalo-ny-affordable-services.jpg",
+  photo_url: "https://cdn.vox-cdn.com/thumbor/pRy3gGPmO5o17FGa5lhCWkQrTeA=/1400x788/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/19519682/gallery_green_towels.jpg",
 })
 
 Photo.create!({
   review_id: 2,
-  photo_url: "https://www.reimerhvac.com/wp-content/uploads/2015/08/Plumbing-buffalo-ny-affordable-services.jpg",
+  photo_url: "https://cdn.vox-cdn.com/thumbor/pRy3gGPmO5o17FGa5lhCWkQrTeA=/1400x788/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/19519682/gallery_green_towels.jpg",
 })
 
 Photo.create!({
   review_id: 3,
-  photo_url: "https://www.reimerhvac.com/wp-content/uploads/2015/08/plumbing-buffalo-ny-affordable-services.jpg",
+  photo_url: "https://atlascare.ca/wp-content/uploads/2020/03/IMG_7576.jpg",
 
 })
 
 Photo.create!({
   review_id: 4,
-  photo_url: "https://www.reimerhvac.com/wp-content/uploads/2015/08/Plumbing-buffalo-ny-affordable-services.jpg",
+  photo_url: "https://cdn.vox-cdn.com/thumbor/pRy3gGPmO5o17FGa5lhCWkQrTeA=/1400x788/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/19519682/gallery_green_towels.jpg",
 })
 
 Photo.create!({
   review_id: 5,
-  photo_url: "https://www.reimerhvac.com/wp-content/uploads/2015/08/Plumbing-buffalo-ny-affordable-services.jpg",
+  photo_url: "https://cdn.vox-cdn.com/thumbor/pRy3gGPmO5o17FGa5lhCWkQrTeA=/1400x788/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/19519682/gallery_green_towels.jpg",
 })
 
 Photo.create!({
   review_id: 6,
-  photo_url: "https://www.reimerhvac.com/wp-content/uploads/2015/08/Plumbing-buffalo-ny-affordable-services.jpg",
+  photo_url: "https://atlascare.ca/wp-content/uploads/2020/03/IMG_7576.jpg",
 })
 
 Photo.create!({
   review_id: 7,
-  photo_url: "https://www.reimerhvac.com/wp-content/uploads/2015/08/Plumbing-buffalo-ny-affordable-services.jpg",
+  photo_url: "https://cdn.vox-cdn.com/thumbor/pRy3gGPmO5o17FGa5lhCWkQrTeA=/1400x788/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/19519682/gallery_green_towels.jpg",
 })
 
 Photo.create!({
   review_id: 7,
-  photo_url: "https://www.reimerhvac.com/wp-content/uploads/2015/08/Plumbing-buffalo-ny-affordable-services.jpg",
+  photo_url: "https://cdn.vox-cdn.com/thumbor/pRy3gGPmO5o17FGa5lhCWkQrTeA=/1400x788/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/19519682/gallery_green_towels.jpg",
 })
 
 Photo.create!({
   review_id: 9,
-  photo_url: "https://www.reimerhvac.com/wp-content/uploads/2015/08/Plumbing-buffalo-ny-affordable-services.jpg",
+  photo_url: "https://cdn.vox-cdn.com/thumbor/pRy3gGPmO5o17FGa5lhCWkQrTeA=/1400x788/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/19519682/gallery_green_towels.jpg",
 })
 
 puts "Complete!"
