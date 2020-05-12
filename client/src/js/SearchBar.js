@@ -5,7 +5,6 @@ import InputLabel from '@material-ui/core/InputLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import { Button } from "@material-ui/core";
-// import Select from '@material-ui/core/Select';
 import NativeSelect from '@material-ui/core/NativeSelect';
 
 import handymen from '../images/handymen.jpg';
@@ -47,16 +46,18 @@ export default function SearchBar() {
   };
 
   // console.log(state.trade);
-  const companySearch = () => {
-    const companiesByTrade = axios
-      .get(`/api/company?trade_type=${state.trade}`);
-    const companiesByLocation = axios
-      .get(`/api/company?location=${state.location}`);
+  const Search = () => {
+    const companySearch = axios
+      .get(`/api/company?trade_type=${state.trade}&location=${state.location}`);
+    // const companiesByLocation = axios
+    //   .get(`/api/company?location=${state.location}`);
     
-    Promise.all([companiesByTrade, companiesByLocation])
+    Promise.all([companySearch])
         .then((response) => {
-          console.log(response[0].data.companies);
-          console.log(response[1].data.companies);
+          console.log(response[0].data.companies)
+          if (response[0].data.companies.length === 0) {
+          }
+          // console.log(response[1].data.companies);
         });
   }
 
@@ -107,8 +108,8 @@ export default function SearchBar() {
         <FormHelperText>Choose your location</FormHelperText>
       </FormControl>
 
-      <Button variant="contained" color="secondary" onClick={companySearch}> 
-        Search
+      <Button variant="contained" color="secondary" onClick={Search}> 
+          Search
       </Button>
       </div>
       </>
