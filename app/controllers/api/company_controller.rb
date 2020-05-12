@@ -3,11 +3,11 @@ class Api::CompanyController < ApplicationController
     @companies = Company.all
 
     unless params[:trade_type].to_s.strip.empty?
-      @companies = @companies.where(trade_type: params[:trade_type].downcase)
+      @companies = @companies.where("lower(#{:trade_type}) = '#{params[:trade_type].downcase}'")
     end
 
     unless params[:location].to_s.strip.empty?
-      @companies = @companies.where(location: params[:location])
+      @companies = @companies.where("lower(#{:location}) = '#{params[:location].downcase}'")
     end
 
     render :json => {
