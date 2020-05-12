@@ -1,35 +1,28 @@
 class Api::ReviewController < ApplicationController
   def index
-    @reviews = Review.all
+    reviews = Review.all
 
     unless params[:user_id].to_s.strip.empty?
-      @reviews = @reviews.where(user_id: params[:user_id])
+      reviews = reviews.where(user_id: params[:user_id])
     end
 
     unless params[:company_id].to_s.strip.empty?
-      @reviews = @reviews.where(company_id: params[:company_id])
+      reviews = reviews.where(company_id: params[:company_id])
     end
 
     # Get photo and user data
-    @reviews = @reviews.joins(:photos).joins(:user).select(
-      :id,
-      :user_id,
-      :company_id,
-      :cleanliness,
-      :reliability,
-      :value,
-      :workmanship,
-      :comment,
+    reviews = reviews.joins(:photos).joins(:user).select(
+      "reviews.*",
       "photos.photo_url as #{:photo_url}",
       "users.name as #{:user_name}",
       "users.email as #{:user_email}",
     )
 
-    cleanliness_avg, reliability_avg, value_avg, workmanship_avg, total_avg = calculate_avg(@reviews)
+    cleanliness_avg, reliability_avg, value_avg, workmanship_avg, total_avg = calculate_avg(reviews)
 
     render :json => {
       params: params,
-      reviews: @reviews,
+      reviews: reviews,
       cleanliness_avg: cleanliness_avg,
       reliability_avg: reliability_avg,
       value_avg: value_avg,
@@ -39,14 +32,14 @@ class Api::ReviewController < ApplicationController
   end
 
   def show
-    @review = Review.find params[:id]
+    review = Review.find params[:id]
     render :json => {
-      review: @review,
+      review: review,
     }
   end
 
   def create
-    @review = Review.create(
+    review = Review.create(
       user_id: params[:user_id],
       company_id: params[:company_id],
       cleanliness: params[:cleanliness],
@@ -56,7 +49,7 @@ class Api::ReviewController < ApplicationController
       comment: params[:comment],
     )
     render :json => {
-      new_review: @review,
+      new_review: review,
     }
   end
 
@@ -70,16 +63,16 @@ class Api::ReviewController < ApplicationController
   # end
 
   # def reviews_for_company_1
-  #   @reviews_for_company_1 = Review.find_by(company_id: 1)
+  #   reviews_for_company_1 = Review.find_by(company_id: 1)
   #   render :json => {
-  #     review: @reviews_for_company_1
+  #     review: reviews_for_company_1
   #   }
   # end
 
   # def given_company
-  #   @reviews_for_given_company = Review.find_by(company_id: params[:company_id])
+  #   reviews_for_given_company = Review.find_by(company_id: params[:company_id])
   #   render :json => {
-  #     review: @reviews_for_given_company
+  #     review: reviews_for_given_company
   #   }
   # end
 
