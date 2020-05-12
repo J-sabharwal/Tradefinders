@@ -10,6 +10,7 @@ class Api::ReviewController < ApplicationController
       @reviews = @reviews.where(company_id: params[:company_id])
     end
 
+    # Average Calculations
     if @reviews.count > 0
       # Calculating all average scores for individual review categories
       @cleanliness_avg = @reviews.average(:cleanliness).round(1)
@@ -22,9 +23,22 @@ class Api::ReviewController < ApplicationController
       @value_avg = 0
       @workmanship_avg = 0
     end
-
     # Total average scores sum together
     @total_avg = ((@cleanliness_avg + @reliability_avg + @value_avg + @workmanship_avg) / 4).to_f
+
+    @reviews = @reviews.joins(:photos).joins(:user).select(
+      :id,
+      :user_id,
+      :company_id,
+      :cleanliness,
+      :reliability,
+      :value,
+      :workmanship,
+      :comment,
+      "photos.photo_url as #{:photo_url}",
+      "users.name as #{:user_name}",
+      "users.email as #{:user_email}",
+    )
 
     render :json => {
       params: params,
