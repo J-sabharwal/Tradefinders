@@ -43,6 +43,7 @@ body{
     border: 0.5px solid rgb(193, 193, 193);
     border-radius: 20px;
     box-shadow: dimgray;
+    word-wrap: break-word;
   }
 
   .review-img {
