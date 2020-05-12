@@ -20,7 +20,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function MediaCard() {
+export default function SearchResultItem() {
   const classes = useStyles();
 
   return (
@@ -32,7 +32,7 @@ export default function MediaCard() {
         <CardMedia
           className={classes.media}
           image="https://www.macleans.ca/wp-content/uploads/2020/01/MLTSD-skilled-trades-feature-image.jpg-810x445-1578938370.png"
-          title="Contemplative Reptile"
+          title="tradespeople"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
