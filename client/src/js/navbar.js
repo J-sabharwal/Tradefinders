@@ -27,7 +27,7 @@ export default function ButtonAppBar() {
 
   return (
     <div className={classes.root}>
-      <AppBar style={{ backgroundColor: grey[900] }} position="static">
+      <AppBar style={{ backgroundColor: grey[700] }} position="static">
         <Toolbar>
           <img alt="" src={logo} />
           <IconButton
