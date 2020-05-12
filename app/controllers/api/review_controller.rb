@@ -11,7 +11,7 @@ class Api::ReviewController < ApplicationController
     end
 
     # Get photo and user data
-    reviews = reviews.joins(:photos).joins(:user).select(
+    reviews = reviews.left_outer_joins(:photos).left_outer_joins(:user).select(
       "reviews.*",
       "photos.photo_url as #{:photo_url}",
       "users.name as #{:user_name}",

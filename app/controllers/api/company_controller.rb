@@ -11,7 +11,7 @@ class Api::CompanyController < ApplicationController
     end
 
     # Get photo
-    companies = companies.joins(:photos).select(
+    companies = companies.left_outer_joins(:photos).select(
       "companies.*",
       "photos.photo_url as #{:photo_url}",
     )
