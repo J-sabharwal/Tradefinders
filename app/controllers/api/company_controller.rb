@@ -10,6 +10,12 @@ class Api::CompanyController < ApplicationController
       companies = companies.where("lower(#{:location}) = '#{params[:location].downcase}'")
     end
 
+    # Get photo
+    companies = companies.joins(:photos).select(
+      "companies.*",
+      "photos.photo_url as #{:photo_url}",
+    )
+
     render :json => {
       params: params,
       companies: companies,

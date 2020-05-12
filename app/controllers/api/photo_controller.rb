@@ -6,6 +6,10 @@ class Api::PhotoController < ApplicationController
       photos = photos.where(review_id: params[:review_id])
     end
 
+    unless params[:company_id].to_s.strip.empty?
+      photos = photos.where(review_id: params[:company_id])
+    end
+
     render :json => {
       photos: photos,
     }
