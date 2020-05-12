@@ -2,11 +2,12 @@ class Api::CompanyController < ApplicationController
   def index
     @companies = Company.all
 
-    #TODO Find an easier way to implement this.
-    if params[:trade_type]
-      @companies = @companies.where(trade_type: params[:trade_type].downcase)
-    elsif params[:location]
-      @companies = @companies.where(location: params[:location])
+    unless params[:trade_type].to_s.strip.empty?
+      @companies = @companies.where("lower(#{:trade_type}) = '#{params[:trade_type].downcase}'")
+    end
+
+    unless params[:location].to_s.strip.empty?
+      @companies = @companies.where("lower(#{:location}) = '#{params[:location].downcase}'")
     end
 
     render :json => {

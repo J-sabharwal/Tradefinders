@@ -15,28 +15,28 @@ Company.destroy_all
 Company.create!({
   name: "AAA Plumbers",
   email: "AAAPlums@gmail.com",
-  description: "For all your plumbing needs, available to work on bathrooms, kitchens, and central heating. Domestic and Commercial hire",
+  description: "For all your Plumbing needs, available to work on bathrooms, kitchens, and central heating. Domestic and Commercial hire",
   phone_number: "623-854-9875",
-  trade_type: "plumbing",
-  location: "Richmond"
+  trade_type: "Plumbing",
+  location: "Richmond",
 })
 
 Company.create!({
   name: "BBB Plumbers",
   email: "BBBPlums@gmail.com",
-  description: "For all your plumbing needs, available to work on bathrooms, kitchens. But super cheap!",
+  description: "For all your Plumbing needs, available to work on bathrooms, kitchens. But super cheap!",
   phone_number: "623-854-9874",
-  trade_type: "plumbing",
-  location: "Vancouver"
+  trade_type: "Plumbing",
+  location: "Vancouver",
 })
 
 Company.create!({
   name: "Mario Plumbers",
   email: "Mario@gmail.com",
-  description: "For all your plumbing needs, available to work on mushroom world only",
+  description: "For all your Plumbing needs, available to work on mushroom world only",
   phone_number: "623-824-9872",
-  trade_type: "plumbing",
-  location: "Surrey"
+  trade_type: "Plumbing",
+  location: "Surrey",
 })
 
 Company.create!({
@@ -44,8 +44,8 @@ Company.create!({
   email: "Luigi@gmail.com",
   description: "Cheaper than Mario! Double the quality",
   phone_number: "623-824-9879",
-  trade_type: "plumbing",
-  location: "Vancouver"
+  trade_type: "Plumbing",
+  location: "Vancouver",
 })
 
 Company.create!({
@@ -53,8 +53,8 @@ Company.create!({
   email: "123Guys@123guys.com",
   description: "Available for hire",
   phone_number: "234-123-9875",
-  trade_type: "electrical",
-  location: "Richmond"
+  trade_type: "Electrical",
+  location: "Richmond",
 })
 
 Company.create!({
@@ -62,8 +62,8 @@ Company.create!({
   email: "interiors@GDesigns.com",
   description: "Houses, Venues, Shopfronts",
   phone_number: "890-456-1234",
-  trade_type: "painter/decorator",
-  location: "Vancouver"
+  trade_type: "Painter/Decorator",
+  location: "Vancouver",
 })
 
 Company.create!({
@@ -71,8 +71,8 @@ Company.create!({
   email: "II@hotmail.com",
   description: "Designing for over 40 years.",
   phone_number: "778-895-1234",
-  trade_type: "painter/decorator",
-  location: "Surrey"
+  trade_type: "Painter/Decorator",
+  location: "Surrey",
 })
 
 User.destroy_all
@@ -225,47 +225,47 @@ Photo.destroy_all
 
 Photo.create!({
   review_id: 1,
-  photo_url: "https://www.reimerhvac.com/wp-content/uploads/2015/08/plumbing-buffalo-ny-affordable-services.jpg",
+  photo_url: "https://www.reimerhvac.com/wp-content/uploads/2015/08/Plumbing-buffalo-ny-affordable-services.jpg",
 })
 
 Photo.create!({
   review_id: 2,
-  photo_url: "https://www.reimerhvac.com/wp-content/uploads/2015/08/plumbing-buffalo-ny-affordable-services.jpg",
+  photo_url: "https://www.reimerhvac.com/wp-content/uploads/2015/08/Plumbing-buffalo-ny-affordable-services.jpg",
 })
 
 Photo.create!({
   review_id: 2,
-  photo_url: "https://www.reimerhvac.com/wp-content/uploads/2015/08/plumbing-buffalo-ny-affordable-services.jpg",
+  photo_url: "https://www.reimerhvac.com/wp-content/uploads/2015/08/Plumbing-buffalo-ny-affordable-services.jpg",
 })
 
 Photo.create!({
   review_id: 4,
-  photo_url: "https://www.reimerhvac.com/wp-content/uploads/2015/08/plumbing-buffalo-ny-affordable-services.jpg",
+  photo_url: "https://www.reimerhvac.com/wp-content/uploads/2015/08/Plumbing-buffalo-ny-affordable-services.jpg",
 })
 
 Photo.create!({
   review_id: 5,
-  photo_url: "https://www.reimerhvac.com/wp-content/uploads/2015/08/plumbing-buffalo-ny-affordable-services.jpg",
+  photo_url: "https://www.reimerhvac.com/wp-content/uploads/2015/08/Plumbing-buffalo-ny-affordable-services.jpg",
 })
 
 Photo.create!({
   review_id: 6,
-  photo_url: "https://www.reimerhvac.com/wp-content/uploads/2015/08/plumbing-buffalo-ny-affordable-services.jpg",
+  photo_url: "https://www.reimerhvac.com/wp-content/uploads/2015/08/Plumbing-buffalo-ny-affordable-services.jpg",
 })
 
 Photo.create!({
   review_id: 7,
-  photo_url: "https://www.reimerhvac.com/wp-content/uploads/2015/08/plumbing-buffalo-ny-affordable-services.jpg",
+  photo_url: "https://www.reimerhvac.com/wp-content/uploads/2015/08/Plumbing-buffalo-ny-affordable-services.jpg",
 })
 
 Photo.create!({
   review_id: 7,
-  photo_url: "https://www.reimerhvac.com/wp-content/uploads/2015/08/plumbing-buffalo-ny-affordable-services.jpg",
+  photo_url: "https://www.reimerhvac.com/wp-content/uploads/2015/08/Plumbing-buffalo-ny-affordable-services.jpg",
 })
 
 Photo.create!({
   review_id: 9,
-  photo_url: "https://www.reimerhvac.com/wp-content/uploads/2015/08/plumbing-buffalo-ny-affordable-services.jpg",
+  photo_url: "https://www.reimerhvac.com/wp-content/uploads/2015/08/Plumbing-buffalo-ny-affordable-services.jpg",
 })
 
 puts "Complete!"

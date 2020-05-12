@@ -2,11 +2,11 @@ class Api::ReviewController < ApplicationController
   def index
     @reviews = Review.all
 
-    if params[:user_id]
+    unless params[:user_id].to_s.strip.empty?
       @reviews = @reviews.where(user_id: params[:user_id])
     end
 
-    if params[:company_id]
+    unless params[:company_id].to_s.strip.empty?
       @reviews = @reviews.where(company_id: params[:company_id])
     end
 
@@ -27,7 +27,7 @@ class Api::ReviewController < ApplicationController
     @total_avg = ((@cleanliness_avg + @reliability_avg + @value_avg + @workmanship_avg) / 4).to_f
 
     render :json => {
-      # params: params,
+      params: params,
       reviews: @reviews,
       cleanliness_avg: @cleanliness_avg,
       reliability_avg: @reliability_avg,
