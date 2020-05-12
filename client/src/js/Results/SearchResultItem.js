@@ -13,10 +13,10 @@ import { Rating } from '@material-ui/lab';
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 500,
+    maxWidth: 350,
   },
   media: {
-    height: 200,
+    height: 250,
   },
 });
 

@@ -26,17 +26,17 @@ export default function ViewSelector() {
       </Router>
 
       <Router>
-        <section className="background">
+        <section >
           <Route exact path="/"
             component={SearchBar} />
         </section>
       </Router>
 
       <Router>
-        <section className="search-results">
+        <div className="search-results">
           <Route exact path="/results"
             component={SearchResults} />
-        </section>
+        </div>
       </Router>
     </>
   );

@@ -10,8 +10,10 @@ class App extends Component {
     return (
       <>
         <ButtonAppBar />
+        <div className="background">
         <ViewSelector />
        
+          </div>
       </>
     );
   }

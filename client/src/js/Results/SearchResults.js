@@ -10,18 +10,13 @@ export default function SearchResults() {
     <>
       <div style={{
         display: "flex",
-        marginLeft: '20px',
-        marginRight: '20px',
+        flexWrap: "wrap",
+        justifyContent: "center",
       }}>
         <SearchResultItem />
         <SearchResultItem />
         <SearchResultItem />
-      </div>
-      <div style={{
-        display: "flex",
-        marginLeft: '20px',
-        marginRight: '20px',
-      }}>
+     
         <SearchResultItem />
         <SearchResultItem />
         <SearchResultItem />
