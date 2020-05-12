@@ -10,22 +10,7 @@ class Api::ReviewController < ApplicationController
       @reviews = @reviews.where(company_id: params[:company_id])
     end
 
-    # Average Calculations
-    if @reviews.count > 0
-      # Calculating all average scores for individual review categories
-      @cleanliness_avg = @reviews.average(:cleanliness).round(1)
-      @reliability_avg = @reviews.average(:reliability).round(1)
-      @value_avg = @reviews.average(:value).round(1)
-      @workmanship_avg = @reviews.average(:workmanship).round(1)
-    else
-      @cleanliness_avg = 0
-      @reliability_avg = 0
-      @value_avg = 0
-      @workmanship_avg = 0
-    end
-    # Total average scores sum together
-    @total_avg = ((@cleanliness_avg + @reliability_avg + @value_avg + @workmanship_avg) / 4).to_f
-
+    # Get photo and user data
     @reviews = @reviews.joins(:photos).joins(:user).select(
       :id,
       :user_id,
@@ -40,14 +25,16 @@ class Api::ReviewController < ApplicationController
       "users.email as #{:user_email}",
     )
 
+    cleanliness_avg, reliability_avg, value_avg, workmanship_avg, total_avg = calculate_avg(@reviews)
+
     render :json => {
       params: params,
       reviews: @reviews,
-      cleanliness_avg: @cleanliness_avg,
-      reliability_avg: @reliability_avg,
-      value_avg: @value_avg,
-      workmanship_avg: @workmanship_avg,
-      total_avg: @total_avg,
+      cleanliness_avg: cleanliness_avg,
+      reliability_avg: reliability_avg,
+      value_avg: value_avg,
+      workmanship_avg: workmanship_avg,
+      total_avg: total_avg,
     }
   end
 
@@ -95,4 +82,27 @@ class Api::ReviewController < ApplicationController
   #     review: @reviews_for_given_company
   #   }
   # end
+
+  private
+
+  def calculate_avg(reviews)
+    cleanliness_avg = 0
+    reliability_avg = 0
+    value_avg = 0
+    workmanship_avg = 0
+
+    # Average Calculations
+    unless reviews.empty?
+      # Calculating all average scores for individual review categories
+      cleanliness_avg = reviews.average(:cleanliness).round(1)
+      reliability_avg = reviews.average(:reliability).round(1)
+      value_avg = reviews.average(:value).round(1)
+      workmanship_avg = reviews.average(:workmanship).round(1)
+    end
+
+    # Total average scores sum together
+    total_avg = ((cleanliness_avg + reliability_avg + value_avg + workmanship_avg) / 4).to_f
+
+    return cleanliness_avg, reliability_avg, value_avg, workmanship_avg, total_avg
+  end
 end
