@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from "axios";
+// import axios from "axios";
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
@@ -7,6 +7,7 @@ import FormControl from '@material-ui/core/FormControl';
 import { Button } from "@material-ui/core";
 import NativeSelect from '@material-ui/core/NativeSelect';
 
+import useApplicationData from './useApplicationData'
 import handymen from '../images/handymen.jpg';
 import '../styles/SearchBar.css'
 
@@ -21,45 +22,48 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SearchBar() {
+export default function SearchBar(props) {
   const classes = useStyles();
-  const [state, setState] = React.useState({
-    trade: "",
-    location: "",
-  });
+  const { state, Search, handleLocationChange, handleTradeChange } = useApplicationData();
 
-  const handleTradeChange = (event) => {
-    const trade = event.target.name;
-    setState({
-      ...state,
-      [trade]: event.target.value,
-    });
+  //** Leaving this here for now incase something breaks while moving logic to another component- please dont' touch - Brad
+  // const [state, setState] = React.useState({
+  //   trade: "",
+  //   location: "",
+  // });
+
+  // const handleTradeChange = (event) => {
+  //   const trade = event.target.name;
+  //   setState({
+  //     ...state,
+  //     [trade]: event.target.value,
+  //   });
     
-  };
+  // };
 
-  const handleLocationChange = (event) => {
-    const location = event.target.name;
-    setState({
-      ...state,
-      [location]: event.target.value,
-    });
-  };
+  // const handleLocationChange = (event) => {
+  //   const location = event.target.name;
+  //   setState({
+  //     ...state,
+  //     [location]: event.target.value,
+  //   });
+  // };
 
-  // console.log(state.trade);
-  const Search = () => {
-    const companySearch = axios
-      .get(`/api/company?trade_type=${state.trade}&location=${state.location}`);
-    // const companiesByLocation = axios
-    //   .get(`/api/company?location=${state.location}`);
+  // // console.log(state.trade);
+  // const Search = () => {
+  //   const companySearch = axios
+  //     .get(`/api/company?trade_type=${state.trade}&location=${state.location}`);
+  //   // const companiesByLocation = axios
+  //   //   .get(`/api/company?location=${state.location}`);
     
-    Promise.all([companySearch])
-        .then((response) => {
-          console.log(response[0].data.companies)
-          if (response[0].data.companies.length === 0) {
-          }
-          // console.log(response[1].data.companies);
-        });
-  }
+  //   Promise.all([companySearch])
+  //       .then((response) => {
+  //         console.log(response[0].data.companies)
+  //         if (response[0].data.companies.length === 0) {
+  //         }
+  //         // console.log(response[1].data.companies);
+  //       });
+  // }
 
   return (
     <>
