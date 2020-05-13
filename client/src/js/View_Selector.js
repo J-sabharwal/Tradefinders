@@ -9,34 +9,39 @@ import SearchResults from './Results/SearchResults'
 
 export default function ViewSelector() {
 
+  /* transition functions here:
+  mode === searchresults
+
+  mode === companyprofilepage
+  (and back to searchresults)
+
+  mode === newreviewform
+
+  */
+
   return (
     <>
       <Router>
-        <div className="company-details">
-          <Route exact path="/company/:id"
-            component={CompanyDetails} />
-        </div>
-      </Router>
 
-      <Router>
-        <div className="review-form">
-          <Route exact path='/review/:company_id/new'
-            component={ReviewForm} />
-        </div>
-      </Router>
+        <Route className="company-details"
+           exact path="/company/:id"
+            component={CompanyDetails} >
+        </Route>
 
-      <Router>
-        <section >
-          <Route exact path="/"
-            component={SearchBar} />
-        </section>
-      </Router>
+        <Route className="review-form"
+           exact path='/review/:company_id/new'
+            component={ReviewForm} >
+        </Route>
+      
+        <Route exact path="/"
+            component={SearchBar} >
+        </Route>
+      
+        <Route className="search-results"
+           exact path="/results"
+            component={SearchResults} >
+        </Route>
 
-      <Router>
-        <div className="search-results">
-          <Route exact path="/results"
-            component={SearchResults} />
-        </div>
       </Router>
     </>
   );
