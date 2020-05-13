@@ -29,7 +29,7 @@ export default function ButtonAppBar() {
     <div className={classes.root}>
       <AppBar style={{ backgroundColor: grey[600] }} position="static">
         <Toolbar>
-          <img alt="" src={logo} />
+          <img height="75px" alt="" src={logo} />
           <IconButton
             edge="start"
             className={classes.menuButton}
