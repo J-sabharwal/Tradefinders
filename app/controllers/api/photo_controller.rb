@@ -10,6 +10,10 @@ class Api::PhotoController < ApplicationController
       photos = photos.where(review_id: params[:company_id])
     end
 
+    unless params[:user_id].to_s.strip.empty?
+      photos = photos.where(user_id: params[:user_id])
+    end
+
     render :json => {
       photos: photos,
     }
@@ -25,6 +29,8 @@ class Api::PhotoController < ApplicationController
   def create
     photo = Photo.create(
       review_id: params[:review_id],
+      company_id: params[:company_id],
+      user_id: params[:user_id],
       photo_url: params[:photo_url],
     )
     render :json => {

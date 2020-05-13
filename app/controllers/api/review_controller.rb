@@ -32,7 +32,15 @@ class Api::ReviewController < ApplicationController
   end
 
   def show
-    review = Review.find params[:id]
+    # Get photo and user data
+    reviews = Review.all.left_outer_joins(:photos).left_outer_joins(:user).select(
+      "reviews.*",
+      "photos.photo_url as #{:photo_url}",
+      "users.name as #{:user_name}",
+      "users.email as #{:user_email}",
+    )
+
+    review = reviews.find params[:id]
     render :json => {
       review: review,
     }

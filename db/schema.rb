@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2020_05_09_025026) do
   create_table "photos", force: :cascade do |t|
     t.integer "review_id"
     t.integer "company_id"
+    t.integer "user_id"
     t.string "photo_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
