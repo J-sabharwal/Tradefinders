@@ -30,8 +30,9 @@ export default function ButtonAppBar() {
       <AppBar style={{ backgroundColor: grey[600] }} position="static">
         <Toolbar>
           <Button href="/">
-            <img alt="" src={logo} />
+            <img height="75px" alt="" src={logo} />
           </Button>
+
           <IconButton
             edge="start"
             className={classes.menuButton}

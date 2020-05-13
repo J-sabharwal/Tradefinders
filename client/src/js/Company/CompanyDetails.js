@@ -12,6 +12,8 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 // import ButtonBase from '@material-ui/core/ButtonBase';
+import { CircularProgressbar, buildStyles, CircularProgressbarWithChildren  } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 
 
 
@@ -37,93 +39,190 @@ class Company extends Component {
         company: all[0].data.company,
         review: all[1].data
       }));
-
-      
-
-      // console.log(this.state.review.reviews)
-      //  return this.state.review.reviews.map(rev => {
-      //   axios.get(`/api/photo?review_id=${rev.id}`)
-      //     .then(response => {
-      //       // console.log(response.data)
-      //       this.setState(prev => ({
-      //         ...prev,
-      //         photo: response.data.photos
-      //       }))
-      //     })
-      // })
     });
   }
 
-  // retrievePhoto(reviewId){
-  //     axios.get(`/api/photo?review_id=${reviewId}`)
-  //       .then(response => {
-  //         this.setState({}
-  //           photo: response.data.photos[0].photo_url
-  //         })
-  //       })
-  // }
-
-  renderReviewData(){
-    return this.state.review.reviews && this.state.review.reviews.map(rev => {
-      // console.log(this.state.photo)
-        return (
-          <Paper xs={12} elevation={2} key={rev.id} className="avg-review-comment" >
-            <Grid container mt={10} spacing={3}>
-              <Grid item>
-                <img className="review-img" src="https://www.reimerhvac.com/wp-content/uploads/2015/08/plumbing-buffalo-ny-affordable-services.jpg" alt=""/>
-              {/* <img className="review-img" alt="complex" src={this.state.photo} /> */}
-              </Grid>
-              <p>{rev.comment}</p>
-            </Grid>            
-          </Paper>
-       )
-      })
-  }
-
-  render() {
+  renderDetails(){
     return (
-      <>
-      <Container maxWidth="md">
-        <Grid container spacing={3}>
-          <Grid container item xs={9}>
+      <Grid container className="profile" spacing={3}>
+        <Grid container item xs={9}>
           <div className="Company-details">
             <Typography  className="details" variant="h4" component="h5">
               {this.state.company.name}
             </Typography>
             <Typography component="a" href="mailto:info@tradefinder.com?subject=Message%20from%20Tradefinder%20-%20Information%20about%20your%20services." style={{textDecoration: 'none'}} className="details-email" variant="body1" >
-              <EmailIcon style={{minWidth: '40px'}} color="disabled" fontSize="small" m={5}/>
+              <EmailIcon style={{minWidth: '40px'}} color="darkred" fontSize="small" m={5}/>
               {this.state.company.email}
             </Typography>
             <Typography className="details-phone" variant="body1">
               <PhoneIcon style={{minWidth: '40px'}} color="disabled" fontSize="small" mr={10}/>
               {this.state.company.phone_number}
             </Typography>
-            <Typography className="details-info" variant="body1">
+            <Typography className="details-info" variant="body2">
               <InfoTwoToneIcon style={{minWidth: '40px'}} color="disabled" fontSize="small" mr={5}/>
               {this.state.company.description}
             </Typography>
           </div>
-          </Grid>
-          <Grid container item xs={3}>
-          <div className="avg-ratings" >
-            <Box borderColor="transparent">
+        </Grid>
+
+        <Grid container item xs={3}>
+          <div>
+            <Box borderColor="transparent" className="avg-ratings">
               <Rating name="half-rating-read" size="large" value={this.state.review.total_avg ? this.state.review.total_avg : 0.0} precision={0.2} readOnly />
             </Box>
-          </div>
-            <Typography className="avg-rating" align="right" variant="body1">
+            <Typography className="avg-rating" align="right" variant="body1" >
               ({this.state.review.total_avg} / 5 Rating)
             </Typography>
+          </div>
+        </Grid>
+      </Grid>
+    )
+  }  
+
+
+  renderReviewData(){
+    return this.state.review.reviews && this.state.review.reviews.map(rev => {
+      return (
+        <div key={rev.id} className="review">
+          <Paper xs={12} elevation={2} m={5} key={rev.id} className="avg-review-comment" >
+            <Grid container mt={10} spacing={2} >
+              <Grid item>
+                <img className="review-img" alt="Review" src={rev.photo_url} />
+              </Grid>
+
+              <Grid container item xs={12} sm={true}>
+                <Grid container className="review-comment" spacing={2} item direction-xs="column" xs={12}>
+                  <Typography variant="body2" gutterBottom>{rev.comment}</Typography>
+                </Grid>
+                <Grid container className="review-comment" spacing={2} item direction-xs="row" alignItems="flex-end">
+                  <Typography className="reviewer" variant="caption" >Posted by {rev.user_name}</Typography>
+                </Grid>
+              </Grid>
+            </Grid>  
+          </Paper>
+        </div>
+      )
+    })
+  }
+
+  renderDashboard() {
+
+    // console.log(cleanliness)
+    return (
+      <>
+        <Container maxWidth="md">
+          <Grid container item xs={12} direction="row" justify="space-between">
+            <Grid container item xs={3} direction="row" alignItems="center" justify="center">
+              <div style={{ width: 120, height: 120 }} className="cleanliness">
+                <CircularProgressbarWithChildren
+                  strokeWidth={10}
+                  maxValue={5}
+                  value={this.state.review.cleanliness_avg}
+                  text="Cleanliness"
+                  styles={buildStyles({
+                    strokeLinecap: "butt",
+                    textSize: '13px',
+                    textColor: '#616A6B',
+                    pathColor: '#616A6B'
+                  })}>
+                    <br></br>
+                    <br></br>
+                  <div style={{ fontSize: 12, marginTop: -5 }}>
+                  <h3 style={{ color: '#D35400' }}><strong>{this.state.review.cleanliness_avg} / 5 </strong></h3>  
+                  </div>
+                </CircularProgressbarWithChildren>
+              </div>
+            </Grid>
+            <Grid container item xs={3} direction="row" alignItems="center" justify="center">
+              <div style={{ width: 120, height: 120 }}>
+                <CircularProgressbarWithChildren
+                  strokeWidth={10}
+                  maxValue={5}
+                  value={this.state.review.reliability_avg}
+                  text="Reliability"
+                  styles={buildStyles({
+                    strokeLinecap: "butt",
+                    textSize: '14px',
+                    textColor: '#D35400',
+                    pathColor: '#D35400',
+                  })}>
+                  <br></br>
+                  <br></br>
+                  <div style={{ fontSize: 12, marginTop: -5 }}>
+                    <h3><strong>{this.state.review.reliability_avg} / 5</strong></h3>
+                  </div>
+                  </CircularProgressbarWithChildren>
+              </div>
+            </Grid>
+            <Grid container item xs={3} direction="row" alignItems="center" justify="center">
+            <div style={{ width: 120, height: 120 }}>
+              <CircularProgressbarWithChildren
+                strokeWidth={10}
+                maxValue={5}
+                value={this.state.review.value_avg}
+                text="Value"
+                styles={buildStyles({
+                  strokeLinecap: "butt",
+                  textSize: '14px',
+                  textColor: '#616A6B',
+                  pathColor: '#616A6B',
+                })}>
+                  <br></br>
+                  <br></br>
+                  <div style={{ fontSize: 12, marginTop: -5 }}>
+                    <h3 style={{ color: '#D35400' }}><strong>{this.state.review.value_avg} / 5 </strong></h3> 
+                  </div>
+                </CircularProgressbarWithChildren>
+              </div>
+            </Grid>
+            <Grid container item xs={3} direction="row" alignItems="center" justify="center">
+              <div style={{ width: 120, height: 120 }}>
+                <CircularProgressbarWithChildren
+                  strokeWidth={10}
+                  maxValue={5}
+                  value={this.state.review.workmanship_avg}
+                  text="Workmanship"
+                  styles={buildStyles({
+                    strokeLinecap: "butt",
+                    textSize: '12px',
+                    textColor: '#D35400',
+                    pathColor: '#D35400',
+                  })}>
+                  <br></br>
+                  <br></br>
+                  <div style={{ fontSize: 12, marginTop: -5 }}>
+                    <h3><strong>{this.state.review.workmanship_avg} / 5</strong></h3> 
+                  </div>
+                </CircularProgressbarWithChildren>
+              </div>
+            </Grid>
           </Grid>
-          </Grid>
-            
-              {this.renderReviewData()}
-           
         </Container>
       </>
-    );
+    )
   }
 
 
+
+  render() {
+    return (
+      <>
+       <div>
+          <Container maxWidth="md">
+            {this.renderDetails()}
+          </Container>
+
+          <Container maxWidth="md">
+            {this.renderDashboard()}
+          </Container>
+
+          <Container maxWidth="md">
+            {this.renderReviewData()}
+          </Container>
+        </div>
+      </>
+    );
+  }
 }
 
 export default Company;

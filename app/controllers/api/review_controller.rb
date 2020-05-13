@@ -32,7 +32,15 @@ class Api::ReviewController < ApplicationController
   end
 
   def show
-    review = Review.find params[:id]
+    # Get photo and user data
+    reviews = Review.all.left_outer_joins(:photos).left_outer_joins(:user).select(
+      "reviews.*",
+      "photos.photo_url as #{:photo_url}",
+      "users.name as #{:user_name}",
+      "users.email as #{:user_email}",
+    )
+
+    review = reviews.find params[:id]
     render :json => {
       review: review,
     }
@@ -87,10 +95,10 @@ class Api::ReviewController < ApplicationController
     # Average Calculations
     unless reviews.empty?
       # Calculating all average scores for individual review categories
-      cleanliness_avg = reviews.average(:cleanliness).round(1)
-      reliability_avg = reviews.average(:reliability).round(1)
-      value_avg = reviews.average(:value).round(1)
-      workmanship_avg = reviews.average(:workmanship).round(1)
+      cleanliness_avg = reviews.average(:cleanliness).round(2).to_f
+      reliability_avg = reviews.average(:reliability).round(2).to_f
+      value_avg = reviews.average(:value).round(2).to_f
+      workmanship_avg = reviews.average(:workmanship).round(2).to_f
     end
 
     # Total average scores sum together
