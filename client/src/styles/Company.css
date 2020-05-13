@@ -3,14 +3,12 @@ body{
   color: rgb(70, 70, 70);
 }
 
+/* Company Details */
 .profile {
   padding-bottom: 40px;
   padding-top: 25px;
 }
 
-.review {
-  margin: 15px;
-}
 .Company-details{
   position: sticky;
   float: left;
@@ -34,6 +32,14 @@ body{
   font-weight: bolder;
 }
 
+/* Dashboard Section */
+
+
+
+/* Reviews Section */
+.review {
+  margin: 15px;
+}
 .avg-ratings {
   display: grid;
   flex-direction: row;
