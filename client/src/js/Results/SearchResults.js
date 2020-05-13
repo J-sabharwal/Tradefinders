@@ -1,11 +1,12 @@
 import React from 'react';
 
-import SearchResultItem from './SearchResultItem'
+import SearchResultItem from './SearchResultItem';
 
 
-export default function SearchResults() {
-
-
+export default function SearchResults(props) {
+  console.log(`props in searchResults: `);
+  console.log(props);
+  
   return (
     <>
       <div style={{
@@ -22,5 +23,5 @@ export default function SearchResults() {
         <SearchResultItem />
       </div>
     </>
-  )
+  );
 }
