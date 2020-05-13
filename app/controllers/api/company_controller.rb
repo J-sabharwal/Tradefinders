@@ -23,7 +23,13 @@ class Api::CompanyController < ApplicationController
   end
 
   def show
-    company = Company.find params[:id]
+    # Get photo
+    companies = Company.all.left_outer_joins(:photos).select(
+      "companies.*",
+      "photos.photo_url as #{:photo_url}",
+    )
+
+    company = companies.find params[:id]
     render :json => {
       company: company,
     }

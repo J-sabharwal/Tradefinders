@@ -9,6 +9,16 @@ import SearchResults from './Results/SearchResults'
 
 export default function ViewSelector() {
 
+  /* transition functions here:
+  mode === searchresults
+
+  mode === companyprofilepage
+  (and back to searchresults)
+
+  mode === newreviewform
+
+  */
+
   return (
     <>
       <Router>

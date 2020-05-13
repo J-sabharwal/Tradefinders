@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from "react-router-dom";
 // import axios from "axios";
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -68,54 +69,62 @@ export default function SearchBar(props) {
   return (
     <>
       <img alt="" className="home-pic" src={handymen} />
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        paddingBottom: "20px"
-      }}
-    >
-      <FormControl style={{ width: "25vw" }} className={classes.formControl}>
-        <InputLabel htmlFor="age-native-helper">Trade</InputLabel>
-        <NativeSelect
-          value={state.trade}
-          onChange={handleTradeChange}
-          inputProps={{
-            name: "trade",
-            id: "age-native-helper",
-          }}
-        >
-          <option aria-label="None" value="" />
-          <option value={"Plumbing"}>Plumbing</option>
-          <option value={"Electrical"}>Electrical</option>
-          <option value={"Painter/Decorator"}>Painting/Decorating</option>
-        </NativeSelect>
-        <FormHelperText>Choose desired trade</FormHelperText>
-      </FormControl>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          paddingBottom: "20px",
+        }}
+      >
+        <FormControl style={{ width: "25vw" }} className={classes.formControl}>
+          <InputLabel htmlFor="age-native-helper">Trade</InputLabel>
+          <NativeSelect
+            value={state.trade}
+            onChange={handleTradeChange}
+            inputProps={{
+              name: "trade",
+              id: "age-native-helper",
+            }}
+          >
+            <option aria-label="None" value="" />
+            <option value={"Plumbing"}>Plumbing</option>
+            <option value={"Electrical"}>Electrical</option>
+            <option value={"Painter/Decorator"}>Painting/Decorating</option>
+          </NativeSelect>
+          <FormHelperText>Choose desired trade</FormHelperText>
+        </FormControl>
 
-      <FormControl style={{ width: "25vw" }} className={classes.formControl}>
-        <InputLabel htmlFor="age-native-helper">Location</InputLabel>
-        <NativeSelect
-          value={state.location}
-          onChange={handleLocationChange}
-          inputProps={{
-            name: "location",
-            id: "age-native-helper",
-          }}
-        >
-          <option aria-label="None" value="" />
-          <option value={"Vancouver"}>Vancouver</option>
-          <option value={"Richmond"}>Richmond</option>
-          <option value={"Surrey"}>Surrey</option>
-        </NativeSelect>
-        <FormHelperText>Choose your location</FormHelperText>
-      </FormControl>
+        <FormControl style={{ width: "25vw" }} className={classes.formControl}>
+          <InputLabel htmlFor="age-native-helper">Location</InputLabel>
+          <NativeSelect
+            value={state.location}
+            onChange={handleLocationChange}
+            inputProps={{
+              name: "location",
+              id: "age-native-helper",
+            }}
+          >
+            <option aria-label="None" value="" />
+            <option value={"Vancouver"}>Vancouver</option>
+            <option value={"Richmond"}>Richmond</option>
+            <option value={"Surrey"}>Surrey</option>
+          </NativeSelect>
+          <FormHelperText>Choose your location</FormHelperText>
+        </FormControl>
 
-      <Button variant="contained" color="secondary" onClick={Search}> 
+        <Button variant="contained" color="secondary" onClick={Search}>
           Search
-      </Button>
+        </Button>
+
+        { state.goToSearchResults && (
+          <Redirect to={{
+            pathname: '/results',
+            state: state
+          }} />
+        )}
+
       </div>
-      </>
+    </>
   );
 }
