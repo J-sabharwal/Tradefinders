@@ -124,12 +124,6 @@ export default function SearchBar(props) {
           }} />
         )}
 
-{/*     <Redirect to={{
-            pathname: '/order',
-            state: { id: '123' }
-          }}
-        /> */}
-
       </div>
     </>
   );

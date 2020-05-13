@@ -44,8 +44,6 @@ export default function useApplicationData(props) {
             [companies]: response[0].data.companies,
             goToSearchResults: true,
           });
-          // return <Redirect to={`/results`} />
-        
         // Leaving the below code in, to implement a "no-results" error at a later time. - Brad
         // if (response[0].data.companies.length === 0) {
         // }
@@ -53,13 +51,6 @@ export default function useApplicationData(props) {
     
   }
 
-  // if (state.goToSearchResults) {
-  //   return <Redirect to={`/results`} />
-  // }
-
-
-  
-  // console.log(state.companies);
   
 
   return { state, Search, handleLocationChange, handleTradeChange };
