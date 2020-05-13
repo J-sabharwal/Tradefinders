@@ -1,12 +1,15 @@
 import React from 'react';
 import axios from 'axios';
+import { Redirect } from "react-router-dom";
 
 export default function useApplicationData(props) {
   const [state, setState] = React.useState({
     trade: "",
     location: "",
     companies: [],
+    goToSearchResults: false,
   });
+
 
 
   // handleTradeChange, handleLocationChange, and Search are all functions required by SearchBar.js - Brad
@@ -39,13 +42,24 @@ export default function useApplicationData(props) {
           setState({
             ...state,
             [companies]: response[0].data.companies,
+            goToSearchResults: true,
           });
+          // return <Redirect to={`/results`} />
+        
         // Leaving the below code in, to implement a "no-results" error at a later time. - Brad
         // if (response[0].data.companies.length === 0) {
         // }
-        });
+      });
+    
   }
-  console.log(state.companies);
+
+  // if (state.goToSearchResults) {
+  //   return <Redirect to={`/results`} />
+  // }
+
+
+  
+  // console.log(state.companies);
   
 
   return { state, Search, handleLocationChange, handleTradeChange };

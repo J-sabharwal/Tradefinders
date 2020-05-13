@@ -3,8 +3,9 @@ import React from 'react';
 import SearchResultItem from './SearchResultItem'
 
 
-export default function SearchResults() {
-
+export default function SearchResults(props) {
+  console.log("In SearchResults:")
+  console.log(props)
 
   return (
     <>
