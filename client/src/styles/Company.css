@@ -2,10 +2,19 @@ body{
   font-family: Arial, Helvetica, sans-serif;
   color: rgb(70, 70, 70);
 }
+
+.profile {
+  padding-bottom: 40px;
+  padding-top: 25px;
+}
+
+.review {
+  margin: 15px;
+}
 .Company-details{
   position: sticky;
   float: left;
-  margin-left: 70px;
+  margin-left: 15px;
   width: 80%;
 }
 
@@ -28,7 +37,6 @@ body{
 .avg-ratings {
   display: grid;
   flex-direction: row;
-  text-align: right;
 }
 
 .avg-rating { 
@@ -38,21 +46,31 @@ body{
   font-weight: bolder;
   }
 
-  .avg-review-comment {
-    padding: 10px;
-    border: 0.5px solid rgb(193, 193, 193);
-    border-radius: 20px;
-    box-shadow: dimgray;
-    word-wrap: break-word;
-  }
+.avg-review-comment {
+  padding: 10px;
+  line-height: 20px;
+  border: 0.5px solid rgb(193, 193, 193);
+  border-radius: 25px;
+  box-shadow: 8px 8px rgb(54, 54, 54);
+  word-wrap: break-word;
+}
 
-  .review-img {
-    width: 200px;
-    margin: 10px; 
-    border-radius: 5px;
-  }
+.review-comment {
+  padding: 10px;
+}
 
-  @media only screen and (max-width: 1200px) {
+.review-img {
+  width: 200px;
+  border-radius: 5px;
+}
+
+.reviewer {
+  margin: 0px;
+  color: darkred;
+  font-style: italic;
+}
+
+@media only screen and (max-width: 1200px) {
   .Company-details{
     position: sticky;
     float: left;
@@ -76,5 +94,5 @@ body{
     flex-direction: row;
     color: rgb(57, 57, 57);
     font-weight: bold;
-    }
   }
+}

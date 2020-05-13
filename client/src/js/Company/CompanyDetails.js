@@ -37,55 +37,13 @@ class Company extends Component {
         company: all[0].data.company,
         review: all[1].data
       }));
-
-      
-
-      // console.log(this.state.review.reviews)
-      //  return this.state.review.reviews.map(rev => {
-      //   axios.get(`/api/photo?review_id=${rev.id}`)
-      //     .then(response => {
-      //       // console.log(response.data)
-      //       this.setState(prev => ({
-      //         ...prev,
-      //         photo: response.data.photos
-      //       }))
-      //     })
-      // })
     });
   }
 
-  // retrievePhoto(reviewId){
-  //     axios.get(`/api/photo?review_id=${reviewId}`)
-  //       .then(response => {
-  //         this.setState({}
-  //           photo: response.data.photos[0].photo_url
-  //         })
-  //       })
-  // }
-
-  renderReviewData(){
-    return this.state.review.reviews && this.state.review.reviews.map(rev => {
-      // console.log(this.state.photo)
-        return (
-          <Paper xs={12} elevation={2} key={rev.id} className="avg-review-comment" >
-            <Grid container mt={10} spacing={3}>
-              <Grid item>
-                <img className="review-img" src="https://www.reimerhvac.com/wp-content/uploads/2015/08/plumbing-buffalo-ny-affordable-services.jpg" alt=""/>
-              {/* <img className="review-img" alt="complex" src={this.state.photo} /> */}
-              </Grid>
-              <p>{rev.comment}</p>
-            </Grid>            
-          </Paper>
-       )
-      })
-  }
-
-  render() {
+  renderDetails(){
     return (
-      <>
-      <Container maxWidth="md">
-        <Grid container spacing={3}>
-          <Grid container item xs={9}>
+      <Grid container className="profile" spacing={3}>
+        <Grid container item xs={10}>
           <div className="Company-details">
             <Typography  className="details" variant="h4" component="h5">
               {this.state.company.name}
@@ -98,27 +56,67 @@ class Company extends Component {
               <PhoneIcon style={{minWidth: '40px'}} color="disabled" fontSize="small" mr={10}/>
               {this.state.company.phone_number}
             </Typography>
-            <Typography className="details-info" variant="body1">
+            <Typography className="details-info" variant="body2">
               <InfoTwoToneIcon style={{minWidth: '40px'}} color="disabled" fontSize="small" mr={5}/>
               {this.state.company.description}
             </Typography>
           </div>
-          </Grid>
-          <Grid container item xs={3}>
-          <div className="avg-ratings" >
-            <Box borderColor="transparent">
+        </Grid>
+
+        <Grid container item xs={2}>
+          <div>
+            <Box borderColor="transparent" className="avg-ratings">
               <Rating name="half-rating-read" size="large" value={this.state.review.total_avg ? this.state.review.total_avg : 0.0} precision={0.2} readOnly />
             </Box>
-          </div>
-            <Typography className="avg-rating" align="right" variant="body1">
+            <Typography className="avg-rating" align="right" variant="body1" className="avg-ratings">
               ({this.state.review.total_avg} / 5 Rating)
             </Typography>
-          </Grid>
-          </Grid>
-            
-              {this.renderReviewData()}
-           
-        </Container>
+          </div>
+        </Grid>
+      </Grid>
+    )
+  }  
+
+
+  renderReviewData(){
+    return this.state.review.reviews && this.state.review.reviews.map(rev => {
+      return (
+        <div className="review">
+          <Paper xs={12} elevation={2} m={5} key={rev.id} className="avg-review-comment" >
+            <Grid container mt={10} spacing={2} >
+              <Grid item>
+                <img className="review-img" alt="Review-Image" src={rev.photo_url} />
+              </Grid>
+
+              <Grid container item xs={12} sm={true}>
+                <Grid container className="review-comment" spacing={2} item direction-xs="column" xs={12}>
+                  <Typography variant="body2" gutterBottom>{rev.comment}</Typography>
+                </Grid>
+                <Grid container className="review-comment" spacing={2} item direction-xs="row" alignItems="flex-end">
+                  <Typography className="reviewer" variant="caption" >Posted by {rev.user_name}</Typography>
+                </Grid>
+              </Grid>
+            </Grid>  
+          </Paper>
+        </div>
+      )
+    })
+  }
+
+
+
+  render() {
+    return (
+      <>
+       <div>
+          <Container maxWidth="md">
+            {this.renderDetails()}
+            </Container>
+
+            <Container maxWidth="md">
+            {this.renderReviewData()}
+          </Container>
+        </div>
       </>
     );
   }
