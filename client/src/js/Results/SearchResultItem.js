@@ -26,7 +26,7 @@ export default function SearchResultItem(props) {
 
   const { state } = useApplicationData();
 
-  console.log(state.companies)
+  console.log(state.companies);
   console.log(props);
   
 
@@ -34,28 +34,28 @@ export default function SearchResultItem(props) {
     <div style={{
       margin: '20px',
     }}>
-    <Card className={classes.root}>
-      <CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image="https://www.macleans.ca/wp-content/uploads/2020/01/MLTSD-skilled-trades-feature-image.jpg-810x445-1578938370.png"
-          title="tradespeople"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
+      <Card className={classes.root}>
+        <CardActionArea>
+          <CardMedia
+            className={classes.media}
+            image="https://www.macleans.ca/wp-content/uploads/2020/01/MLTSD-skilled-trades-feature-image.jpg-810x445-1578938370.png"
+            title="tradespeople"
+          />
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="h2">
             Joe's handyman service {state.trade}
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
+            </Typography>
+            <Typography variant="body2" color="textSecondary" component="p">
             My name is Joe and I am a great handiman. I will fix anything. Call me today! {state.location}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+        <CardActions>
           <Rating name="half-rating-read" size="medium" />
-        <Button size="small" color="primary">
+          <Button size="small" color="primary">
             Company Profile »
-        </Button>
-      </CardActions>
+          </Button>
+        </CardActions>
       </Card>
     </div>
   );

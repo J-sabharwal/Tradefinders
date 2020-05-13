@@ -7,9 +7,9 @@ import FormControl from '@material-ui/core/FormControl';
 import { Button } from "@material-ui/core";
 import NativeSelect from '@material-ui/core/NativeSelect';
 
-import useApplicationData from './useApplicationData'
+import useApplicationData from './useApplicationData';
 import handymen from '../images/handymen.jpg';
-import '../styles/SearchBar.css'
+import '../styles/SearchBar.css';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SearchBar(props) {
   const classes = useStyles();
-  const { state, Search, handleLocationChange, handleTradeChange } = useApplicationData();
+  const { state, search, handleLocationChange, handleTradeChange } = useApplicationData();
 
   //** Leaving this here for now incase something breaks while moving logic to another component- please dont' touch - Brad
   // const [state, setState] = React.useState({
@@ -112,10 +112,10 @@ export default function SearchBar(props) {
         <FormHelperText>Choose your location</FormHelperText>
       </FormControl>
 
-      <Button variant="contained" color="secondary" onClick={Search}> 
+      <Button variant="contained" color="secondary" onClick={search}>
           Search
       </Button>
-      </div>
+    </div>
       </>
   );
 }

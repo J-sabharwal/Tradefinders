@@ -1,6 +1,6 @@
 import React from 'react';
 
-import SearchResultItem from './SearchResultItem'
+import SearchResultItem from './SearchResultItem';
 
 
 export default function SearchResults() {
@@ -22,5 +22,5 @@ export default function SearchResults() {
         <SearchResultItem />
       </div>
     </>
-  )
+  );
 }
