@@ -32,13 +32,31 @@ body{
   font-weight: bolder;
 }
 
+.profile-photo {
+  width: 100%;
+}
+
 /* Dashboard Section */
+.dashboard {
+  margin-bottom: 40px;
+  margin-top: 20px;
+}
 
-
+.dashboard-section {
+  margin-top: 20px;
+  text-align: center;
+  color: #616A6B;
+}
 
 /* Reviews Section */
 .review {
   margin: 15px;
+}
+
+.reviews-section {
+  margin-top: 20px;
+  text-align: center;
+  color: #616A6B;
 }
 .avg-ratings {
   display: grid;
