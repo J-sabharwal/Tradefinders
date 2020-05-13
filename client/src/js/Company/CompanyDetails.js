@@ -14,6 +14,7 @@ import Paper from '@material-ui/core/Paper';
 // import ButtonBase from '@material-ui/core/ButtonBase';
 import { CircularProgressbar, buildStyles, CircularProgressbarWithChildren  } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
+import Divider from '@material-ui/core/Divider';
 
 
 
@@ -33,7 +34,7 @@ class Company extends Component {
     
     Promise.all([companyDeets, companyReviews])
     .then((all) => {
-      // console.log(all);
+      console.log(all);
       this.setState(prev => ({
         ...prev,
         company: all[0].data.company,
@@ -43,6 +44,7 @@ class Company extends Component {
   }
 
   renderDetails(){
+    //console.log(this.state.company)
     return (
       <Grid container className="profile" spacing={3}>
         <Grid container item xs={9}>
@@ -51,15 +53,15 @@ class Company extends Component {
               {this.state.company.name}
             </Typography>
             <Typography component="a" href="mailto:info@tradefinder.com?subject=Message%20from%20Tradefinder%20-%20Information%20about%20your%20services." style={{textDecoration: 'none'}} className="details-email" variant="body1" >
-              <EmailIcon style={{minWidth: '40px'}} color="darkred" fontSize="small" m={5}/>
+              <EmailIcon style={{minWidth: '40px', color: '#D35400'}} fontSize="small" m={5}/>
               {this.state.company.email}
             </Typography>
             <Typography className="details-phone" variant="body1">
-              <PhoneIcon style={{minWidth: '40px'}} color="disabled" fontSize="small" mr={10}/>
+              <PhoneIcon style={{minWidth: '40px', color: '#D35400'}} fontSize="small" mr={10}/>
               {this.state.company.phone_number}
             </Typography>
             <Typography className="details-info" variant="body2">
-              <InfoTwoToneIcon style={{minWidth: '40px'}} color="disabled" fontSize="small" mr={5}/>
+              <InfoTwoToneIcon style={{minWidth: '40px', color: '#D35400'}} fontSize="small" mr={5}/>
               {this.state.company.description}
             </Typography>
           </div>
@@ -73,6 +75,13 @@ class Company extends Component {
             <Typography className="avg-rating" align="right" variant="body1" >
               ({this.state.review.total_avg} / 5 Rating)
             </Typography>
+          </div>
+        </Grid>
+      
+
+        <Grid container item xs={3}>
+          <div>
+            <img src={this.state.company.photo_url}/>
           </div>
         </Grid>
       </Grid>
@@ -111,7 +120,7 @@ class Company extends Component {
     return (
       <>
         <Container maxWidth="md">
-          <Grid container item xs={12} direction="row" justify="space-between">
+          <Grid container item xs={12} justify="center" spacing={3}>
             <Grid container item xs={3} direction="row" alignItems="center" justify="center">
               <div style={{ width: 120, height: 120 }} className="cleanliness">
                 <CircularProgressbarWithChildren
@@ -127,7 +136,7 @@ class Company extends Component {
                   })}>
                     <br></br>
                     <br></br>
-                  <div style={{ fontSize: 12, marginTop: -5 }}>
+                  <div style={{ fontSize: 12, margin: 10  }}>
                   <h3 style={{ color: '#D35400' }}><strong>{this.state.review.cleanliness_avg} / 5 </strong></h3>  
                   </div>
                 </CircularProgressbarWithChildren>
@@ -148,7 +157,7 @@ class Company extends Component {
                   })}>
                   <br></br>
                   <br></br>
-                  <div style={{ fontSize: 12, marginTop: -5 }}>
+                  <div style={{ fontSize: 12, margin: 10  }}>
                     <h3><strong>{this.state.review.reliability_avg} / 5</strong></h3>
                   </div>
                   </CircularProgressbarWithChildren>
@@ -169,7 +178,7 @@ class Company extends Component {
                 })}>
                   <br></br>
                   <br></br>
-                  <div style={{ fontSize: 12, marginTop: -5 }}>
+                  <div style={{ fontSize: 12, margin: 10  }}>
                     <h3 style={{ color: '#D35400' }}><strong>{this.state.review.value_avg} / 5 </strong></h3> 
                   </div>
                 </CircularProgressbarWithChildren>
@@ -190,7 +199,7 @@ class Company extends Component {
                   })}>
                   <br></br>
                   <br></br>
-                  <div style={{ fontSize: 12, marginTop: -5 }}>
+                  <div style={{ fontSize: 12, margin: 10 }}>
                     <h3><strong>{this.state.review.workmanship_avg} / 5</strong></h3> 
                   </div>
                 </CircularProgressbarWithChildren>
@@ -208,16 +217,22 @@ class Company extends Component {
     return (
       <>
        <div>
-          <Container maxWidth="md">
-            {this.renderDetails()}
-          </Container>
+         <Container item maxWidth="md" >
+            <Paper xs={12} elevation={4} m={5}>
+              <Container maxWidth="md">
+                {this.renderDetails()}
+              </Container>
 
-          <Container maxWidth="md">
-            {this.renderDashboard()}
-          </Container>
+              <Container maxWidth="md">
+                {this.renderDashboard()}
+              </Container>
 
-          <Container maxWidth="md">
-            {this.renderReviewData()}
+              <Divider variant="middle" />
+
+              <Container maxWidth="md">
+                {this.renderReviewData()}
+              </Container>
+            </Paper>
           </Container>
         </div>
       </>
