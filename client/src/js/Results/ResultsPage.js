@@ -1,6 +1,6 @@
 import React from "react";
 
-import SearchResults from './SearchResults'
+import SearchResults from './SearchResults';
 
 
 // Logic for Search results message should go here, and then is rendered in return below. For now I just have message which will always show both fields. - Brad.
