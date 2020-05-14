@@ -15,7 +15,7 @@ Company.destroy_all
 Company.create!({
   name: "AAA Plumbers",
   email: "AAAPlums@gmail.com",
-  description: "For all your Plumbing needs, available to work on bathrooms, kitchens, and central heating. Domestic and Commercial hire",
+  description: "For all your Plumbing needs, available to work on bathrooms, kitchens, and central heating. ",
   phone_number: "623-854-9875",
   trade_type: "Plumbing",
   location: "Richmond",
@@ -33,7 +33,7 @@ Company.create!({
 Company.create!({
   name: "Mario Plumbers",
   email: "Mario@gmail.com",
-  description: "For all your Plumbing needs, available to work on mushroom world only",
+  description: "For all your Plumbing needs, available to work on mushroom world only.",
   phone_number: "623-824-9872",
   trade_type: "Plumbing",
   location: "Surrey",
@@ -42,7 +42,7 @@ Company.create!({
 Company.create!({
   name: "Luigi Plumbers",
   email: "Luigi@gmail.com",
-  description: "Cheaper than Mario! Double the quality",
+  description: "Cheaper than Mario! Double the quality, in half the time. Guaranteed!",
   phone_number: "623-824-9879",
   trade_type: "Plumbing",
   location: "Vancouver",
@@ -51,7 +51,7 @@ Company.create!({
 Company.create!({
   name: "123 Electricians",
   email: "123Guys@123guys.com",
-  description: "Available for hire",
+  description: "Available for hire. Our prices will shock you! Our service is just so-so.",
   phone_number: "234-123-9875",
   trade_type: "Electrical",
   location: "Richmond",
@@ -60,7 +60,7 @@ Company.create!({
 Company.create!({
   name: "Grand Designs",
   email: "interiors@GDesigns.com",
-  description: "Houses, Venues, Shopfronts",
+  description: "Houses, Venues, Shopfronts. Have you got an ugly house? Let us beautify it for you!",
   phone_number: "890-456-1234",
   trade_type: "Painter/Decorator",
   location: "Vancouver",
@@ -69,7 +69,7 @@ Company.create!({
 Company.create!({
   name: "Impressive Ideas",
   email: "II@hotmail.com",
-  description: "Designing for over 40 years.",
+  description: "Designing for over 40 years. We still manage to keep our ideas fresh.. you'll be impressed!",
   phone_number: "778-895-1234",
   trade_type: "Painter/Decorator",
   location: "Surrey",

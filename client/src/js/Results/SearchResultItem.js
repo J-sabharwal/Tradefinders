@@ -6,7 +6,6 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { Rating } from '@material-ui/lab';
 
@@ -23,7 +22,7 @@ const useStyles = makeStyles({
 export default function SearchResultItem(props) {
   const classes = useStyles();
   
-  //this is needed to do the redirect for each card in the return below
+  //this is needed to do the redirect onClick() for each card in the return below
   const link = `/company/${props.id}`
 
 
@@ -34,8 +33,14 @@ export default function SearchResultItem(props) {
           margin: "20px",
         }}
       >
-        <Card className={classes.root}>
-          <CardActionArea>
+        <Card
+          className={classes.root}
+          style={{
+            width: "400px",
+            height: "400px",
+          }}
+        >
+          <CardActionArea href={link}>
             <CardMedia
               className={classes.media}
               image={props.photo}
@@ -58,9 +63,6 @@ export default function SearchResultItem(props) {
               precision={0.2}
               readOnly
             />
-            <Button size="small" color="primary" href={link}>
-              Company Profile »
-            </Button>
           </CardActions>
         </Card>
       </div>
