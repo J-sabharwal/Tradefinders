@@ -7,7 +7,7 @@ class Api::PhotoController < ApplicationController
     end
 
     unless params[:company_id].to_s.strip.empty?
-      photos = photos.where(review_id: params[:company_id])
+      photos = photos.where(company_id: params[:company_id])
     end
 
     unless params[:user_id].to_s.strip.empty?

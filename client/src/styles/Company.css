@@ -3,6 +3,9 @@ body{
   color: rgb(70, 70, 70);
 }
 
+.page-container {
+  padding-bottom: 20px;
+}
 /* Company Details */
 .profile {
   padding-bottom: 40px;
@@ -12,7 +15,6 @@ body{
 .Company-details{
   position: sticky;
   float: left;
-  margin-left: 15px;
   width: 80%;
 }
 
@@ -32,13 +34,31 @@ body{
   font-weight: bolder;
 }
 
+.profile-photo {
+  width: 100%;
+}
+
 /* Dashboard Section */
+.dashboard {
+  margin-bottom: 40px;
+  margin-top: 20px;
+}
 
-
+.dashboard-section {
+  margin-top: 20px;
+  text-align: center;
+  color: #616A6B;
+}
 
 /* Reviews Section */
 .review {
   margin: 15px;
+}
+
+.reviews-section {
+  margin-top: 20px;
+  text-align: center;
+  color: #616A6B;
 }
 .avg-ratings {
   display: grid;
@@ -72,7 +92,7 @@ body{
 
 .reviewer {
   margin: 0px;
-  color: darkred;
+  color: #D35400;
   font-style: italic;
 }
 
@@ -80,7 +100,6 @@ body{
   .Company-details{
     position: sticky;
     float: left;
-    margin-left: 70px;
     width: 60%;
     flex-wrap: wrap;
   }
