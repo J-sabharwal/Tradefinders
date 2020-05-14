@@ -43,28 +43,20 @@ export default function NavBar(props) {
     }
   }, []);
 
-
-  // const getCurrentUser = () => {
-  //   let userEmail = cookies.get('userEmail');
-  //   console.log(userEmail);
-  //   if (userEmail) {
-  //     Axios.get(`/api/user?email=${userEmail}`)
-  //       .then((res) => {
-  //         console.log(res);
-  //         console.log(res.data.users[0]);
-  //         setCurrentUser(res.data.users[0]);
-  //       });
-  //   } else {
-  //     setCurrentUser(undefined);
-  //   }
-  // };
+  const logout = () => {
+    props.setCurrentUser(undefined);
+    cookies.remove('userEmail');
+  };
 
   const LoginButton = () => {
     // getCurrentUser();
     if (props.currentUser) {
       return <>
         <Button color="inherit">Welcome {props.currentUser.name}!</Button>
-        <Button color="inherit">Logout</Button>
+        <Button
+          color="inherit"
+          onClick={logout}
+        >Logout</Button>
       </>;
     } else {
       return <Button
