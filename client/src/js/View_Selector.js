@@ -6,13 +6,13 @@ import CompanyDetails from "./Company/CompanyDetails";
 import ReviewForm from './Review/ReviewForm';
 import SearchResults from './Results/SearchResults';
 import SearchBar from './SearchBar';
-import Login from './Login';
+import ResultsPage from './Results/ResultsPage'
 
 
 export default function ViewSelector() {
 
   return (
-    <>
+
       <Router>
 
         <Route className="company-details"
@@ -30,16 +30,11 @@ export default function ViewSelector() {
         </Route>
       
         <Route className="search-results"
-          exact path="/results"
-          component={SearchResults} >
-        </Route>
-
-        <Route className="test-login"
-          exact path="/test/login"
-          component={Login} >
+           exact path="/results"
+            component={ResultsPage} >
         </Route>
 
       </Router>
-    </>
+  
   );
 }
