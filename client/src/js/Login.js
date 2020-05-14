@@ -5,6 +5,7 @@ import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
+import Cookies from 'universal-cookie';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,18 +18,28 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ReviewForm() {
   const classes = useStyles();
+  const cookies = new Cookies();
   const [inputEmail, setInputEmail] = React.useState("");
   const [inputPassword, setInputPassword] = React.useState("");
+
+
 
   const handleSubmit = event => {
     event.preventDefault();
     console.log(inputEmail);
     console.log(inputPassword);
 
-    axios.get(`/api/user?email=${inputEmail}&password=${inputPassword}`)
+    axios.get(`/api/user?email=${inputEmail}`)
       .then((res) => {
         console.log(res);
         console.log(res.data.users[0]);
+        if (res.data.users[0] && res.data.users[0].password && res.data.users[0].password === inputPassword) {
+          console.log("Login good");
+          cookies.set('userEmail', inputEmail, { path: '/' });
+          console.log(cookies.get('userEmail'));
+        } else {
+          console.log("Login bad");
+        }
       });
     
     // axios.post("/api/review",null, {params: {
