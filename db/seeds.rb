@@ -69,7 +69,7 @@ Company.create!({
   phone_number: "890-456-1234",
   trade_type: "Painter/Decorator",
   location: "Vancouver",
-  company_photo: "https://leaflette.org/wp-content/uploads/Interior-Design-Companies.jpg"
+  company_photo: "https://leaflette.org/wp-content/uploads/Interior-Design-Companies.jpg",
 })
 
 Company.create!({
@@ -79,7 +79,7 @@ Company.create!({
   phone_number: "778-895-1234",
   trade_type: "Painter/Decorator",
   location: "Surrey",
-  company_photo: "https://www.strategiesonline.net/wp-content/uploads/2014/04/Interior-Design.png"
+  company_photo: "https://www.strategiesonline.net/wp-content/uploads/2014/04/Interior-Design.png",
 })
 
 User.destroy_all
@@ -89,7 +89,7 @@ User.create!({
   email: "joe@thebloggs.com",
   password: "password123",
   avatar: "https://i.imgur.com/Nmx0Qxo.png",
-  
+
 })
 
 User.create!({

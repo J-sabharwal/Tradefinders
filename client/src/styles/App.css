@@ -1,7 +1,7 @@
 .App {
-  text-align: center; 
+  text-align: center;
   justify-content: center;
- }
+}
 
 .App-logo {
   animation: App-logo-spin infinite 5s linear;
@@ -35,7 +35,6 @@
     transform: rotate(360deg);
   }
 }
-
 
 .background {
   height: 100%;
