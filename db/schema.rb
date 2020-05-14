@@ -22,22 +22,26 @@ ActiveRecord::Schema.define(version: 2020_05_09_025026) do
     t.string "phone_number"
     t.string "trade_type"
     t.string "location"
+    t.string "company_photo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "photos", force: :cascade do |t|
-    t.integer "review_id"
-    t.integer "company_id"
-    t.integer "user_id"
+    t.bigint "review_id"
+    t.bigint "company_id"
+    t.bigint "user_id"
     t.string "photo_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_photos_on_company_id"
+    t.index ["review_id"], name: "index_photos_on_review_id"
+    t.index ["user_id"], name: "index_photos_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "company_id"
+    t.bigint "user_id"
+    t.bigint "company_id"
     t.integer "cleanliness"
     t.integer "reliability"
     t.integer "value"
@@ -45,13 +49,22 @@ ActiveRecord::Schema.define(version: 2020_05_09_025026) do
     t.string "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_reviews_on_company_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.string "password"
+    t.string "avatar"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_foreign_key "photos", "companies"
+  add_foreign_key "photos", "reviews"
+  add_foreign_key "photos", "users"
+  add_foreign_key "reviews", "companies"
+  add_foreign_key "reviews", "users"
 end

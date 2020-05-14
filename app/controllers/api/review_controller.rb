@@ -16,6 +16,7 @@ class Api::ReviewController < ApplicationController
       "photos.photo_url as #{:photo_url}",
       "users.name as #{:user_name}",
       "users.email as #{:user_email}",
+      "users.avatar as #{:user_avatar}",
     )
 
     cleanliness_avg, reliability_avg, value_avg, workmanship_avg, total_avg = calculate_avg(reviews)
@@ -38,6 +39,7 @@ class Api::ReviewController < ApplicationController
       "photos.photo_url as #{:photo_url}",
       "users.name as #{:user_name}",
       "users.email as #{:user_email}",
+      "users.avatar as #{:user_avatar}",
     )
 
     review = reviews.find params[:id]
