@@ -15,6 +15,11 @@ import Paper from '@material-ui/core/Paper';
 import { CircularProgressbar, buildStyles, CircularProgressbarWithChildren  } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import Divider from '@material-ui/core/Divider';
+import IconButton from '@material-ui/core/IconButton';
+import AddIcon from '@material-ui/icons/Add';
+import Fab from '@material-ui/core/Fab';
+import Tooltip from '@material-ui/core/Tooltip';
+import Link from '@material-ui/core/Link';
 
 
 
@@ -45,7 +50,7 @@ class Company extends Component {
 
   renderDetails(){
     return (
-      <Grid container className="profile" spacing={2}>
+      <Grid container className="profile" spacing={2} direction='row' justify='flex-start' >
         <Grid container item xs={9}>
           <div className="Company-details">
             <Typography  className="details" variant="h4" component="h5">
@@ -66,7 +71,7 @@ class Company extends Component {
           </div>
         </Grid>
 
-        <Grid container item xs={2}>
+        <Grid container item xs={3} direction='row' justify='flex-end' >
           <div>
             <Box borderColor="transparent" className="avg-ratings">
               <Rating name="half-rating-read" size="large" value={this.state.review.total_avg ? this.state.review.total_avg : 0.0} precision={0.2} readOnly />
@@ -117,7 +122,7 @@ class Company extends Component {
 
   renderDashboard() {
 
-    // console.log(cleanliness)
+    console.log(this.props.match.params.id)
     return (
       <>
         <Container className="dashboard-section">
@@ -136,13 +141,13 @@ class Company extends Component {
                   text="Cleanliness"
                   styles={buildStyles({
                     strokeLinecap: "butt",
-                    textSize: '13px',
+                    textSize: '90%',
                     textColor: '#616A6B',
                     pathColor: '#616A6B'
                   })}>
                     <br></br>
                     <br></br>
-                  <div style={{ fontSize: 12, margin: 10  }}>
+                  <div style={{ fontSize: '80%', margin: 10  }}>
                   <h3 style={{ color: '#D35400' }}><strong>{this.state.review.cleanliness_avg}</strong></h3>  
                   </div>
                 </CircularProgressbarWithChildren>
@@ -157,13 +162,13 @@ class Company extends Component {
                   text="Reliability"
                   styles={buildStyles({
                     strokeLinecap: "butt",
-                    textSize: '14px',
+                    textSize: '90%',
                     textColor: '#D35400',
                     pathColor: '#D35400',
                   })}>
                   <br></br>
                   <br></br>
-                  <div style={{ fontSize: 12, margin: 10  }}>
+                  <div style={{ fontSize: '80%', margin: 10  }}>
                     <h3><strong>{this.state.review.reliability_avg}</strong></h3>
                   </div>
                   </CircularProgressbarWithChildren>
@@ -178,13 +183,13 @@ class Company extends Component {
                 text="Value"
                 styles={buildStyles({
                   strokeLinecap: "butt",
-                  textSize: '14px',
+                  textSize: '90%',
                   textColor: '#616A6B',
                   pathColor: '#616A6B',
                 })}>
                   <br></br>
                   <br></br>
-                  <div style={{ fontSize: 12, margin: 10  }}>
+                  <div style={{ fontSize: '80%', margin: 10  }}>
                     <h3 style={{ color: '#D35400' }}><strong>{this.state.review.value_avg}</strong></h3> 
                   </div>
                 </CircularProgressbarWithChildren>
@@ -199,13 +204,13 @@ class Company extends Component {
                   text="Workmanship"
                   styles={buildStyles({
                     strokeLinecap: "butt",
-                    textSize: '12px',
+                    textSize: '80%',
                     textColor: '#D35400',
                     pathColor: '#D35400',
                   })}>
                   <br></br>
                   <br></br>
-                  <div style={{ fontSize: 12, margin: 10 }}>
+                  <div style={{ fontSize: '80%', margin: 10 }}>
                     <h3><strong>{this.state.review.workmanship_avg}</strong></h3> 
                   </div>
                 </CircularProgressbarWithChildren>
@@ -224,7 +229,7 @@ class Company extends Component {
       <>
        <div>
          <Container maxWidth="md" >
-            <Paper xs={12} elevation={4} m={5}>
+            <Paper xs={12} elevation={4} m={10} className="page-container">
               <Container maxWidth="md">
                 {this.renderDetails()}
               </Container>
@@ -234,6 +239,19 @@ class Company extends Component {
               <Container maxWidth="md">
                 {this.renderDashboard()}
               </Container>
+
+              <Link href={`/review/${this.props.match.params.id}/new`} className="add-review" style={{ textDecoration: 'none'}}>
+                <Grid container direction='row' justify='flex-end' alignItems="center" > 
+                    <Typography style={{ color: '#D35400', marginRight: '10px', marginBottom: '10px' , fontWeight: 'bold'}} className="add-review" variant="body1">
+                      Add Review     
+                    </Typography>
+                    <Tooltip style={{ color: '#D35400', marginRight: '30px', marginBottom: '15px' }} title="Add" aria-label="add" >
+                      <Fab  size="small" className="add-btn">
+                        <AddIcon/>
+                      </Fab>
+                    </Tooltip>
+                </Grid>
+              </Link>
 
               <Divider variant="middle" />
 
