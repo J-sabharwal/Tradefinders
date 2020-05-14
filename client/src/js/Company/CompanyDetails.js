@@ -12,15 +12,13 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 // import ButtonBase from '@material-ui/core/ButtonBase';
-import { CircularProgressbar, buildStyles, CircularProgressbarWithChildren  } from 'react-circular-progressbar';
+import { buildStyles, CircularProgressbarWithChildren  } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
 import AddIcon from '@material-ui/icons/Add';
 import Fab from '@material-ui/core/Fab';
 import Tooltip from '@material-ui/core/Tooltip';
 import Link from '@material-ui/core/Link';
-
 
 
 class Company extends Component {
@@ -85,7 +83,7 @@ class Company extends Component {
 
         <Grid container item mt={10} spacing={2}>
           <Grid item xs={12}>
-            <img className="profile-photo" src={this.state.company.photo_url}/>
+            <img className="profile-photo" alt="Profile" src={this.state.company.company_photo}/>
           </Grid>
         </Grid>
       </Grid>
@@ -99,18 +97,22 @@ class Company extends Component {
         <>
           <div key={rev.id} className="review">
             <Paper xs={12} elevation={2} m={5} key={rev.id} className="avg-review-comment" >
-              <Grid container mt={10} spacing={2} >
+              <Grid container mt={10} spacing={2} direction='row' justify='flex-start'>
                 <Grid item>
                   <img className="review-img" alt="Review" src={rev.photo_url} />
                 </Grid>
 
                 <Grid container item xs={12} sm={true}>
-                  <Grid container className="review-comment" spacing={2} item direction-xs="column" xs={12}>
+                  <Grid container className="review-comment" spacing={2} item direction-xs="column" xs={10}>
                     <Typography variant="body2" gutterBottom>{rev.comment}</Typography>
+                  </Grid>
+                  <Grid container item xs={2} direction='row' justify='flex-end'>
+                    <img style={{ borderRadius: "20px", height: "40px", marginTop: "8px" }} alt="user-avatar" className="avatar" src={rev.user_avatar}/>
                   </Grid>
                   <Grid container className="review-comment" spacing={2} item direction-xs="row" alignItems="flex-end">
                     <Typography className="reviewer" variant="caption" >Posted by {rev.user_name}</Typography>
                   </Grid>
+                  
                 </Grid>
               </Grid>  
             </Paper>
@@ -122,7 +124,7 @@ class Company extends Component {
 
   renderDashboard() {
 
-    console.log(this.props.match.params.id)
+    // console.log(this.props.match.params.id)
     return (
       <>
         <Container className="dashboard-section">
