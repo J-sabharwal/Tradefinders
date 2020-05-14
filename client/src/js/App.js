@@ -10,6 +10,10 @@ export default function App() {
 
   return (
     <div className="background">
+      <NavBar
+        currentUser={currentUser}
+        setCurrentUser={setCurrentUser}
+      />
       <ViewSelector
         currentUser={currentUser}
         setCurrentUser={setCurrentUser}

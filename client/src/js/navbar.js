@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Redirect } from "react-router-dom";
 import Cookies from 'universal-cookie';
 import Axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
@@ -8,6 +7,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
+// import MenuIcon from "@material-ui/icons/Menu";
 
 import logo from "../images/tradefinder_logo.png";
 import { grey } from "@material-ui/core/colors";
@@ -27,8 +27,6 @@ const useStyles = makeStyles((theme) => ({
 export default function NavBar(props) {
   const classes = useStyles();
   const cookies = new Cookies();
-  const [goToLogin, setGoToLogin] = useState(false);
-
 
   useEffect(()=>{
     let userEmail = cookies.get('userEmail');
@@ -77,6 +75,7 @@ export default function NavBar(props) {
           <Button href="/">
             <img height="75px" alt="" src={logo} />
           </Button>
+
           <IconButton
             edge="start"
             className={classes.menuButton}
@@ -91,12 +90,6 @@ export default function NavBar(props) {
           <LoginButton/>
         </Toolbar>
       </AppBar>
-
-      { goToLogin && (
-        <Redirect to={{
-          pathname: '/login',
-        }} />
-      )}
     </div>
   );
 }

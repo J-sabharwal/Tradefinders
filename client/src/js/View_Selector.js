@@ -2,7 +2,6 @@ import React from "react";
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
-import NavBar from './navbar';
 import CompanyDetails from "./Company/CompanyDetails";
 import ReviewForm from './Review/ReviewForm';
 import SearchBar from './SearchBar';
@@ -13,11 +12,8 @@ import Login from './Login';
 export default function ViewSelector(props) {
 
   return (
+
     <Router>
-      <NavBar
-        currentUser={props.currentUser}
-        setCurrentUser={props.setCurrentUser}
-      />
 
       <Route className="company-details"
         exact path="/company/:id"
@@ -47,6 +43,7 @@ export default function ViewSelector(props) {
           />
         } >
       </Route>
+
     </Router>
   
   );
