@@ -36,7 +36,7 @@ export default function ViewSelector() {
       </Route>
 
       <Route className="test-login"
-        exact path="/test/login"
+        exact path="/login"
         component={Login} >
       </Route>
 

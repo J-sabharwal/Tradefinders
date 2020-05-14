@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Cookies from 'universal-cookie';
 import Axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
@@ -27,7 +27,8 @@ const useStyles = makeStyles((theme) => ({
 export default function NavBar() {
   const classes = useStyles();
   const cookies = new Cookies();
-  const [currentUser, setCurrentUser] = React.useState(undefined);
+  const [currentUser, setCurrentUser] = useState(undefined);
+
 
   const getCurrentUser = () => {
     let userEmail = cookies.get('userEmail');
