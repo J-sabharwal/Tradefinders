@@ -8,7 +8,7 @@ import FormControl from '@material-ui/core/FormControl';
 import { Button } from "@material-ui/core";
 import NativeSelect from '@material-ui/core/NativeSelect';
 
-import useApplicationData from './useApplicationData';
+import useApplicationData from '../hooks/useApplicationData';
 import handymen from '../images/handymen.jpg';
 import '../styles/SearchBar.css';
 
