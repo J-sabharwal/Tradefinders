@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import { Button } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 import axios from 'axios';
 import '../../styles/Company.css';
 import { Rating } from '@material-ui/lab';
@@ -19,6 +19,7 @@ import AddIcon from '@material-ui/icons/Add';
 import Fab from '@material-ui/core/Fab';
 import Tooltip from '@material-ui/core/Tooltip';
 import Link from '@material-ui/core/Link';
+import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 
 
 class Company extends Component {
@@ -55,7 +56,7 @@ class Company extends Component {
               {this.state.company.name}
             </Typography>
             <Typography component="a" href="mailto:info@tradefinder.com?subject=Message%20from%20Tradefinder%20-%20Information%20about%20your%20services." style={{textDecoration: 'none'}} className="details-email" variant="body1" >
-              <EmailIcon style={{minWidth: '40px'}} color="inherit" fontSize="small" m={5}/>
+              <EmailIcon style={{minWidth: '40px', color: '#D35400'}} color="inherit" fontSize="small" m={5}/>
               {this.state.company.email}
             </Typography>
             <Typography className="details-phone" variant="body1">
@@ -123,7 +124,6 @@ class Company extends Component {
   }
 
   renderDashboard() {
-
     // console.log(this.props.match.params.id)
     return (
       <>
@@ -224,51 +224,61 @@ class Company extends Component {
     );
   }
 
-
-
   render() {
     return (
       <>
        <div>
-         <Container maxWidth="md" >
-           <Paper xs={12} elevation={4} m={10} className="page-container">
-             <Container maxWidth="md">
-               {this.renderDetails()}
-             </Container>
+        <Container maxWidth="md"  className="back-btn">
+          <Grid container style={{ color: '#D35400' }} direction='row' justify='flex-start' alignItems="center">
+            <Button 
+            style={{ color: '#D35400'}} 
+            component="button" 
+            onClick={this.props.history.goBack} 
+            startIcon={<NavigateBeforeIcon />}
+            >
+            Back to Search Results
+            </Button>
+          </Grid>
+        </Container>
+        <Container maxWidth="md" >
+          <Paper xs={12} elevation={4} m={10} className="page-container">
+            <Container maxWidth="md">
+              {this.renderDetails()}
+            </Container>
 
-             <Divider variant="middle" />
+            <Divider variant="middle" />
 
-             <Container maxWidth="md">
-               {this.renderDashboard()}
-             </Container>
+            <Container maxWidth="md">
+              {this.renderDashboard()}
+            </Container>
 
-             <Link href={`/review/${this.props.match.params.id}/new`} className="add-review" style={{ textDecoration: 'none'}}>
-               <Grid container direction='row' justify='flex-end' alignItems="center" >
-                 <Typography style={{ color: '#D35400', marginRight: '10px', marginBottom: '10px' , fontWeight: 'bold'}} className="add-review" variant="body1">
-                      Add Review
-                 </Typography>
-                 <Tooltip style={{ color: '#D35400', marginRight: '30px', marginBottom: '15px' }} title="Add" aria-label="add" >
-                   <Fab  size="small" className="add-btn">
-                     <AddIcon/>
-                   </Fab>
-                 </Tooltip>
-               </Grid>
-             </Link>
+            <Link href={`/review/${this.props.match.params.id}/new`} className="add-review" style={{ textDecoration: 'none'}}>
+              <Grid container direction='row' justify='flex-end' alignItems="center" >
+                <Typography style={{ color: '#D35400', marginRight: '10px', marginBottom: '10px' , fontWeight: 'bold'}} className="add-review" variant="body1">
+                    Add Review
+                </Typography>
+                <Tooltip style={{ color: '#D35400', marginRight: '30px', marginBottom: '15px' }} title="Add" aria-label="add" >
+                  <Fab  size="small" className="add-btn">
+                    <AddIcon/>
+                  </Fab>
+                </Tooltip>
+              </Grid>
+            </Link>
 
-             <Divider variant="middle" />
+            <Divider variant="middle" />
 
-             <Container maxWidth="md">
-               <Container className="reviews-section">
-                 <Typography  className="reviews" variant="h5">
-                    Customer Reviews
-                 </Typography>
-               </Container>
-               <Grid item >
-                 {this.renderReviewData()}
-               </Grid>
-             </Container>
-           </Paper>
-         </Container>
+            <Container maxWidth="md">
+              <Container className="reviews-section">
+                <Typography  className="reviews" variant="h5">
+                  Customer Reviews
+                </Typography>
+              </Container>
+              <Grid item >
+                {this.renderReviewData()}
+              </Grid>
+            </Container>
+          </Paper>
+        </Container>
        </div>
       </>
     );

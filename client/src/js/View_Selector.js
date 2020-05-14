@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import CompanyDetails from "./Company/CompanyDetails";
 import ReviewForm from './Review/ReviewForm';
-import SearchResults from './Results/SearchResults';
 import SearchBar from './SearchBar';
 import ResultsPage from './Results/ResultsPage';
 import Login from './Login';

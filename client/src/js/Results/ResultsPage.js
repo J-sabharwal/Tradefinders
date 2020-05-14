@@ -7,6 +7,23 @@ import SearchResults from './SearchResults';
 
 export default function ResultsPage(props) {
   const companies = props.location.state.companies;
+  const trade = props.location.state.trade;
+  const location = props.location.state.location;
+
+  //Check to see which search fields have input and change the results message accordingly - Brad
+  let resultMessage = "";
+  if (trade !== "" && location !== "") {
+    resultMessage = `Search results for ${trade} in ${location}:`;
+  }
+  else if (trade !== "") {
+    resultMessage = `Search results for ${trade} in all locations:`
+  }
+  else if (location !== "") {
+    resultMessage = `Search results for all companies in ${location}:`
+  }
+  else {
+    resultMessage = "Search Results for all companies in all locations:"
+  }
 
   return (
     <>
@@ -15,7 +32,7 @@ export default function ResultsPage(props) {
           display: "flex",
           justifyContent: "center",
         }}>
-        Search results for {companies[0].trade_type} in {companies[0].location}
+        {resultMessage}
       </h2>
 
       <div
