@@ -1,15 +1,14 @@
 import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
-import SearchIcon from '@material-ui/icons/Search';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import MoreIcon from '@material-ui/icons/MoreVert';
 import { grey } from "@material-ui/core/colors";
+import logo from '../images/tradefinder_logo.png'
 
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 
 const useStyles = makeStyles((theme) => ({
+  offset: theme.mixins.toolbar,
   text: {
     padding: theme.spacing(2, 2, 0),
   },
@@ -44,23 +43,20 @@ export default function footer() {
 
 
   return (
-    <React.Fragment>
-      <AppBar style={{ backgroundColor: grey[600] }} position="fixed" color="primary" className={classes.appBar}>
+    <div className={classes.root}>
+      <AppBar style={{ backgroundColor: grey[600] }} position="static">
         <Toolbar>
-          <IconButton edge="start" color="inherit" aria-label="open drawer">
-            <MenuIcon />
-          </IconButton>
-          
-          <div className={classes.grow} />
-          <IconButton color="inherit">
-            <SearchIcon />
-          </IconButton>
-          <IconButton edge="end" color="inherit">
-            <MoreIcon />
+            <img height="50px" alt="" src={logo} />
+          <IconButton
+            edge="start"
+            className={classes.menuButton}
+            color="inherit"
+            aria-label="menu"
+          >
           </IconButton>
         </Toolbar>
       </AppBar>
-    </React.Fragment>
+    </div>
   );
   
 }
