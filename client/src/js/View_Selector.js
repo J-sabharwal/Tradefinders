@@ -6,35 +6,41 @@ import CompanyDetails from "./Company/CompanyDetails";
 import ReviewForm from './Review/ReviewForm';
 import SearchResults from './Results/SearchResults';
 import SearchBar from './SearchBar';
-import ResultsPage from './Results/ResultsPage'
+import ResultsPage from './Results/ResultsPage';
+import Login from './Login';
 
 
 export default function ViewSelector() {
 
   return (
 
-      <Router>
+    <Router>
 
-        <Route className="company-details"
-          exact path="/company/:id"
-          component={CompanyDetails} >
-        </Route>
+      <Route className="company-details"
+        exact path="/company/:id"
+        component={CompanyDetails} >
+      </Route>
 
-        <Route className="review-form"
-          exact path='/review/:company_id/new'
-          component={ReviewForm} >
-        </Route>
+      <Route className="review-form"
+        exact path='/review/:company_id/new'
+        component={ReviewForm} >
+      </Route>
       
-        <Route exact path="/"
-          component={SearchBar} >
-        </Route>
+      <Route exact path="/"
+        component={SearchBar} >
+      </Route>
       
-        <Route className="search-results"
-           exact path="/results"
-            component={ResultsPage} >
-        </Route>
+      <Route className="search-results"
+        exact path="/results"
+        component={ResultsPage} >
+      </Route>
 
-      </Router>
+      <Route className="test-login"
+        exact path="/test/login"
+        component={Login} >
+      </Route>
+
+    </Router>
   
   );
 }
