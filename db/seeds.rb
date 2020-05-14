@@ -19,6 +19,7 @@ Company.create!({
   phone_number: "623-854-9875",
   trade_type: "Plumbing",
   location: "Richmond",
+  company_photo: "https://theplumbingco.com/wp-content/uploads/2016/11/about-the-original-plumbing-company.jpg",
 })
 
 Company.create!({
@@ -28,15 +29,17 @@ Company.create!({
   phone_number: "623-854-9874",
   trade_type: "Plumbing",
   location: "Vancouver",
+  company_photo: "https://stephenspandh.com/sites/default/files/styles/flexslider_full/public/shutterstock_566153617.jpg?itok=GbOT8Hzo",
 })
 
 Company.create!({
-  name: "Mario Plumbers",
+  name: "Mario Bros Plumbers",
   email: "Mario@gmail.com",
   description: "For all your Plumbing needs, available to work on mushroom world only.",
   phone_number: "623-824-9872",
   trade_type: "Plumbing",
   location: "Surrey",
+  company_photo: "https://cdn.dribbble.com/users/75617/screenshots/11050092/image.png",
 })
 
 Company.create!({
@@ -46,6 +49,7 @@ Company.create!({
   phone_number: "623-824-9879",
   trade_type: "Plumbing",
   location: "Vancouver",
+  company_photo: "https://i.pinimg.com/originals/c2/d1/ed/c2d1ed0716c40a008a1f6212ff634d48.jpg",
 })
 
 Company.create!({
@@ -55,6 +59,7 @@ Company.create!({
   phone_number: "234-123-9875",
   trade_type: "Electrical",
   location: "Richmond",
+  company_photo: "https://trk.localvox.com/sites/default/files/styles/480x240/public/content_images/depositphotos_30414567_m-2015_4.jpg?itok=M2O2yIdP",
 })
 
 Company.create!({
@@ -64,6 +69,7 @@ Company.create!({
   phone_number: "890-456-1234",
   trade_type: "Painter/Decorator",
   location: "Vancouver",
+  company_photo: "https://leaflette.org/wp-content/uploads/Interior-Design-Companies.jpg"
 })
 
 Company.create!({
@@ -73,6 +79,7 @@ Company.create!({
   phone_number: "778-895-1234",
   trade_type: "Painter/Decorator",
   location: "Surrey",
+  company_photo: "https://www.strategiesonline.net/wp-content/uploads/2014/04/Interior-Design.png"
 })
 
 User.destroy_all
@@ -81,42 +88,50 @@ User.create!({
   name: "Joe Bloggs",
   email: "joe@thebloggs.com",
   password: "password123",
+  avatar: "https://i.imgur.com/Nmx0Qxo.png",
+  
 })
 
 User.create!({
   name: "Teresa May",
   email: "maymay@pm.com",
   password: "password123",
+  avatar: "https://i.imgur.com/LpaY82x.png",
 })
 
 User.create!({
   name: "Anthony Chambers",
   email: "ant@google.com",
   password: "password123",
+  avatar: "https://i.imgur.com/FK8V841.jpg",
 })
 
 User.create!({
   name: "Jane Smith",
   email: "jane@googlemail.com",
   password: "password123",
+  avatar: "https://i.imgur.com/TdOAdde.jpg",
 })
 
 User.create!({
-  name: "Sarah Harper",
-  email: "sarah@hotmail.com",
+  name: "Richard Hu",
+  email: "richie@hotmail.com",
   password: "password123",
+  avatar: "https://i.imgur.com/nPywAp1.jpg",
 })
 
 User.create!({
   name: "Jessica Rabbit",
   email: "jessica@roger.com",
   password: "password123",
+  avatar: "https://i.imgur.com/T2WwVfS.png",
 })
 
 User.create!({
   name: "Andy Allen",
   email: "AA@yahoo.com",
   password: "password123",
+  avatar: "https://i.imgur.com/okB9WKC.jpg",
 })
 
 Review.destroy_all

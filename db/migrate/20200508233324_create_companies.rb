@@ -6,7 +6,9 @@ class CreateCompanies < ActiveRecord::Migration[5.2]
       t.string :description
       t.string :phone_number
       t.string :trade_type
-
+      t.string :location
+      t.string :company_photo
+ 
       t.timestamps null: false
     end
   end
