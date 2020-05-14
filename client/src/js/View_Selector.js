@@ -10,7 +10,7 @@ import ResultsPage from './Results/ResultsPage';
 import Login from './Login';
 
 
-export default function ViewSelector() {
+export default function ViewSelector(props) {
 
   return (
 
@@ -35,9 +35,14 @@ export default function ViewSelector() {
         component={ResultsPage} >
       </Route>
 
-      <Route className="test-login"
+      <Route className="login"
         exact path="/login"
-        component={Login} >
+        component={() =>
+          <Login
+            currentUser={props.currentUser}
+            setCurrentUser={props.setCurrentUser}
+          />
+        } >
       </Route>
 
     </Router>

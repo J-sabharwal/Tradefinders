@@ -24,13 +24,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function NavBar() {
+export default function NavBar(props) {
   const classes = useStyles();
   const cookies = new Cookies();
-  const [currentUser, setCurrentUser] = useState(undefined);
 
-
-  const getCurrentUser = () => {
+  useEffect(()=>{
     let userEmail = cookies.get('userEmail');
     console.log(userEmail);
     if (userEmail) {
@@ -38,22 +36,44 @@ export default function NavBar() {
         .then((res) => {
           console.log(res);
           console.log(res.data.users[0]);
-          setCurrentUser(res.data.users[0]);
+          props.setCurrentUser(res.data.users[0]);
         });
     } else {
-      setCurrentUser(undefined);
+      props.setCurrentUser(undefined);
     }
-  };
+  }, []);
+
+
+  // const getCurrentUser = () => {
+  //   let userEmail = cookies.get('userEmail');
+  //   console.log(userEmail);
+  //   if (userEmail) {
+  //     Axios.get(`/api/user?email=${userEmail}`)
+  //       .then((res) => {
+  //         console.log(res);
+  //         console.log(res.data.users[0]);
+  //         setCurrentUser(res.data.users[0]);
+  //       });
+  //   } else {
+  //     setCurrentUser(undefined);
+  //   }
+  // };
 
   const LoginButton = () => {
-    getCurrentUser();
-    if (currentUser) {
+    // getCurrentUser();
+    if (props.currentUser) {
       return <>
-        <Button color="inherit">Welcome {currentUser.name}!</Button>
+        <Button color="inherit">Welcome {props.currentUser.name}!</Button>
         <Button color="inherit">Logout</Button>
       </>;
     } else {
-      return <Button color="inherit">Login</Button>;
+      return <Button
+        color="inherit"
+        onClick={()=>{
+          
+        }}>
+          Login
+      </Button>;
     }
   };
 
