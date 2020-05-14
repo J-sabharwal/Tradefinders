@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import CompanyDetails from "./Company/CompanyDetails";
 import ReviewForm from './Review/ReviewForm';
 import SearchBar from './SearchBar';
-import SearchResults from './Results/SearchResults'
+import ResultsPage from './Results/ResultsPage'
 
 
 export default function ViewSelector() {
@@ -20,7 +20,7 @@ export default function ViewSelector() {
   */
 
   return (
-    <>
+
       <Router>
 
         <Route className="company-details"
@@ -39,10 +39,10 @@ export default function ViewSelector() {
       
         <Route className="search-results"
            exact path="/results"
-            component={SearchResults} >
+            component={ResultsPage} >
         </Route>
 
       </Router>
-    </>
+  
   );
 }

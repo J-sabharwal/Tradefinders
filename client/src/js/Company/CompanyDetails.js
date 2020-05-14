@@ -12,7 +12,7 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 // import ButtonBase from '@material-ui/core/ButtonBase';
-import { CircularProgressbar, buildStyles, CircularProgressbarWithChildren  } from 'react-circular-progressbar';
+import { buildStyles, CircularProgressbarWithChildren  } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
 
@@ -51,7 +51,7 @@ class Company extends Component {
               {this.state.company.name}
             </Typography>
             <Typography component="a" href="mailto:info@tradefinder.com?subject=Message%20from%20Tradefinder%20-%20Information%20about%20your%20services." style={{textDecoration: 'none'}} className="details-email" variant="body1" >
-              <EmailIcon style={{minWidth: '40px'}} color="darkred" fontSize="small" m={5}/>
+              <EmailIcon style={{minWidth: '40px'}} color="inherit" fontSize="small" m={5}/>
               {this.state.company.email}
             </Typography>
             <Typography className="details-phone" variant="body1">
