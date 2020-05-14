@@ -4,6 +4,7 @@ import "../styles/App.css";
 import NavBar from './navbar';
 import ViewSelector from './View_Selector'
 
+
 class App extends Component {
 
   render() {
