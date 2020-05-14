@@ -61,9 +61,8 @@ export default function NavBar(props) {
     } else {
       return <Button
         color="inherit"
-        onClick={()=>{
-          
-        }}>
+        href="/login"
+      >
           Login
       </Button>;
     }
