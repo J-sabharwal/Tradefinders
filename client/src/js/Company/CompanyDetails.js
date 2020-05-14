@@ -14,6 +14,12 @@ import Paper from '@material-ui/core/Paper';
 // import ButtonBase from '@material-ui/core/ButtonBase';
 import { CircularProgressbar, buildStyles, CircularProgressbarWithChildren  } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
+import Divider from '@material-ui/core/Divider';
+import IconButton from '@material-ui/core/IconButton';
+import AddIcon from '@material-ui/icons/Add';
+import Fab from '@material-ui/core/Fab';
+import Tooltip from '@material-ui/core/Tooltip';
+import Link from '@material-ui/core/Link';
 
 
 
@@ -44,36 +50,43 @@ class Company extends Component {
 
   renderDetails(){
     return (
-      <Grid container className="profile" spacing={3}>
+      <Grid container className="profile" spacing={2} direction='row' justify='flex-start' >
         <Grid container item xs={9}>
           <div className="Company-details">
             <Typography  className="details" variant="h4" component="h5">
               {this.state.company.name}
             </Typography>
             <Typography component="a" href="mailto:info@tradefinder.com?subject=Message%20from%20Tradefinder%20-%20Information%20about%20your%20services." style={{textDecoration: 'none'}} className="details-email" variant="body1" >
-              <EmailIcon style={{minWidth: '40px'}} color="darkred" fontSize="small" m={5}/>
+              <EmailIcon style={{minWidth: '40px', color: '#D35400'}} fontSize="small" m={5}/>
               {this.state.company.email}
             </Typography>
             <Typography className="details-phone" variant="body1">
-              <PhoneIcon style={{minWidth: '40px'}} color="disabled" fontSize="small" mr={10}/>
+              <PhoneIcon style={{minWidth: '40px', color: '#D35400'}} fontSize="small" mr={10}/>
               {this.state.company.phone_number}
             </Typography>
             <Typography className="details-info" variant="body2">
-              <InfoTwoToneIcon style={{minWidth: '40px'}} color="disabled" fontSize="small" mr={5}/>
+              <InfoTwoToneIcon style={{minWidth: '40px', color: '#D35400'}} fontSize="small" mr={5}/>
               {this.state.company.description}
             </Typography>
           </div>
         </Grid>
 
-        <Grid container item xs={3}>
+        <Grid container item xs={3} direction='row' justify='flex-end' >
           <div>
             <Box borderColor="transparent" className="avg-ratings">
               <Rating name="half-rating-read" size="large" value={this.state.review.total_avg ? this.state.review.total_avg : 0.0} precision={0.2} readOnly />
             </Box>
             <Typography className="avg-rating" align="right" variant="body1" >
-              ({this.state.review.total_avg} / 5 Rating)
+              ({this.state.review.reviews && this.state.review.reviews.length} Reviews)
             </Typography>
           </div>
+        </Grid>
+      
+
+        <Grid container item mt={10} spacing={2}>
+          <Grid item xs={12}>
+            <img className="profile-photo" src={this.state.company.photo_url}/>
+          </Grid>
         </Grid>
       </Grid>
     )
@@ -83,35 +96,42 @@ class Company extends Component {
   renderReviewData(){
     return this.state.review.reviews && this.state.review.reviews.map(rev => {
       return (
-        <div key={rev.id} className="review">
-          <Paper xs={12} elevation={2} m={5} key={rev.id} className="avg-review-comment" >
-            <Grid container mt={10} spacing={2} >
-              <Grid item>
-                <img className="review-img" alt="Review" src={rev.photo_url} />
-              </Grid>
+        <>
+          <div key={rev.id} className="review">
+            <Paper xs={12} elevation={2} m={5} key={rev.id} className="avg-review-comment" >
+              <Grid container mt={10} spacing={2} >
+                <Grid item>
+                  <img className="review-img" alt="Review" src={rev.photo_url} />
+                </Grid>
 
-              <Grid container item xs={12} sm={true}>
-                <Grid container className="review-comment" spacing={2} item direction-xs="column" xs={12}>
-                  <Typography variant="body2" gutterBottom>{rev.comment}</Typography>
+                <Grid container item xs={12} sm={true}>
+                  <Grid container className="review-comment" spacing={2} item direction-xs="column" xs={12}>
+                    <Typography variant="body2" gutterBottom>{rev.comment}</Typography>
+                  </Grid>
+                  <Grid container className="review-comment" spacing={2} item direction-xs="row" alignItems="flex-end">
+                    <Typography className="reviewer" variant="caption" >Posted by {rev.user_name}</Typography>
+                  </Grid>
                 </Grid>
-                <Grid container className="review-comment" spacing={2} item direction-xs="row" alignItems="flex-end">
-                  <Typography className="reviewer" variant="caption" >Posted by {rev.user_name}</Typography>
-                </Grid>
-              </Grid>
-            </Grid>  
-          </Paper>
-        </div>
+              </Grid>  
+            </Paper>
+          </div>
+        </>
       )
     })
   }
 
   renderDashboard() {
 
-    // console.log(cleanliness)
+    console.log(this.props.match.params.id)
     return (
       <>
-        <Container maxWidth="md">
-          <Grid container item xs={12} direction="row" justify="space-between">
+        <Container className="dashboard-section">
+          <Typography  className="reviews" variant="h5">
+            Reviews Summary
+          </Typography>
+        </Container>
+        <Container maxWidth="md" className="dashboard"> 
+          <Grid container item xs={12} justify="center" spacing={3}>
             <Grid container item xs={3} direction="row" alignItems="center" justify="center">
               <div style={{ width: 120, height: 120 }} className="cleanliness">
                 <CircularProgressbarWithChildren
@@ -121,14 +141,14 @@ class Company extends Component {
                   text="Cleanliness"
                   styles={buildStyles({
                     strokeLinecap: "butt",
-                    textSize: '13px',
+                    textSize: '90%',
                     textColor: '#616A6B',
                     pathColor: '#616A6B'
                   })}>
                     <br></br>
                     <br></br>
-                  <div style={{ fontSize: 12, marginTop: -5 }}>
-                  <h3 style={{ color: '#D35400' }}><strong>{this.state.review.cleanliness_avg} / 5 </strong></h3>  
+                  <div style={{ fontSize: '80%', margin: 10  }}>
+                  <h3 style={{ color: '#D35400' }}><strong>{this.state.review.cleanliness_avg}</strong></h3>  
                   </div>
                 </CircularProgressbarWithChildren>
               </div>
@@ -142,14 +162,14 @@ class Company extends Component {
                   text="Reliability"
                   styles={buildStyles({
                     strokeLinecap: "butt",
-                    textSize: '14px',
+                    textSize: '90%',
                     textColor: '#D35400',
                     pathColor: '#D35400',
                   })}>
                   <br></br>
                   <br></br>
-                  <div style={{ fontSize: 12, marginTop: -5 }}>
-                    <h3><strong>{this.state.review.reliability_avg} / 5</strong></h3>
+                  <div style={{ fontSize: '80%', margin: 10  }}>
+                    <h3><strong>{this.state.review.reliability_avg}</strong></h3>
                   </div>
                   </CircularProgressbarWithChildren>
               </div>
@@ -163,14 +183,14 @@ class Company extends Component {
                 text="Value"
                 styles={buildStyles({
                   strokeLinecap: "butt",
-                  textSize: '14px',
+                  textSize: '90%',
                   textColor: '#616A6B',
                   pathColor: '#616A6B',
                 })}>
                   <br></br>
                   <br></br>
-                  <div style={{ fontSize: 12, marginTop: -5 }}>
-                    <h3 style={{ color: '#D35400' }}><strong>{this.state.review.value_avg} / 5 </strong></h3> 
+                  <div style={{ fontSize: '80%', margin: 10  }}>
+                    <h3 style={{ color: '#D35400' }}><strong>{this.state.review.value_avg}</strong></h3> 
                   </div>
                 </CircularProgressbarWithChildren>
               </div>
@@ -184,14 +204,14 @@ class Company extends Component {
                   text="Workmanship"
                   styles={buildStyles({
                     strokeLinecap: "butt",
-                    textSize: '12px',
+                    textSize: '80%',
                     textColor: '#D35400',
                     pathColor: '#D35400',
                   })}>
                   <br></br>
                   <br></br>
-                  <div style={{ fontSize: 12, marginTop: -5 }}>
-                    <h3><strong>{this.state.review.workmanship_avg} / 5</strong></h3> 
+                  <div style={{ fontSize: '80%', margin: 10 }}>
+                    <h3><strong>{this.state.review.workmanship_avg}</strong></h3> 
                   </div>
                 </CircularProgressbarWithChildren>
               </div>
@@ -208,16 +228,44 @@ class Company extends Component {
     return (
       <>
        <div>
-          <Container maxWidth="md">
-            {this.renderDetails()}
-          </Container>
+         <Container maxWidth="md" >
+            <Paper xs={12} elevation={4} m={10} className="page-container">
+              <Container maxWidth="md">
+                {this.renderDetails()}
+              </Container>
 
-          <Container maxWidth="md">
-            {this.renderDashboard()}
-          </Container>
+              <Divider variant="middle" />
 
-          <Container maxWidth="md">
-            {this.renderReviewData()}
+              <Container maxWidth="md">
+                {this.renderDashboard()}
+              </Container>
+
+              <Link href={`/review/${this.props.match.params.id}/new`} className="add-review" style={{ textDecoration: 'none'}}>
+                <Grid container direction='row' justify='flex-end' alignItems="center" > 
+                    <Typography style={{ color: '#D35400', marginRight: '10px', marginBottom: '10px' , fontWeight: 'bold'}} className="add-review" variant="body1">
+                      Add Review     
+                    </Typography>
+                    <Tooltip style={{ color: '#D35400', marginRight: '30px', marginBottom: '15px' }} title="Add" aria-label="add" >
+                      <Fab  size="small" className="add-btn">
+                        <AddIcon/>
+                      </Fab>
+                    </Tooltip>
+                </Grid>
+              </Link>
+
+              <Divider variant="middle" />
+
+              <Container maxWidth="md">
+                <Container className="reviews-section">
+                  <Typography  className="reviews" variant="h5">
+                    Customer Reviews
+                  </Typography>
+                </Container>
+                <Grid item >
+                  {this.renderReviewData()}
+                </Grid>
+              </Container>
+            </Paper>
           </Container>
         </div>
       </>
