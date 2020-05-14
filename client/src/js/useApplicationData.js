@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import { Redirect } from "react-router-dom";
 
 export default function useApplicationData(props) {
   const [state, setState] = React.useState({
@@ -52,6 +51,5 @@ export default function useApplicationData(props) {
   }
 
   
-
   return { state, Search, handleLocationChange, handleTradeChange };
 };
