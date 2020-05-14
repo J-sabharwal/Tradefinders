@@ -4,29 +4,28 @@ import SearchResultItem from './SearchResultItem'
 
 
 export default function SearchResults(props) {
-  console.log("In SearchResults:")
-  console.log(props.location.state.companies)
+
   // Kevin: When you need the companies, just get it like this.
   // Type props.location.state.companies
+  const companies = props.companies;
 
-  return (
-    <>
-      <div style={{
-        display: "flex",
-        flexWrap: "wrap",
-        justifyContent: "center",
-      }}>
-        <SearchResultItem 
-          foo="memes"
-          bar="lol"
-        />
-        <SearchResultItem />
-        <SearchResultItem />
-     
-        <SearchResultItem />
-        <SearchResultItem />
-        <SearchResultItem />
-      </div>
-    </>
-  )
+  //Average rating needs to be passed to the return below, to be passed as props to SearchResultItem.js - Brad
+
+  return companies.map(company => {
+
+    return (
+      <>
+          <SearchResultItem
+            key={company.id}
+            id={company.id}
+            name={company.name}
+            description={company.description}
+            trade={company.trade_type}
+            location={company.location}
+            photo={company.photo_url}
+            // rating={state.review.total_avg}
+          />
+      </>
+    );
+  })
 }

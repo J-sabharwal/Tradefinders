@@ -55,7 +55,7 @@ class Company extends Component {
               {this.state.company.name}
             </Typography>
             <Typography component="a" href="mailto:info@tradefinder.com?subject=Message%20from%20Tradefinder%20-%20Information%20about%20your%20services." style={{textDecoration: 'none'}} className="details-email" variant="body1" >
-              <EmailIcon style={{minWidth: '40px', color: '#D35400'}} fontSize="small" m={5}/>
+              <EmailIcon style={{minWidth: '40px'}} color="inherit" fontSize="small" m={5}/>
               {this.state.company.email}
             </Typography>
             <Typography className="details-phone" variant="body1">

@@ -27,44 +27,6 @@ export default function SearchBar(props) {
   const classes = useStyles();
   const { state, Search, handleLocationChange, handleTradeChange } = useApplicationData();
 
-  //** Leaving this here for now incase something breaks while moving logic to another component- please dont' touch - Brad
-  // const [state, setState] = React.useState({
-  //   trade: "",
-  //   location: "",
-  // });
-
-  // const handleTradeChange = (event) => {
-  //   const trade = event.target.name;
-  //   setState({
-  //     ...state,
-  //     [trade]: event.target.value,
-  //   });
-    
-  // };
-
-  // const handleLocationChange = (event) => {
-  //   const location = event.target.name;
-  //   setState({
-  //     ...state,
-  //     [location]: event.target.value,
-  //   });
-  // };
-
-  // // console.log(state.trade);
-  // const Search = () => {
-  //   const companySearch = axios
-  //     .get(`/api/company?trade_type=${state.trade}&location=${state.location}`);
-  //   // const companiesByLocation = axios
-  //   //   .get(`/api/company?location=${state.location}`);
-    
-  //   Promise.all([companySearch])
-  //       .then((response) => {
-  //         console.log(response[0].data.companies)
-  //         if (response[0].data.companies.length === 0) {
-  //         }
-  //         // console.log(response[1].data.companies);
-  //       });
-  // }
 
   return (
     <>
