@@ -2,6 +2,10 @@ class Api::UserController < ApplicationController
   def index
     users = User.all
 
+    unless params[:email].to_s.strip.empty?
+      users = users.where("lower(#{:email}) = '#{params[:email].downcase}'")
+    end
+
     # Get photo
     users = users.left_outer_joins(:photos).select(
       "users.*",

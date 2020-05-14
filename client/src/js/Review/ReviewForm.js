@@ -3,17 +3,12 @@ import React from 'react';
 import axios from "axios";
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
-// import InputLabel from "@material-ui/core/InputLabel";
-// import FormHelperText from "@material-ui/core/FormHelperText";
-// import FormControl from "@material-ui/core/FormControl";
-// import Select from "@material-ui/core/Select";
-// import NativeSelect from "@material-ui/core/NativeSelect";
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 
 
-//TODO I should probably move those styles somewhere else. No idea where yet.
-// Brad - I think this is good for now! We can always refactor later.
+// Kevin  - I should probably move those styles somewhere else. No idea where yet.
+// Brad   - I think this is good for now! We can always refactor later.
 const useStyles = makeStyles((theme) => ({
   root: {
     '& .MuiTextField-root': {

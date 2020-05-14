@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import "../styles/App.css";
 import ButtonAppBar from './navbar';
-import ViewSelector from './View_Selector'
+import ViewSelector from './View_Selector';
 
 class App extends Component {
 
@@ -11,9 +11,9 @@ class App extends Component {
       <>
         <ButtonAppBar />
         <div className="background">
-        <ViewSelector />
+          <ViewSelector />
        
-          </div>
+        </div>
       </>
     );
   }
