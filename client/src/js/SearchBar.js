@@ -82,7 +82,9 @@ export default function SearchBar(props) {
         { state.goToSearchResults && (
           <Redirect to={{
             pathname: '/results',
-            state: state
+            state: state,
+            trade: state.trade,
+            location: state.location,
           }} />
         )}
 
