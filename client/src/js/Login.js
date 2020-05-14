@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ReviewForm() {
+export default function ReviewForm(props) {
   const classes = useStyles();
   const cookies = new Cookies();
   const [inputEmail, setInputEmail] = React.useState("");
@@ -36,7 +36,7 @@ export default function ReviewForm() {
         if (res.data.users[0] && res.data.users[0].password && res.data.users[0].password === inputPassword) {
           console.log("Login good");
           cookies.set('userEmail', inputEmail, { path: '/' });
-          console.log(cookies.get('userEmail'));
+          props.setCurrentUser(res.data.users[0]);
         } else {
           console.log("Login bad");
         }
