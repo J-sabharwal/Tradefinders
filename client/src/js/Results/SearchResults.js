@@ -1,6 +1,6 @@
 import React from 'react';
 
-import SearchResultItem from './SearchResultItem'
+import SearchResultItem from './SearchResultItem';
 
 
 export default function SearchResults(props) {
@@ -27,5 +27,5 @@ export default function SearchResults(props) {
           />
       </>
     );
-  })
+  });
 }

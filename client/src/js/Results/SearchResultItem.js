@@ -23,7 +23,7 @@ export default function SearchResultItem(props) {
   const classes = useStyles();
   
   //this is needed to do the redirect onClick() for each card in the return below
-  const link = `/company/${props.id}`
+  const link = `/company/${props.id}`;
 
 
   return (

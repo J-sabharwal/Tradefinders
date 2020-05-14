@@ -37,19 +37,19 @@ export default function useApplicationData(props) {
     Promise.all([companySearch])
       .then((response) => {
         const companies = "companies";
-          // console.log(response[0].data.companies)
-          setState({
-            ...state,
-            [companies]: response[0].data.companies,
-            goToSearchResults: true,
-          });
+        // console.log(response[0].data.companies)
+        setState({
+          ...state,
+          [companies]: response[0].data.companies,
+          goToSearchResults: true,
+        });
         // Leaving the below code in, to implement a "no-results" error at a later time. - Brad
         // if (response[0].data.companies.length === 0) {
         // }
       });
     
-  }
+  };
 
   
   return { state, Search, handleLocationChange, handleTradeChange };
-};
+}
