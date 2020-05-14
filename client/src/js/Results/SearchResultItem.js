@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -19,12 +20,31 @@ const useStyles = makeStyles({
   },
 });
 
+//render each company card in the search results - Brad
 export default function SearchResultItem(props) {
   const classes = useStyles();
+  const [state, setState] = React.useState({
+    review: 0,
+  });
   
-  //this is needed to do the redirect onClick() for each card in the return below
-  const link = `/company/${props.id}`;
+  //Get the avg rating for each company before rendering the card in search results - Brad
+  const companyRating = () => {
+   const companyReview = axios.get(`/api/review?company_id=${props.id}`);
+    Promise.all([companyReview])
+      .then((all) => {
+        setState(prev => ({
+          ...prev,
+          review: all[0].data.total_avg
+        }));
+      });
+  }
 
+  if (state.review === 0) {
+   companyRating()
+  };
+  
+  //this is needed to do the redirect onClick() for each card in the return below - Brad
+  const link = `/company/${props.id}`;
 
   return (
     <>
@@ -59,7 +79,7 @@ export default function SearchResultItem(props) {
             <Rating
               name="half-rating-read"
               size="medium"
-              value={props.rating}
+              value={state.review}
               precision={0.2}
               readOnly
             />
