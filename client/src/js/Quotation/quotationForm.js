@@ -12,10 +12,10 @@ const mailgun = require("mailgun-js");
 const DOMAIN = process.env.REACT_APP_MAILGUN_DOMAIN;
 const API_KEY = process.env.REACT_APP_MAILGUN_API_KEY;
 
-export default function QuotationForm() {
+export default function QuotationForm(props) {
   const [open, setOpen] = React.useState(false);
-  const mg = mailgun({apiKey: API_KEY, domain: DOMAIN});
   const [currentDetails, setCurrentDetails] = React.useState({});
+  const mg = mailgun({apiKey: API_KEY, domain: DOMAIN});
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -26,19 +26,33 @@ export default function QuotationForm() {
   };
 
   const handleSubmit = () => {
-    const data = {
-      from: `Tradefinder User <name@${DOMAIN}>`,
-      to: `recepiant@gmail.com`,
-      subject: `Hello`,
-      text: `Testing some Mailgun awesomeness!`,
-    };
-    
-    console.log(currentDetails);
+    const mailText = generateMailText();
 
-    // Add Art or alert or something to show success
+    const data = {
+      from: `Tradefinder User <Tradefinder@${DOMAIN}>`,
+      to: `${props.company.email}`,
+      subject: `Quotation Request Form`,
+      text: mailText,
+    };
+
+    mg.messages().send(data, function(error, body) {
+      console.log("error:");
+      console.log(error);
+      console.log("body:");
+      console.log(body);
+
+      //TODO Add Art or alert or a message or something to show success
+      // If error is undefined then it's success.
+    });
   };
 
+  const generateMailText = () => {
+    //TODO Please format and make this mailText look better when possible.
 
+    let mailText = JSON.stringify(currentDetails);
+
+    return mailText;
+  };
   
   return (
     <>
@@ -205,6 +219,3 @@ export default function QuotationForm() {
     </>
   );
 }
-
-
-// export default QuotationForm;

@@ -245,7 +245,9 @@ class Company extends Component {
              </Container>
              <Container maxWidth="md"  className="back-btn">
                <Grid container style={{ color: '#D35400' }} direction='row' justify='flex-end' alignItems="center">
-                 <CreateDialog />
+                 <CreateDialog
+                   company={this.state.company}
+                 />
                </Grid>
              </Container>
 
