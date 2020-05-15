@@ -7,7 +7,6 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import LiveHelpIcon from '@material-ui/icons/LiveHelp';
-import FormControl from '@material-ui/core/FormControl'
 
 export default function QuotationForm() {
  const [open, setOpen] = React.useState(false)
@@ -40,27 +39,108 @@ export default function QuotationForm() {
           <DialogContentText>
             Please complete the form with as much detail about the work you wish to have done.
           </DialogContentText>
-            <FormControl>
-
-            </FormControl>
-
-
           <TextField
+          style={{
+            marginBottom: 20,
+          }}
             autoFocus
-            margin="dense"
-            id="name"
-            label="Email Address"
+            variant="outlined"
+            id="outlined-multiline-static"
+            label="Name"
+            type="name"
+            fullWidth
+          />
+          <TextField
+            style={{
+              marginBottom: 20,
+            }}
+            autoFocus
+            variant="outlined"
+            id="outlined-multiline-static"
+            placeholder="Please provide contact telephone number"
+            label="Contact Details"
+            type="contact"
+            fullWidth
+          />
+          <TextField
+          style={{
+            marginBottom: 20,
+          }}
+            autoFocus
+            variant="outlined"
+            id="outlined-multiline-static"
+            label="Location"
+            placeholder="Please provide your address"
+            type="location"
+            fullWidth
+          />
+          <TextField
+            style={{
+              marginBottom: 20,
+            }}
+            autoFocus
+            variant="outlined"
+            id="outlined-multiline-static"
+            label="Email address"
             type="email"
+            fullWidth
+          />
+          <TextField
+            style={{
+              marginBottom: 20,
+            }}
+            autoFocus
+            variant="outlined"
+            placeholder="Please enter the date you wish the work to be carried out"
+            id="outlined-multiline-static"
+            label="Date of Required Work"
+            type="email"
+            fullWidth
+          />
+          
+          
+          <TextField
+            style={{
+              marginBottom: 20,
+            }}
+            autoFocus
+            variant="outlined"
+            id="outlined-multiline-static"
+            label="Message Subject"
+            placeholder="Please enter a subject line"
+            type="message"
+            fullWidth
+          />
+          <TextField
+            multiline
+            rows={8}
+            autoFocus
+            variant="outlined"
+            id="outlined-multiline-static"
+            label="Message"
+            type="message"
             fullWidth
           />
         </DialogContent>
         <DialogActions>
-          {/* <Button onClick={handleClose} color="primary">
+          <Button 
+            style={{
+              color: '#D35400'
+            }}
+            component="button"
+            onClick={handleClose} 
+            >
             Cancel
           </Button>
-          <Button onClick={handleClose} color="primary">
-            Subscribe
-          </Button> */}
+          <Button 
+            style={{
+              color: '#D35400',
+            }}
+            component="button"
+            onClick={handleClose} 
+          >
+            Send
+          </Button>
         </DialogActions>
       </Dialog>
     </>

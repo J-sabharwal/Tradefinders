@@ -19,7 +19,7 @@ import Fab from '@material-ui/core/Fab';
 import Tooltip from '@material-ui/core/Tooltip';
 import Link from '@material-ui/core/Link';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
-import LiveHelpIcon from '@material-ui/icons/LiveHelp';
+// import LiveHelpIcon from '@material-ui/icons/LiveHelp';
 
 import 'react-circular-progressbar/dist/styles.css';
 import '../../styles/Company.css';
@@ -246,14 +246,6 @@ class Company extends Component {
              <Container maxWidth="md"  className="back-btn">
            <Grid container style={{ color: '#D35400' }} direction='row' justify='flex-end' alignItems="center">
              <CreateDialog />
-             {/* <Button
-               style={{ color: '#D35400'}}
-               component="button"
-              //  onClick={this.props.history.goBack}
-               startIcon={<LiveHelpIcon />}
-             >
-              Request a Quotation
-             </Button> */}
            </Grid>
          </Container>
 
