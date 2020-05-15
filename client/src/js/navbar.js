@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import Cookies from 'universal-cookie';
+import Axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -22,8 +24,49 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function NavBar() {
+export default function NavBar(props) {
   const classes = useStyles();
+  const cookies = new Cookies();
+
+  useEffect(()=>{
+    let userEmail = cookies.get('userEmail');
+    console.log(userEmail);
+    if (userEmail) {
+      Axios.get(`/api/user?email=${userEmail}`)
+        .then((res) => {
+          console.log(res);
+          console.log(res.data.users[0]);
+          props.setCurrentUser(res.data.users[0]);
+        });
+    } else {
+      props.setCurrentUser(undefined);
+    }
+  }, []);
+
+  const logout = () => {
+    props.setCurrentUser(undefined);
+    cookies.remove('userEmail');
+  };
+
+  const LoginButton = () => {
+    // getCurrentUser();
+    if (props.currentUser) {
+      return <>
+        <Button color="inherit">Welcome {props.currentUser.name}!</Button>
+        <Button
+          color="inherit"
+          onClick={logout}
+        >Logout</Button>
+      </>;
+    } else {
+      return <Button
+        color="inherit"
+        href="/login"
+      >
+          Login
+      </Button>;
+    }
+  };
 
   return (
     <div className={classes.root}>
@@ -44,7 +87,7 @@ export default function NavBar() {
           <Typography variant="h6" className={classes.title}>
             News
           </Typography>
-          <Button color="inherit">Login</Button>
+          <LoginButton/>
         </Toolbar>
       </AppBar>
     </div>

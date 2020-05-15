@@ -6,9 +6,10 @@ import CompanyDetails from "./Company/CompanyDetails";
 import ReviewForm from './Review/ReviewForm';
 import SearchBar from './SearchBar';
 import ResultsPage from './Results/ResultsPage';
+import Login from './Login';
 
 
-export default function ViewSelector() {
+export default function ViewSelector(props) {
 
   return (
 
@@ -31,6 +32,16 @@ export default function ViewSelector() {
       <Route className="search-results"
         exact path="/results"
         component={ResultsPage} >
+      </Route>
+
+      <Route className="login"
+        exact path="/login"
+        component={() =>
+          <Login
+            currentUser={props.currentUser}
+            setCurrentUser={props.setCurrentUser}
+          />
+        } >
       </Route>
 
     </Router>
