@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import React from 'react';
 import axios from "axios";
-import { useHistory } from 'react-router-dom';
+import { useHistory, Redirect } from 'react-router-dom';
 
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -63,34 +63,49 @@ export default function ReviewForm(props) {
   const [commentText, setCommentText] = React.useState("");
   const [photoLink, setPhotoLink] = React.useState("");
 
+  const link = "/company/" + props.match.params.company_id;
+
+  const [state, setState] = React.useState({
+    goBackToCompanyPage: false,
+  });
+
   const handleSubmit = event => {
     event.preventDefault();
-    console.log(photoLink);
+    // console.log(photoLink);
+    
 
     //TODO Currently user_id and company_id are hard coded.
     //     Later, I will need to get the user_id from the cookie, and company_id from the url.
     //     But we need to setup the routes again later. Currently it's still a bit of a mess.
     //     Update: do this after refactor
     
-    axios.post("/api/review",null, {params: {
-      user_id: props.currentUser.id,
-      company_id: props.match.params.company_id,
-      cleanliness: scoreCleanliness,
-      reliability: scoreReliability,
-      value: scoreValue,
-      workmanship: scoreWorkmanship,
-      comment: commentText,
-    }}).then((response) => {
-      console.log(response.data.new_review);
-      axios.post("/api/photo", null, {params: {
-        review_id: response.data.new_review.id,
-        photo_url: photoLink
+    axios.post("/api/review", null, {
+      params: {
+        user_id: props.currentUser.id,
+        company_id: props.match.params.company_id,
+        cleanliness: scoreCleanliness,
+        reliability: scoreReliability,
+        value: scoreValue,
+        workmanship: scoreWorkmanship,
+        comment: commentText,
+      }
+    }).then((response) => {
+      // console.log(response.data.new_review);
+      axios.post("/api/photo", null, {
+        params: {
+          review_id: response.data.new_review.id,
+          photo_url: photoLink
       }}).then(((response) => {
-        console.log(response);
+        // console.log(response);
+        setState({
+          ...state,
+          goBackToCompanyPage: true,
+        })
       }));
     });
-
   };
+
+  
 
   return (
     <div>
@@ -318,7 +333,7 @@ export default function ReviewForm(props) {
                   alignItems="center"
                   justify="center"
                 >
-                  <Button
+                  <Button 
                     style={{
                       marginBottom: '100px',
                       color: 'white',
@@ -328,10 +343,14 @@ export default function ReviewForm(props) {
                     }}
                     variant="contained"
                     type="submit"
-                    onClick={handleSubmit}
+                  onClick={handleSubmit}
                   >
-                Submit
+                  Submit
                   </Button>
+                {state.goBackToCompanyPage && (
+                  <Redirect to={ link 
+                  } />
+                )}
                 </Grid>
               </form>
             </Paper>

@@ -92,7 +92,7 @@ class Company extends Component {
 
 
   renderReviewData() {
-    return this.state.review.reviews && this.state.review.reviews.map(rev => {
+    return this.state.review.reviews && this.state.review.reviews.reverse().map(rev => {
       return (
         <>
           <div key={rev.id} className="review">
