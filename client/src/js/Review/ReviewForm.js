@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
 import React from 'react';
 import axios from "axios";
+import { useHistory } from 'react-router-dom';
 
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -54,6 +55,7 @@ const scores = [
 
 export default function ReviewForm(props) {
   const classes = useStyles();
+  const history = useHistory();
   const [scoreCleanliness, setScoreCleanliness] = React.useState(0);
   const [scoreReliability, setScoreReliability] = React.useState(0);
   const [scoreValue, setScoreValue] = React.useState(0);
@@ -71,8 +73,8 @@ export default function ReviewForm(props) {
     //     Update: do this after refactor
     
     axios.post("/api/review",null, {params: {
-      user_id: 1,
-      company_id: 1,
+      user_id: props.currentUser.id,
+      company_id: props.match.params.company_id,
       cleanliness: scoreCleanliness,
       reliability: scoreReliability,
       value: scoreValue,
@@ -103,234 +105,251 @@ export default function ReviewForm(props) {
           <Button
             style={{ color: '#D35400'}}
             component="button"
-            onClick={props.history.goBack}
+            onClick={history && history.goBack}
             startIcon={<NavigateBeforeIcon />}
           >
-          Back to Company Profile
+            Back to Company Profile
           </Button>
         </Grid>
       </Container>
-      <Container className="dashboard-section">
-        <Typography
-          style={{marginBottom: '20px'}}
-          className="reviews"
-          variant="h5"
-        >
+      
+      {props.currentUser &&
+        <>
+          <Container className="dashboard-section">
+            <Typography
+              style={{marginBottom: '20px'}}
+              className="reviews"
+              variant="h5"
+            >
           Give your feedback
-        </Typography>
-      </Container>
-      <Container maxWidth="md" >
-        <Paper
-          xs={12}
-          elevation={7}
-          m={10}
-          className="review-container"
-        >
-          <form
-            className={classes.root}
-            noValidate
-            autoComplete="off"
-          >
-            <Grid
-              container
-              item
+            </Typography>
+          </Container>
+          <Container maxWidth="md" >
+            <Paper
               xs={12}
-              direction="row"
-              alignItems="center"
-              justify="center"
+              elevation={7}
+              m={10}
+              className="review-container"
             >
-              <Grid
-                container
-                item
-                xs={6}
-                direction="row"
-                alignItems="center"
-                justify="center"
+              <form
+                className={classes.root}
+                noValidate
+                autoComplete="off"
               >
-                <TextField
-                  style={{marginTop: '50px'}}
-                  id="outlined-select-score"
-                  select
-                  label="Cleanliness"
-                  value={scoreCleanliness}
-                  onChange={(event) => {
-                    setScoreCleanliness(event.target.value);
-                  }}
-                  helperText="How much effort did they make to keep tidy?"
-                  variant="outlined"
+                <Grid
+                  container
+                  item
+                  xs={12}
+                  direction="row"
+                  alignItems="center"
+                  justify="center"
                 >
-                  {scores.map((option) => (
-                    <MenuItem
-                      key={option.value}
-                      value={option.value}
+                  <Grid
+                    container
+                    item
+                    xs={6}
+                    direction="row"
+                    alignItems="center"
+                    justify="center"
+                  >
+                    <TextField
+                      style={{marginTop: '50px'}}
+                      id="outlined-select-score"
+                      select
+                      label="Cleanliness"
+                      value={scoreCleanliness}
+                      onChange={(event) => {
+                        setScoreCleanliness(event.target.value);
+                      }}
+                      helperText="How much effort did they make to keep tidy?"
+                      variant="outlined"
                     >
-                      {option.label}
-                    </MenuItem>
-                  ))}
-                </TextField>
-              </Grid>
+                      {scores.map((option) => (
+                        <MenuItem
+                          key={option.value}
+                          value={option.value}
+                        >
+                          {option.label}
+                        </MenuItem>
+                      ))}
+                    </TextField>
+                  </Grid>
 
-              <Grid
-                container
-                item
-                xs={6}
-                direction="row"
-                alignItems="center"
-                justify="center"
-              >
-                <TextField
-                  style={{marginTop: '50px'}}
-                  id="outlined-select-score"
-                  select
-                  label="Reliability"
-                  value={scoreReliability}
-                  onChange={(event) => {
-                    setScoreReliability(event.target.value);
-                  }}
-                  helperText="How reliable were they?"
-                  variant="outlined"
-                >
-                  {scores.map((option) => (
-                    <MenuItem
-                      key={option.value}
-                      value={option.value}
+                  <Grid
+                    container
+                    item
+                    xs={6}
+                    direction="row"
+                    alignItems="center"
+                    justify="center"
+                  >
+                    <TextField
+                      style={{marginTop: '50px'}}
+                      id="outlined-select-score"
+                      select
+                      label="Reliability"
+                      value={scoreReliability}
+                      onChange={(event) => {
+                        setScoreReliability(event.target.value);
+                      }}
+                      helperText="How reliable were they?"
+                      variant="outlined"
                     >
-                      {option.label}
-                    </MenuItem>
-                  ))}
-                </TextField>
-              </Grid>
+                      {scores.map((option) => (
+                        <MenuItem
+                          key={option.value}
+                          value={option.value}
+                        >
+                          {option.label}
+                        </MenuItem>
+                      ))}
+                    </TextField>
+                  </Grid>
 
-              <Grid
-                container
-                item
-                xs={6}
-                direction="row"
-                alignItems="center"
-                justify="center"
-              >
-                <TextField
-                  id="outlined-select-score"
-                  select
-                  label="Value"
-                  value={scoreValue}
-                  onChange={(event) => {
-                    setScoreValue(event.target.value);
-                  }}
-                  helperText="How would you rate the value for money?"
-                  variant="outlined"
-                >
-                  {scores.map((option) => (
-                    <MenuItem
-                      key={option.value}
-                      value={option.value}
+                  <Grid
+                    container
+                    item
+                    xs={6}
+                    direction="row"
+                    alignItems="center"
+                    justify="center"
+                  >
+                    <TextField
+                      id="outlined-select-score"
+                      select
+                      label="Value"
+                      value={scoreValue}
+                      onChange={(event) => {
+                        setScoreValue(event.target.value);
+                      }}
+                      helperText="How would you rate the value for money?"
+                      variant="outlined"
                     >
-                      {option.label}
-                    </MenuItem>
-                  ))}
-                </TextField>
-              </Grid>
+                      {scores.map((option) => (
+                        <MenuItem
+                          key={option.value}
+                          value={option.value}
+                        >
+                          {option.label}
+                        </MenuItem>
+                      ))}
+                    </TextField>
+                  </Grid>
 
-              <Grid
-                container
-                item
-                xs={6}
-                direction="row"
-                alignItems="center"
-                justify="center"
-              >
-                <TextField
-                  id="outlined-select-score"
-                  select
-                  label="Workmanship"
-                  value={scoreWorkmanship}
-                  onChange={(event) => {
-                    setScoreWorkmanship(event.target.value);
-                  }}
-                  helperText="How was the quality of work?"
-                  variant="outlined"
-                >
-                  {scores.map((option) => (
-                    <MenuItem
-                      key={option.value}
-                      value={option.value}
+                  <Grid
+                    container
+                    item
+                    xs={6}
+                    direction="row"
+                    alignItems="center"
+                    justify="center"
+                  >
+                    <TextField
+                      id="outlined-select-score"
+                      select
+                      label="Workmanship"
+                      value={scoreWorkmanship}
+                      onChange={(event) => {
+                        setScoreWorkmanship(event.target.value);
+                      }}
+                      helperText="How was the quality of work?"
+                      variant="outlined"
                     >
-                      {option.label}
-                    </MenuItem>
-                  ))}
-                </TextField>
-              </Grid>
-            </Grid>
+                      {scores.map((option) => (
+                        <MenuItem
+                          key={option.value}
+                          value={option.value}
+                        >
+                          {option.label}
+                        </MenuItem>
+                      ))}
+                    </TextField>
+                  </Grid>
+                </Grid>
 
-            <Divider variant="middle" />
+                <Divider variant="middle" />
             
-            <div>
-              <Grid container item xs={12} direction="row" alignItems="center" justify="center" >
-                <TextField
-                  style={{
-                    width: "75%",
-                    marginLeft: 50,
-                    marginRight: 50
-                  }}
-                  id="outlined-full-width"
-                  label="Attach Photo"
-                  fullWidth
-                  placeholder="Please attach a link for a photo."
-                  variant="outlined"
-                  onChange={(event) => {
-                    setPhotoLink(event.target.value);
-                  }}
-                />
-              </Grid>
-            </div>
+                <div>
+                  <Grid container item xs={12} direction="row" alignItems="center" justify="center" >
+                    <TextField
+                      style={{
+                        width: "75%",
+                        marginLeft: 50,
+                        marginRight: 50
+                      }}
+                      id="outlined-full-width"
+                      label="Attach Photo"
+                      fullWidth
+                      placeholder="Please attach a link for a photo."
+                      variant="outlined"
+                      onChange={(event) => {
+                        setPhotoLink(event.target.value);
+                      }}
+                    />
+                  </Grid>
+                </div>
 
-            <div>
-              <Grid container item xs={12} direction="row" alignItems="center" justify="center" >
-                <TextField
-                  style={{
-                    width: "75%",
-                    marginLeft: 50,
-                    marginRight: 50
-                  }}
-                  id="outlined-multiline-static"
-                  label="Leave a Review"
-                  multiline
-                  rows={4}
-                  placeholder="Please talk about anything you would like others to know."
-                  variant="outlined"
-                  onChange={(event) => {
-                    setCommentText(event.target.value);
-                  }}
-                />
-              </Grid>
-              {/* <RaisedButton type="submit" label="login" className="button-submit" primary={true} /> */}
-            </div>
-            <Grid
-              container
-              item
-              xs={12}
-              direction="row"
-              alignItems="center"
-              justify="center"
-            >
-              <Button
-                style={{
-                  marginBottom: '100px',
-                  color: 'white',
-                  backgroundColor: '#707B7C',
-                  paddingLeft: '35%',
-                  paddingRight: '35%',
-                }}
-                variant="contained"
-                type="submit"
-                onClick={handleSubmit}
-              >
+                <div>
+                  <Grid container item xs={12} direction="row" alignItems="center" justify="center" >
+                    <TextField
+                      style={{
+                        width: "75%",
+                        marginLeft: 50,
+                        marginRight: 50
+                      }}
+                      id="outlined-multiline-static"
+                      label="Leave a Review"
+                      multiline
+                      rows={4}
+                      placeholder="Please talk about anything you would like others to know."
+                      variant="outlined"
+                      onChange={(event) => {
+                        setCommentText(event.target.value);
+                      }}
+                    />
+                  </Grid>
+                  {/* <RaisedButton type="submit" label="login" className="button-submit" primary={true} /> */}
+                </div>
+                <Grid
+                  container
+                  item
+                  xs={12}
+                  direction="row"
+                  alignItems="center"
+                  justify="center"
+                >
+                  <Button
+                    style={{
+                      marginBottom: '100px',
+                      color: 'white',
+                      backgroundColor: '#707B7C',
+                      paddingLeft: '35%',
+                      paddingRight: '35%',
+                    }}
+                    variant="contained"
+                    type="submit"
+                    onClick={handleSubmit}
+                  >
                 Submit
-              </Button>
-            </Grid>
-          </form>
-        </Paper>
-      </Container>
+                  </Button>
+                </Grid>
+              </form>
+            </Paper>
+          </Container>
+        </>
+      }
+
+      {!props.currentUser &&
+        <Container className="dashboard-section">
+          <Typography
+            style={{marginBottom: '20px'}}
+            className="reviews"
+            variant="h5"
+          >
+          Please login first
+          </Typography>
+        </Container>
+      }
     </div>
   );
 }

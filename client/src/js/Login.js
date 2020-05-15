@@ -32,11 +32,11 @@ export default function ReviewForm(props) {
         console.log(res);
         console.log(res.data.users[0]);
         if (res.data.users[0] && res.data.users[0].password && res.data.users[0].password === inputPassword) {
-          console.log("Login good");
-          cookies.set('userEmail', inputEmail, { path: '/' });
+          console.log("Login Success");
+          cookies.set('userID', res.data.users[0].id, { path: '/' });
           props.setCurrentUser(res.data.users[0]);
         } else {
-          console.log("Login bad");
+          console.log("Login Failed");
         }
       });
   };
