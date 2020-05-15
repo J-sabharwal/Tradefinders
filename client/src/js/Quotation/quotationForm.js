@@ -9,7 +9,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import LiveHelpIcon from '@material-ui/icons/LiveHelp';
 
 export default function QuotationForm() {
- const [open, setOpen] = React.useState(false)
+  const [open, setOpen] = React.useState(false);
 
 
   const handleClickOpen = () => {
@@ -21,7 +21,7 @@ export default function QuotationForm() {
   };
 
   
-     return (
+  return (
     <>
 
         <Button
@@ -40,9 +40,9 @@ export default function QuotationForm() {
             Please complete the form with as much detail about the work you wish to have done.
           </DialogContentText>
           <TextField
-          style={{
-            marginBottom: 20,
-          }}
+            style={{
+              marginBottom: 20,
+            }}
             autoFocus
             variant="outlined"
             id="outlined-multiline-static"
@@ -63,9 +63,9 @@ export default function QuotationForm() {
             fullWidth
           />
           <TextField
-          style={{
-            marginBottom: 20,
-          }}
+            style={{
+              marginBottom: 20,
+            }}
             autoFocus
             variant="outlined"
             id="outlined-multiline-static"
@@ -123,29 +123,29 @@ export default function QuotationForm() {
           />
         </DialogContent>
         <DialogActions>
-          <Button 
+          <Button
             style={{
               color: '#D35400'
             }}
             component="button"
-            onClick={handleClose} 
-            >
+            onClick={handleClose}
+          >
             Cancel
           </Button>
-          <Button 
+          <Button
             style={{
               color: '#D35400',
             }}
             component="button"
-            onClick={handleClose} 
+            onClick={handleClose}
           >
             Send
           </Button>
         </DialogActions>
       </Dialog>
     </>
-   );
-  }
+  );
+}
 
 
 // export default QuotationForm;
