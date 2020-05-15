@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
-import { Button } from "@material-ui/core";
 import axios from 'axios';
-import '../../styles/Company.css';
+import React, { Component } from 'react';
+import { buildStyles, CircularProgressbarWithChildren  } from 'react-circular-progressbar';
+
+import { Button } from "@material-ui/core";
 import { Rating } from '@material-ui/lab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
@@ -11,9 +12,6 @@ import InfoTwoToneIcon from '@material-ui/icons/InfoTwoTone';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-// import ButtonBase from '@material-ui/core/ButtonBase';
-import { buildStyles, CircularProgressbarWithChildren  } from 'react-circular-progressbar';
-import 'react-circular-progressbar/dist/styles.css';
 import Divider from '@material-ui/core/Divider';
 import AddIcon from '@material-ui/icons/Add';
 import Fab from '@material-ui/core/Fab';
@@ -21,6 +19,8 @@ import Tooltip from '@material-ui/core/Tooltip';
 import Link from '@material-ui/core/Link';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 
+import 'react-circular-progressbar/dist/styles.css';
+import '../../styles/Company.css';
 
 class Company extends Component {
   constructor(props) {
@@ -38,7 +38,6 @@ class Company extends Component {
     
     Promise.all([companyDeets, companyReviews])
       .then((all) => {
-      // console.log(all);
         this.setState(prev => ({
           ...prev,
           company: all[0].data.company,
@@ -124,7 +123,6 @@ class Company extends Component {
   }
 
   renderDashboard() {
-    // console.log(this.props.match.params.id)
     return (
       <>
         <Container className="dashboard-section">
@@ -228,57 +226,57 @@ class Company extends Component {
     return (
       <>
        <div>
-        <Container maxWidth="md"  className="back-btn">
-          <Grid container style={{ color: '#D35400' }} direction='row' justify='flex-start' alignItems="center">
-            <Button 
-            style={{ color: '#D35400'}} 
-            component="button" 
-            onClick={this.props.history.goBack} 
-            startIcon={<NavigateBeforeIcon />}
-            >
+         <Container maxWidth="md"  className="back-btn">
+           <Grid container style={{ color: '#D35400' }} direction='row' justify='flex-start' alignItems="center">
+             <Button
+               style={{ color: '#D35400'}}
+               component="button"
+               onClick={this.props.history.goBack}
+               startIcon={<NavigateBeforeIcon />}
+             >
             Back to Search Results
-            </Button>
-          </Grid>
-        </Container>
-        <Container maxWidth="md" >
-          <Paper xs={12} elevation={4} m={10} className="page-container">
-            <Container maxWidth="md">
-              {this.renderDetails()}
-            </Container>
+             </Button>
+           </Grid>
+         </Container>
+         <Container maxWidth="md" >
+           <Paper xs={12} elevation={4} m={10} className="page-container">
+             <Container maxWidth="md">
+               {this.renderDetails()}
+             </Container>
 
-            <Divider variant="middle" />
+             <Divider variant="middle" />
 
-            <Container maxWidth="md">
-              {this.renderDashboard()}
-            </Container>
+             <Container maxWidth="md">
+               {this.renderDashboard()}
+             </Container>
 
-            <Link href={`/review/${this.props.match.params.id}/new`} className="add-review" style={{ textDecoration: 'none'}}>
-              <Grid container direction='row' justify='flex-end' alignItems="center" >
-                <Typography style={{ color: '#D35400', marginRight: '10px', marginBottom: '10px' , fontWeight: 'bold'}} className="add-review" variant="body1">
+             <Link href={`/review/${this.props.match.params.id}/new`} className="add-review" style={{ textDecoration: 'none'}}>
+               <Grid container direction='row' justify='flex-end' alignItems="center" >
+                 <Typography style={{ color: '#D35400', marginRight: '10px', marginBottom: '10px' , fontWeight: 'bold'}} className="add-review" variant="body1">
                     Add Review
-                </Typography>
-                <Tooltip style={{ color: '#D35400', marginRight: '30px', marginBottom: '15px' }} title="Add" aria-label="add" >
-                  <Fab  size="small" className="add-btn">
-                    <AddIcon/>
-                  </Fab>
-                </Tooltip>
-              </Grid>
-            </Link>
+                 </Typography>
+                 <Tooltip style={{ color: '#D35400', marginRight: '30px', marginBottom: '15px' }} title="Add" aria-label="add" >
+                   <Fab  size="small" className="add-btn">
+                     <AddIcon/>
+                   </Fab>
+                 </Tooltip>
+               </Grid>
+             </Link>
 
-            <Divider variant="middle" />
+             <Divider variant="middle" />
 
-            <Container maxWidth="md">
-              <Container className="reviews-section">
-                <Typography  className="reviews" variant="h5">
+             <Container maxWidth="md">
+               <Container className="reviews-section">
+                 <Typography  className="reviews" variant="h5">
                   Customer Reviews
-                </Typography>
-              </Container>
-              <Grid item >
-                {this.renderReviewData()}
-              </Grid>
-            </Container>
-          </Paper>
-        </Container>
+                 </Typography>
+               </Container>
+               <Grid item >
+                 {this.renderReviewData()}
+               </Grid>
+             </Container>
+           </Paper>
+         </Container>
        </div>
       </>
     );

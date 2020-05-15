@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
+import { Rating } from '@material-ui/lab';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -8,8 +9,6 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
-import { Rating } from '@material-ui/lab';
-
 
 const useStyles = makeStyles({
   root: {
@@ -29,7 +28,7 @@ export default function SearchResultItem(props) {
   
   //Get the avg rating for each company before rendering the card in search results - Brad
   const companyRating = () => {
-   const companyReview = axios.get(`/api/review?company_id=${props.id}`);
+    const companyReview = axios.get(`/api/review?company_id=${props.id}`);
     Promise.all([companyReview])
       .then((all) => {
         setState(prev => ({
@@ -37,11 +36,11 @@ export default function SearchResultItem(props) {
           review: all[0].data.total_avg
         }));
       });
-  }
+  };
 
   if (state.review === 0) {
-   companyRating()
-  };
+    companyRating();
+  }
   
   //this is needed to do the redirect onClick() for each card in the return below - Brad
   const link = `/company/${props.id}`;

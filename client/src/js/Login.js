@@ -1,10 +1,11 @@
 /* eslint-disable camelcase */
 import React from 'react';
 import axios from "axios";
+import Cookies from 'universal-cookie';
+
+import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import { makeStyles } from '@material-ui/core/styles';
-import Cookies from 'universal-cookie';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,8 +21,6 @@ export default function ReviewForm(props) {
   const cookies = new Cookies();
   const [inputEmail, setInputEmail] = React.useState("");
   const [inputPassword, setInputPassword] = React.useState("");
-
-
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -40,31 +39,15 @@ export default function ReviewForm(props) {
           console.log("Login bad");
         }
       });
-    
-    // axios.post("/api/review",null, {params: {
-    //   user_id: 1,
-    //   company_id: 1,
-    //   cleanliness: scoreCleanliness,
-    //   reliability: scoreReliability,
-    //   value: scoreValue,
-    //   workmanship: scoreWorkmanship,
-    //   comment: commentText,
-    // }}).then((response) => {
-    //   console.log(response.data.new_review);
-    //   axios.post("/api/photo", null, {params: {
-    //     review_id: response.data.new_review.id,
-    //     photo_url: photoLink
-    //   }}).then(((response) => {
-    //     console.log(response);
-    //   }));
-    // });
-
   };
 
   return (
     <div>
       <form className={classes.root} noValidate autoComplete="off">
-        <h1>Login</h1>
+        <h1>
+          Login
+        </h1>
+
         <div>
           <TextField
             id="outlined-static"
@@ -76,6 +59,7 @@ export default function ReviewForm(props) {
             }}
           />
         </div>
+
         <div>
           <TextField
             id="outlined-static"
@@ -87,8 +71,8 @@ export default function ReviewForm(props) {
             }}
           />
         </div>
-        <div>
 
+        <div>
           <Button
             style={{
               marginTop: '40px',

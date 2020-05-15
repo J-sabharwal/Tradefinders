@@ -1,16 +1,16 @@
 import React, { useEffect } from "react";
+import axios from "axios";
 import Cookies from 'universal-cookie';
-import Axios from "axios";
+
 import { makeStyles } from "@material-ui/core/styles";
+import { grey } from "@material-ui/core/colors";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
-// import MenuIcon from "@material-ui/icons/Menu";
 
 import logo from "../images/tradefinder_logo.png";
-import { grey } from "@material-ui/core/colors";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,7 +32,7 @@ export default function NavBar(props) {
     let userEmail = cookies.get('userEmail');
     console.log(userEmail);
     if (userEmail) {
-      Axios.get(`/api/user?email=${userEmail}`)
+      axios.get(`/api/user?email=${userEmail}`)
         .then((res) => {
           console.log(res);
           console.log(res.data.users[0]);

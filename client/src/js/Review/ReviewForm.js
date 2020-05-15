@@ -1,10 +1,11 @@
 /* eslint-disable camelcase */
 import React from 'react';
 import axios from "axios";
+
+import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
-import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
@@ -67,7 +68,7 @@ export default function ReviewForm(props) {
     //TODO Currently user_id and company_id are hard coded.
     //     Later, I will need to get the user_id from the cookie, and company_id from the url.
     //     But we need to setup the routes again later. Currently it's still a bit of a mess.
-
+    //     Update: do this after refactor
     
     axios.post("/api/review",null, {params: {
       user_id: 1,
@@ -92,59 +93,59 @@ export default function ReviewForm(props) {
   return (
     <div>
       <Container maxWidth="md"  className="back-btn">
-        <Grid 
-          container 
-          style={{ color: '#D35400' }} 
-          direction='row' 
-          justify='flex-start' 
+        <Grid
+          container
+          style={{ color: '#D35400' }}
+          direction='row'
+          justify='flex-start'
           alignItems="center"
         >
-          <Button 
-          style={{ color: '#D35400'}} 
-          component="button" 
-          onClick={props.history.goBack} 
-          startIcon={<NavigateBeforeIcon />}
+          <Button
+            style={{ color: '#D35400'}}
+            component="button"
+            onClick={props.history.goBack}
+            startIcon={<NavigateBeforeIcon />}
           >
           Back to Company Profile
           </Button>
         </Grid>
       </Container>
       <Container className="dashboard-section">
-        <Typography  
+        <Typography
           style={{marginBottom: '20px'}}
-          className="reviews" 
+          className="reviews"
           variant="h5"
         >
           Give your feedback
         </Typography>
       </Container>
       <Container maxWidth="md" >
-        <Paper 
-          xs={12} 
-          elevation={7} 
-          m={10} 
+        <Paper
+          xs={12}
+          elevation={7}
+          m={10}
           className="review-container"
         >
-          <form 
-            className={classes.root} 
-            noValidate 
+          <form
+            className={classes.root}
+            noValidate
             autoComplete="off"
           >
-            <Grid 
-              container 
-              item 
-              xs={12} 
-              direction="row" 
-              alignItems="center" 
+            <Grid
+              container
+              item
+              xs={12}
+              direction="row"
+              alignItems="center"
               justify="center"
             >
-              <Grid 
-                container 
-                item 
-                xs={6} 
-                direction="row" 
-                alignItems="center" 
-                justify="center" 
+              <Grid
+                container
+                item
+                xs={6}
+                direction="row"
+                alignItems="center"
+                justify="center"
               >
                 <TextField
                   style={{marginTop: '50px'}}
@@ -159,8 +160,8 @@ export default function ReviewForm(props) {
                   variant="outlined"
                 >
                   {scores.map((option) => (
-                    <MenuItem 
-                      key={option.value} 
+                    <MenuItem
+                      key={option.value}
                       value={option.value}
                     >
                       {option.label}
@@ -169,12 +170,12 @@ export default function ReviewForm(props) {
                 </TextField>
               </Grid>
 
-              <Grid 
-                container 
-                item 
-                xs={6} 
-                direction="row" 
-                alignItems="center" 
+              <Grid
+                container
+                item
+                xs={6}
+                direction="row"
+                alignItems="center"
                 justify="center"
               >
                 <TextField
@@ -190,8 +191,8 @@ export default function ReviewForm(props) {
                   variant="outlined"
                 >
                   {scores.map((option) => (
-                    <MenuItem 
-                      key={option.value} 
+                    <MenuItem
+                      key={option.value}
                       value={option.value}
                     >
                       {option.label}
@@ -200,13 +201,13 @@ export default function ReviewForm(props) {
                 </TextField>
               </Grid>
 
-              <Grid 
-                container 
-                item 
-                xs={6} 
-                direction="row" 
-                alignItems="center" 
-                justify="center" 
+              <Grid
+                container
+                item
+                xs={6}
+                direction="row"
+                alignItems="center"
+                justify="center"
               >
                 <TextField
                   id="outlined-select-score"
@@ -220,8 +221,8 @@ export default function ReviewForm(props) {
                   variant="outlined"
                 >
                   {scores.map((option) => (
-                    <MenuItem 
-                      key={option.value} 
+                    <MenuItem
+                      key={option.value}
                       value={option.value}
                     >
                       {option.label}
@@ -230,13 +231,13 @@ export default function ReviewForm(props) {
                 </TextField>
               </Grid>
 
-              <Grid 
-                container 
-                item 
-                xs={6} 
-                direction="row" 
-                alignItems="center" 
-                justify="center" 
+              <Grid
+                container
+                item
+                xs={6}
+                direction="row"
+                alignItems="center"
+                justify="center"
               >
                 <TextField
                   id="outlined-select-score"
@@ -250,8 +251,8 @@ export default function ReviewForm(props) {
                   variant="outlined"
                 >
                   {scores.map((option) => (
-                    <MenuItem 
-                      key={option.value} 
+                    <MenuItem
+                      key={option.value}
                       value={option.value}
                     >
                       {option.label}
@@ -269,7 +270,7 @@ export default function ReviewForm(props) {
                   style={{
                     width: "75%",
                     marginLeft: 50,
-                    marginRight: 50 
+                    marginRight: 50
                   }}
                   id="outlined-full-width"
                   label="Attach Photo"
@@ -285,11 +286,11 @@ export default function ReviewForm(props) {
 
             <div>
               <Grid container item xs={12} direction="row" alignItems="center" justify="center" >
-                <TextField 
+                <TextField
                   style={{
                     width: "75%",
                     marginLeft: 50,
-                    marginRight: 50 
+                    marginRight: 50
                   }}
                   id="outlined-multiline-static"
                   label="Leave a Review"
@@ -304,19 +305,19 @@ export default function ReviewForm(props) {
               </Grid>
               {/* <RaisedButton type="submit" label="login" className="button-submit" primary={true} /> */}
             </div>
-            <Grid 
-              container 
-              item 
-              xs={12} 
-              direction="row" 
-              alignItems="center" 
-              justify="center" 
+            <Grid
+              container
+              item
+              xs={12}
+              direction="row"
+              alignItems="center"
+              justify="center"
             >
               <Button
                 style={{
                   marginBottom: '100px',
-                  color: 'white', 
-                  backgroundColor: '#707B7C', 
+                  color: 'white',
+                  backgroundColor: '#707B7C',
                   paddingLeft: '35%',
                   paddingRight: '35%',
                 }}

@@ -2,7 +2,6 @@ import React from "react";
 
 import SearchResults from './SearchResults';
 
-
 // Logic for Search results message should go here, and then is rendered in return below. For now I just have message which will always show both fields. - Brad.
 
 export default function ResultsPage(props) {
@@ -14,15 +13,12 @@ export default function ResultsPage(props) {
   let resultMessage = "";
   if (trade !== "" && location !== "") {
     resultMessage = `Search results for ${trade} in ${location}:`;
-  }
-  else if (trade !== "") {
-    resultMessage = `Search results for ${trade} in all locations:`
-  }
-  else if (location !== "") {
-    resultMessage = `Search results for all companies in ${location}:`
-  }
-  else {
-    resultMessage = "Search Results for all companies in all locations:"
+  } else if (trade !== "") {
+    resultMessage = `Search results for ${trade} in all locations:`;
+  } else if (location !== "") {
+    resultMessage = `Search results for all companies in ${location}:`;
+  } else {
+    resultMessage = "Search Results for all companies in all locations:";
   }
 
   return (
