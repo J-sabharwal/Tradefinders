@@ -28,7 +28,12 @@ export default function ViewSelector(props) {
 
       <Route className="review-form"
         exact path='/review/:company_id/new'
-        component={ReviewForm}
+        component={(props) =>
+          <ReviewForm
+            {...props}
+            currentUser={currentUser}
+          />
+        }
       />
       
       <Route exact path="/"
@@ -46,7 +51,8 @@ export default function ViewSelector(props) {
           <Login
             currentUser={currentUser}
             setCurrentUser={setCurrentUser}
-          />}
+          />
+        }
       />
 
       <Footer />

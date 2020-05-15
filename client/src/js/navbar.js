@@ -44,7 +44,8 @@ export default function NavBar(props) {
 
   const logout = () => {
     props.setCurrentUser(undefined);
-    cookies.remove('userID');
+    cookies.remove('userID', { path: '/' });
+    console.log(cookies.get('userID'));
     console.log("Logout Success");
   };
 
