@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 
 import "../styles/App.css";
 import NavBar from './navbar';
@@ -10,12 +10,12 @@ export default function App() {
   const [currentUser, setCurrentUser] = useState(undefined);
 
   return (
-    <div className="background">
+    <div className="background" style={{ minHeight: "100vh" }}>
       <NavBar
         currentUser={currentUser}
         setCurrentUser={setCurrentUser}
       />
-      <ViewSelector
+      <ViewSelector className="App"
         currentUser={currentUser}
         setCurrentUser={setCurrentUser}
       />

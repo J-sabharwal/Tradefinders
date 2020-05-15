@@ -35,7 +35,7 @@ export default function SearchBar(props) {
         style={{
           display: "flex",
           justifyContent: "center",
-          alignItems: "center",
+            alignItems: "center",
           paddingBottom: "20px",
         }}
       >
@@ -87,8 +87,7 @@ export default function SearchBar(props) {
             location: state.location,
           }} />
         )}
-
-      </div>
+        </div>
     </>
   );
 }

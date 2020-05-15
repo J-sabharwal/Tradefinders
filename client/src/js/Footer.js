@@ -44,7 +44,7 @@ export default function footer() {
 
   return (
     <div className={classes.root}>
-      <AppBar style={{ backgroundColor: grey[600] }} position="static">
+      <AppBar style={{ backgroundColor: grey[600] }} position="bottom">
         <Toolbar>
             <img height="50px" alt="" src={logo} />
           <IconButton

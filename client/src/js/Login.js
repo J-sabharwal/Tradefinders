@@ -2,7 +2,6 @@
 import React from 'react';
 import axios from "axios";
 import TextField from '@material-ui/core/TextField';
-import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import Cookies from 'universal-cookie';
