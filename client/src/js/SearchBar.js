@@ -30,14 +30,19 @@ export default function SearchBar(props) {
 
   return (
     <>
-      <img alt="" className="home-pic" src={handymen} />
+      <div style={{
+        display: "flex",
+        justifyContent: "center",
+        paddingBottom: "20px",
+         }}>
+        <img alt="" id="home-pic" src={handymen} />
+      </div>
       <div
         style={{
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-            // minHeight: "100%",
-          // paddingBottom: "115px",
+          paddingBottom: "20px",
         }}
       >
         <FormControl style={{ width: "25vw" }} className={classes.formControl}>
@@ -76,7 +81,7 @@ export default function SearchBar(props) {
           <FormHelperText>Choose your location</FormHelperText>
         </FormControl>
 
-        <Button style={{ color: 'white', backgroundColor: '#707B7C ' }}variant="contained" onClick={Search}>
+        <Button style={{ color: 'white', backgroundColor: '#707B7C' }}variant="contained" onClick={Search}>
           Search
         </Button>
 
