@@ -5,6 +5,12 @@ import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
+import Divider from '@material-ui/core/Divider';
+import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
+import Typography from '@material-ui/core/Typography';
 
 
 // Kevin  - I should probably move those styles somewhere else. No idea where yet.
@@ -45,7 +51,7 @@ const scores = [
   }
 ];
 
-export default function ReviewForm() {
+export default function ReviewForm(props) {
   const classes = useStyles();
   const [scoreCleanliness, setScoreCleanliness] = React.useState(0);
   const [scoreReliability, setScoreReliability] = React.useState(0);
@@ -85,119 +91,245 @@ export default function ReviewForm() {
 
   return (
     <div>
-      <form className={classes.root} noValidate autoComplete="off">
-        <TextField
-          id="outlined-select-score"
-          select
-          label="Cleanliness"
-          value={scoreCleanliness}
-          onChange={(event) => {
-            setScoreCleanliness(event.target.value);
-          }}
-          helperText="Did they clean up after themselves?"
-          variant="outlined"
+      <Container maxWidth="md"  className="back-btn">
+        <Grid 
+          container 
+          style={{ color: '#D35400' }} 
+          direction='row' 
+          justify='flex-start' 
+          alignItems="center"
         >
-          {scores.map((option) => (
-            <MenuItem key={option.value} value={option.value}>
-              {option.label}
-            </MenuItem>
-          ))}
-        </TextField>
-
-        <TextField
-          id="outlined-select-score"
-          select
-          label="Reliability"
-          value={scoreReliability}
-          onChange={(event) => {
-            setScoreReliability(event.target.value);
-          }}
-          helperText="Can you rely on them to do a good job?"
-          variant="outlined"
-        >
-          {scores.map((option) => (
-            <MenuItem key={option.value} value={option.value}>
-              {option.label}
-            </MenuItem>
-          ))}
-        </TextField>
-
-        <TextField
-          id="outlined-select-score"
-          select
-          label="Value"
-          value={scoreValue}
-          onChange={(event) => {
-            setScoreValue(event.target.value);
-          }}
-          helperText="How is the value?"
-          variant="outlined"
-        >
-          {scores.map((option) => (
-            <MenuItem key={option.value} value={option.value}>
-              {option.label}
-            </MenuItem>
-          ))}
-        </TextField>
-
-        <TextField
-          id="outlined-select-score"
-          select
-          label="Workmanship"
-          value={scoreWorkmanship}
-          onChange={(event) => {
-            setScoreWorkmanship(event.target.value);
-          }}
-          helperText="How is the quality of the work?"
-          variant="outlined"
-        >
-          {scores.map((option) => (
-            <MenuItem key={option.value} value={option.value}>
-              {option.label}
-            </MenuItem>
-          ))}
-        </TextField>
-        <div>
-          <TextField
-            id="outlined-static"
-            label="Attached Photo"
-            placeholder="Please attach a link for a photo."
-            variant="outlined"
-            onChange={(event) => {
-              setPhotoLink(event.target.value);
-            }}
-          />
-        </div>
-        <div>
-          <TextField
-            style={{
-              width: "50%",
-            }}
-            id="outlined-multiline-static"
-            label="Comments"
-            multiline
-            rows={4}
-            placeholder="Please talk about anything you would like others to know."
-            variant="outlined"
-            onChange={(event) => {
-              setCommentText(event.target.value);
-            }}
-          />
-
-          {/* <RaisedButton type="submit" label="login" className="button-submit" primary={true} /> */}
-          <Button
-            style={{
-              marginTop: '40px',
-            }}
-            variant="contained"
-            color="secondary"
-            type="submit"
-            onClick={handleSubmit}
+          <Button 
+          style={{ color: '#D35400'}} 
+          component="button" 
+          onClick={props.history.goBack} 
+          startIcon={<NavigateBeforeIcon />}
           >
-            Submit
+          Back to Company Profile
           </Button>
-        </div>
-      </form>
+        </Grid>
+      </Container>
+      <Container className="dashboard-section">
+        <Typography  
+          style={{marginBottom: '20px'}}
+          className="reviews" 
+          variant="h5"
+        >
+          Give your feedback
+        </Typography>
+      </Container>
+      <Container maxWidth="md" >
+        <Paper 
+          xs={12} 
+          elevation={7} 
+          m={10} 
+          className="review-container"
+        >
+          <form 
+            className={classes.root} 
+            noValidate 
+            autoComplete="off"
+          >
+            <Grid 
+              container 
+              item 
+              xs={12} 
+              direction="row" 
+              alignItems="center" 
+              justify="center"
+            >
+              <Grid 
+                container 
+                item 
+                xs={6} 
+                direction="row" 
+                alignItems="center" 
+                justify="center" 
+              >
+                <TextField
+                  style={{marginTop: '50px'}}
+                  id="outlined-select-score"
+                  select
+                  label="Cleanliness"
+                  value={scoreCleanliness}
+                  onChange={(event) => {
+                    setScoreCleanliness(event.target.value);
+                  }}
+                  helperText="How much effort did they make to keep tidy?"
+                  variant="outlined"
+                >
+                  {scores.map((option) => (
+                    <MenuItem 
+                      key={option.value} 
+                      value={option.value}
+                    >
+                      {option.label}
+                    </MenuItem>
+                  ))}
+                </TextField>
+              </Grid>
+
+              <Grid 
+                container 
+                item 
+                xs={6} 
+                direction="row" 
+                alignItems="center" 
+                justify="center"
+              >
+                <TextField
+                  style={{marginTop: '50px'}}
+                  id="outlined-select-score"
+                  select
+                  label="Reliability"
+                  value={scoreReliability}
+                  onChange={(event) => {
+                    setScoreReliability(event.target.value);
+                  }}
+                  helperText="How reliable were they?"
+                  variant="outlined"
+                >
+                  {scores.map((option) => (
+                    <MenuItem 
+                      key={option.value} 
+                      value={option.value}
+                    >
+                      {option.label}
+                    </MenuItem>
+                  ))}
+                </TextField>
+              </Grid>
+
+              <Grid 
+                container 
+                item 
+                xs={6} 
+                direction="row" 
+                alignItems="center" 
+                justify="center" 
+              >
+                <TextField
+                  id="outlined-select-score"
+                  select
+                  label="Value"
+                  value={scoreValue}
+                  onChange={(event) => {
+                    setScoreValue(event.target.value);
+                  }}
+                  helperText="How would you rate the value for money?"
+                  variant="outlined"
+                >
+                  {scores.map((option) => (
+                    <MenuItem 
+                      key={option.value} 
+                      value={option.value}
+                    >
+                      {option.label}
+                    </MenuItem>
+                  ))}
+                </TextField>
+              </Grid>
+
+              <Grid 
+                container 
+                item 
+                xs={6} 
+                direction="row" 
+                alignItems="center" 
+                justify="center" 
+              >
+                <TextField
+                  id="outlined-select-score"
+                  select
+                  label="Workmanship"
+                  value={scoreWorkmanship}
+                  onChange={(event) => {
+                    setScoreWorkmanship(event.target.value);
+                  }}
+                  helperText="How was the quality of work?"
+                  variant="outlined"
+                >
+                  {scores.map((option) => (
+                    <MenuItem 
+                      key={option.value} 
+                      value={option.value}
+                    >
+                      {option.label}
+                    </MenuItem>
+                  ))}
+                </TextField>
+              </Grid>
+            </Grid>
+
+            <Divider variant="middle" />
+            
+            <div>
+              <Grid container item xs={12} direction="row" alignItems="center" justify="center" >
+                <TextField
+                  style={{
+                    width: "75%",
+                    marginLeft: 50,
+                    marginRight: 50 
+                  }}
+                  id="outlined-full-width"
+                  label="Attach Photo"
+                  fullWidth
+                  placeholder="Please attach a link for a photo."
+                  variant="outlined"
+                  onChange={(event) => {
+                    setPhotoLink(event.target.value);
+                  }}
+                />
+              </Grid>
+            </div>
+
+            <div>
+              <Grid container item xs={12} direction="row" alignItems="center" justify="center" >
+                <TextField 
+                  style={{
+                    width: "75%",
+                    marginLeft: 50,
+                    marginRight: 50 
+                  }}
+                  id="outlined-multiline-static"
+                  label="Leave a Review"
+                  multiline
+                  rows={4}
+                  placeholder="Please talk about anything you would like others to know."
+                  variant="outlined"
+                  onChange={(event) => {
+                    setCommentText(event.target.value);
+                  }}
+                />
+              </Grid>
+              {/* <RaisedButton type="submit" label="login" className="button-submit" primary={true} /> */}
+            </div>
+            <Grid 
+              container 
+              item 
+              xs={12} 
+              direction="row" 
+              alignItems="center" 
+              justify="center" 
+            >
+              <Button
+                style={{
+                  marginBottom: '100px',
+                  color: 'white', 
+                  backgroundColor: '#707B7C', 
+                  paddingLeft: '35%',
+                  paddingRight: '35%',
+                }}
+                variant="contained"
+                type="submit"
+                onClick={handleSubmit}
+              >
+                Submit
+              </Button>
+            </Grid>
+          </form>
+        </Paper>
+      </Container>
     </div>
   );
 }

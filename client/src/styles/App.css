@@ -36,8 +36,8 @@
   }
 }
 
-.background {
-  height: fit-content;
+body {
+  height: 100%;
   background-color: #c3c3c93b;
   background-image: url("https://www.transparenttextures.com/patterns/egg-shell.png");
 }
