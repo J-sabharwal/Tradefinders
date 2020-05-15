@@ -30,7 +30,7 @@ export default function NavBar(props) {
 
   useEffect(()=>{
     let userEmail = cookies.get('userEmail');
-    console.log(userEmail);
+    // console.log(userEmail);
     if (userEmail) {
       axios.get(`/api/user?email=${userEmail}`)
         .then((res) => {
