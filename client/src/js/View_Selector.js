@@ -1,19 +1,26 @@
-import React from "react";
+import React, {useState} from "react";
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
+import NavBar from './navbar';
 import CompanyDetails from "./Company/CompanyDetails";
 import ReviewForm from './Review/ReviewForm';
 import SearchBar from './SearchBar';
 import ResultsPage from './Results/ResultsPage';
 import Login from './Login';
+import Footer from './Footer';
 
 
 export default function ViewSelector(props) {
+  const [currentUser, setCurrentUser] = useState(undefined);
 
   return (
 
     <Router>
+      <NavBar
+        currentUser={currentUser}
+        setCurrentUser={setCurrentUser}
+      />
 
       <Route className="company-details"
         exact path="/company/:id"
@@ -38,11 +45,13 @@ export default function ViewSelector(props) {
         exact path="/login"
         component={() =>
           <Login
-            currentUser={props.currentUser}
-            setCurrentUser={props.setCurrentUser}
+            currentUser={currentUser}
+            setCurrentUser={setCurrentUser}
           />
-        } >
+        }>
       </Route>
+
+      <Footer />
 
     </Router>
   
