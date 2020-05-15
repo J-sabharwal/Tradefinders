@@ -95,12 +95,12 @@ export default function ReviewForm(props) {
         params: {
           review_id: response.data.new_review.id,
           photo_url: photoLink
-      }}).then(((response) => {
+        }}).then(((response) => {
         // console.log(response);
         setState({
           ...state,
           goBackToCompanyPage: true,
-        })
+        });
       }));
     });
   };
@@ -333,7 +333,7 @@ export default function ReviewForm(props) {
                   alignItems="center"
                   justify="center"
                 >
-                  <Button 
+                  <Button
                     style={{
                       marginBottom: '100px',
                       color: 'white',
@@ -343,14 +343,14 @@ export default function ReviewForm(props) {
                     }}
                     variant="contained"
                     type="submit"
-                  onClick={handleSubmit}
+                    onClick={handleSubmit}
                   >
                   Submit
                   </Button>
-                {state.goBackToCompanyPage && (
-                  <Redirect to={ link 
-                  } />
-                )}
+                  {state.goBackToCompanyPage && (
+                    <Redirect to={ link
+                    } />
+                  )}
                 </Grid>
               </form>
             </Paper>
