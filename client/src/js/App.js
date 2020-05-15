@@ -2,6 +2,7 @@ import React, { Component, useState } from "react";
 
 import "../styles/App.css";
 import NavBar from './navbar';
+import Footer from './Footer';
 import ViewSelector from './View_Selector';
 
 
@@ -18,6 +19,7 @@ export default function App() {
         currentUser={currentUser}
         setCurrentUser={setCurrentUser}
       />
+      <Footer />
     </div>
   );
 }
