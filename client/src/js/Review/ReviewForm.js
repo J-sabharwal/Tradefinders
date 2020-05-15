@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import React from 'react';
 import axios from "axios";
-import { useHistory } from 'react-router-dom';
+import { useHistory, Redirect } from 'react-router-dom';
 
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -63,15 +63,15 @@ export default function ReviewForm(props) {
   const [commentText, setCommentText] = React.useState("");
   const [photoLink, setPhotoLink] = React.useState("");
 
-  // const link = `/company/${props.match.params.company_id}`;
+  const link = "/company/" + props.match.params.company_id;
 
-  // const goBack = () => {
-  //   return <Redirect to={link} /> 
-  // }
+  const [state, setState] = React.useState({
+    goBackToCompanyPage: false,
+  });
 
   const handleSubmit = event => {
     event.preventDefault();
-    console.log(photoLink);
+    // console.log(photoLink);
     
 
     //TODO Currently user_id and company_id are hard coded.
@@ -90,13 +90,17 @@ export default function ReviewForm(props) {
         comment: commentText,
       }
     }).then((response) => {
-      console.log(response.data.new_review);
+      // console.log(response.data.new_review);
       axios.post("/api/photo", null, {
         params: {
           review_id: response.data.new_review.id,
           photo_url: photoLink
       }}).then(((response) => {
-        console.log(response);
+        // console.log(response);
+        setState({
+          ...state,
+          goBackToCompanyPage: true,
+        })
       }));
     });
   };
@@ -341,8 +345,12 @@ export default function ReviewForm(props) {
                     type="submit"
                   onClick={handleSubmit}
                   >
-                Submit
+                  Submit
                   </Button>
+                {state.goBackToCompanyPage && (
+                  <Redirect to={ link 
+                  } />
+                )}
                 </Grid>
               </form>
             </Paper>
