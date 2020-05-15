@@ -1,14 +1,13 @@
 import React, {useState} from "react";
-
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import NavBar from './navbar';
+import Footer from './Footer';
 import CompanyDetails from "./Company/CompanyDetails";
 import ReviewForm from './Review/ReviewForm';
 import SearchBar from './SearchBar';
 import ResultsPage from './Results/ResultsPage';
 import Login from './Login';
-import Footer from './Footer';
 
 
 export default function ViewSelector(props) {
@@ -24,22 +23,22 @@ export default function ViewSelector(props) {
 
       <Route className="company-details"
         exact path="/company/:id"
-        component={CompanyDetails} >
-      </Route>
+        component={CompanyDetails}
+      />
 
       <Route className="review-form"
         exact path='/review/:company_id/new'
-        component={ReviewForm} >
-      </Route>
+        component={ReviewForm}
+      />
       
       <Route exact path="/"
-        component={SearchBar} >
-      </Route>
+        component={SearchBar}
+      />
       
       <Route className="search-results"
         exact path="/results"
-        component={ResultsPage} >
-      </Route>
+        component={ResultsPage}
+      />
 
       <Route className="login"
         exact path="/login"
@@ -47,9 +46,8 @@ export default function ViewSelector(props) {
           <Login
             currentUser={currentUser}
             setCurrentUser={setCurrentUser}
-          />
-        }>
-      </Route>
+          />}
+      />
 
       <Footer />
 

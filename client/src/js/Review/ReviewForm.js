@@ -1,10 +1,11 @@
 /* eslint-disable camelcase */
 import React from 'react';
 import axios from "axios";
+
+import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
-import { makeStyles } from '@material-ui/core/styles';
 
 
 // Kevin  - I should probably move those styles somewhere else. No idea where yet.
@@ -61,7 +62,7 @@ export default function ReviewForm() {
     //TODO Currently user_id and company_id are hard coded.
     //     Later, I will need to get the user_id from the cookie, and company_id from the url.
     //     But we need to setup the routes again later. Currently it's still a bit of a mess.
-
+    //     Update: do this after refactor
     
     axios.post("/api/review",null, {params: {
       user_id: 1,
@@ -157,6 +158,7 @@ export default function ReviewForm() {
             </MenuItem>
           ))}
         </TextField>
+
         <div>
           <TextField
             id="outlined-static"
@@ -168,6 +170,7 @@ export default function ReviewForm() {
             }}
           />
         </div>
+
         <div>
           <TextField
             style={{
@@ -184,7 +187,6 @@ export default function ReviewForm() {
             }}
           />
 
-          {/* <RaisedButton type="submit" label="login" className="button-submit" primary={true} /> */}
           <Button
             style={{
               marginTop: '40px',

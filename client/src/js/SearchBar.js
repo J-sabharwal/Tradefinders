@@ -1,17 +1,17 @@
 import React from 'react';
 import { Redirect } from "react-router-dom";
-// import axios from "axios";
+
+import { Button } from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
-import { Button } from "@material-ui/core";
 import NativeSelect from '@material-ui/core/NativeSelect';
 
-import useApplicationData from '../hooks/useApplicationData';
-import handymen from '../images/handymen.jpg';
 import '../styles/SearchBar.css';
+import handymen from '../images/handymen.jpg';
 
+import useApplicationData from '../hooks/useApplicationData';
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
