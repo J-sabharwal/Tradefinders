@@ -1,11 +1,12 @@
 import React from "react";
-import { makeStyles } from '@material-ui/core/styles';
-import IconButton from '@material-ui/core/IconButton';
-import { grey } from "@material-ui/core/colors";
-import logo from '../images/tradefinder_logo.png'
 
+import { makeStyles } from '@material-ui/core/styles';
+import { grey } from "@material-ui/core/colors";
+import IconButton from '@material-ui/core/IconButton';
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
+
+import logo from '../images/tradefinder_logo.png';
 
 const useStyles = makeStyles((theme) => ({
   offset: theme.mixins.toolbar,
@@ -46,14 +47,13 @@ export default function footer() {
     <div className={classes.root}>
       <AppBar style={{ backgroundColor: grey[600] }} position="static">
         <Toolbar>
-            <img height="50px" alt="" src={logo} />
+          <img height="50px" alt="" src={logo} />
           <IconButton
             edge="start"
             className={classes.menuButton}
             color="inherit"
             aria-label="menu"
-          >
-          </IconButton>
+          />
         </Toolbar>
       </AppBar>
     </div>

@@ -9,9 +9,7 @@ export default function useApplicationData(props) {
     goToSearchResults: false,
   });
 
-
-
-  // handleTradeChange, handleLocationChange, and Search are all functions required by SearchBar.js - Brad
+  // Brad - handleTradeChange, handleLocationChange, and Search are all functions required by SearchBar.js
   const handleTradeChange = (event) => {
     const trade = event.target.name;
     if (event.target.value !== "") {
