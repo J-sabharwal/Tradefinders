@@ -36,7 +36,8 @@ export default function SearchBar(props) {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          paddingBottom: "20px",
+            // minHeight: "100%",
+          // paddingBottom: "115px",
         }}
       >
         <FormControl style={{ width: "25vw" }} className={classes.formControl}>
@@ -87,8 +88,10 @@ export default function SearchBar(props) {
             location: state.location,
           }} />
         )}
+        <div>
 
-      </div>
+        </div>
+        </div>
     </>
   );
 }
