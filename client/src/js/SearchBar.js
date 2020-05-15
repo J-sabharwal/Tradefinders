@@ -75,7 +75,7 @@ export default function SearchBar(props) {
           <FormHelperText>Choose your location</FormHelperText>
         </FormControl>
 
-        <Button variant="contained" color="secondary" onClick={Search}>
+        <Button style={{ color: 'white', backgroundColor: '#707B7C ' }}variant="contained" onClick={Search}>
           Search
         </Button>
 
