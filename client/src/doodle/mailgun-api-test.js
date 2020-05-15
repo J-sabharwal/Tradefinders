@@ -14,3 +14,7 @@ const data = {
   subject: 'Hello',
   text: 'Testing some Mailgun awesomeness!'
 };
+
+mg.messages().send(data, function(error, body) {
+  console.log(body);
+});
