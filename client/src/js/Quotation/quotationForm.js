@@ -8,9 +8,13 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import LiveHelpIcon from '@material-ui/icons/LiveHelp';
 
+const mailgun = require("mailgun-js");
+const DOMAIN = process.env.REACT_APP_MAILGUN_DOMAIN;
+const API_KEY = process.env.REACT_APP_MAILGUN_API_KEY;
+
 export default function QuotationForm() {
   const [open, setOpen] = React.useState(false);
-
+  const mg = mailgun({apiKey: API_KEY, domain: DOMAIN});
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -18,6 +22,17 @@ export default function QuotationForm() {
 
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const handleSubmit = () => {
+    const data = {
+      from: `Tradefinder User <name@${DOMAIN}>`,
+      to: `recepiant@gmail.com`,
+      subject: `Hello`,
+      text: `Testing some Mailgun awesomeness!`,
+    };
+
+    // Add Art or alert or something to show success
   };
 
   
@@ -97,8 +112,6 @@ export default function QuotationForm() {
             type="email"
             fullWidth
           />
-          
-          
           <TextField
             style={{
               marginBottom: 20,
@@ -137,7 +150,7 @@ export default function QuotationForm() {
               color: '#D35400',
             }}
             component="button"
-            onClick={handleClose}
+            onClick={handleSubmit}
           >
             Send
           </Button>
