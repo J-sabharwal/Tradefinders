@@ -63,34 +63,45 @@ export default function ReviewForm(props) {
   const [commentText, setCommentText] = React.useState("");
   const [photoLink, setPhotoLink] = React.useState("");
 
+  // const link = `/company/${props.match.params.company_id}`;
+
+  // const goBack = () => {
+  //   return <Redirect to={link} /> 
+  // }
+
   const handleSubmit = event => {
     event.preventDefault();
     console.log(photoLink);
+    
 
     //TODO Currently user_id and company_id are hard coded.
     //     Later, I will need to get the user_id from the cookie, and company_id from the url.
     //     But we need to setup the routes again later. Currently it's still a bit of a mess.
     //     Update: do this after refactor
     
-    axios.post("/api/review",null, {params: {
-      user_id: props.currentUser.id,
-      company_id: props.match.params.company_id,
-      cleanliness: scoreCleanliness,
-      reliability: scoreReliability,
-      value: scoreValue,
-      workmanship: scoreWorkmanship,
-      comment: commentText,
-    }}).then((response) => {
+    axios.post("/api/review", null, {
+      params: {
+        user_id: props.currentUser.id,
+        company_id: props.match.params.company_id,
+        cleanliness: scoreCleanliness,
+        reliability: scoreReliability,
+        value: scoreValue,
+        workmanship: scoreWorkmanship,
+        comment: commentText,
+      }
+    }).then((response) => {
       console.log(response.data.new_review);
-      axios.post("/api/photo", null, {params: {
-        review_id: response.data.new_review.id,
-        photo_url: photoLink
+      axios.post("/api/photo", null, {
+        params: {
+          review_id: response.data.new_review.id,
+          photo_url: photoLink
       }}).then(((response) => {
         console.log(response);
       }));
     });
-
   };
+
+  
 
   return (
     <div>
@@ -318,7 +329,7 @@ export default function ReviewForm(props) {
                   alignItems="center"
                   justify="center"
                 >
-                  <Button
+                  <Button 
                     style={{
                       marginBottom: '100px',
                       color: 'white',
@@ -328,7 +339,7 @@ export default function ReviewForm(props) {
                     }}
                     variant="contained"
                     type="submit"
-                    onClick={handleSubmit}
+                  onClick={handleSubmit}
                   >
                 Submit
                   </Button>
