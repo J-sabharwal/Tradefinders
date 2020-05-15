@@ -96,30 +96,28 @@ class Company extends Component {
   renderReviewData() {
     return this.state.review.reviews && this.state.review.reviews.map(rev => {
       return (
-        <>
-          <div key={rev.id} className="review">
-            <Paper xs={12} elevation={2} m={5} key={rev.id} className="avg-review-comment" >
-              <Grid container mt={10} spacing={2} direction='row' justify='flex-start'>
-                <Grid item>
-                  <img className="review-img" alt="Review" src={rev.photo_url} />
-                </Grid>
-
-                <Grid container item xs={12} sm={true}>
-                  <Grid container className="review-comment" spacing={2} item direction-xs="column" xs={10}>
-                    <Typography variant="body2" gutterBottom>{rev.comment}</Typography>
-                  </Grid>
-                  <Grid container item xs={2} direction='row' justify='flex-end'>
-                    <img style={{ borderRadius: "20px", height: "40px", marginTop: "8px" }} alt="user-avatar" className="avatar" src={rev.user_avatar}/>
-                  </Grid>
-                  <Grid container className="review-comment" spacing={2} item direction-xs="row" alignItems="flex-end">
-                    <Typography className="reviewer" variant="caption" >Posted by {rev.user_name}</Typography>
-                  </Grid>
-                  
-                </Grid>
+        <div key={rev.id} className="review">
+          <Paper xs={12} elevation={2} m={5} key={rev.id} className="avg-review-comment" >
+            <Grid container mt={10} spacing={2} direction='row' justify='flex-start'>
+              <Grid item>
+                <img className="review-img" alt="Review" src={rev.photo_url} />
               </Grid>
-            </Paper>
-          </div>
-        </>
+
+              <Grid container item xs={12} sm={true}>
+                <Grid container className="review-comment" spacing={2} item direction-xs="column" xs={10}>
+                  <Typography variant="body2" gutterBottom>{rev.comment}</Typography>
+                </Grid>
+                <Grid container item xs={2} direction='row' justify='flex-end'>
+                  <img style={{ borderRadius: "20px", height: "40px", marginTop: "8px" }} alt="user-avatar" className="avatar" src={rev.user_avatar}/>
+                </Grid>
+                <Grid container className="review-comment" spacing={2} item direction-xs="row" alignItems="flex-end">
+                  <Typography className="reviewer" variant="caption" >Posted by {rev.user_name}</Typography>
+                </Grid>
+                
+              </Grid>
+            </Grid>
+          </Paper>
+        </div>
       );
     });
   }
