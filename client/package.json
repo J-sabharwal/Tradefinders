@@ -8,6 +8,7 @@
     "@material-ui/lab": "^4.0.0-alpha.52",
     "@material-ui/styles": "^4.9.13",
     "axios": "^0.18.0",
+    "mailgun-js": "^0.22.0",
     "react": "^16.8.6",
     "react-circular-progressbar": "^2.0.3",
     "react-dom": "^16.8.6",
