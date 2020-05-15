@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
 export default function ReviewForm(props) {
   const classes = useStyles();
   const cookies = new Cookies();
+  
   const [inputEmail, setInputEmail] = React.useState("");
   const [inputPassword, setInputPassword] = React.useState("");
 
