@@ -24,7 +24,7 @@ Company.create!({
 
 Company.create!({
   name: "BBB Plumbers",
-  email: "BBBPlums@gmail.com",
+  email: "bbbplumbing8@gmail.com",
   description: "For all your Plumbing needs, available to work on bathrooms, kitchens. But super cheap!",
   phone_number: "623-854-9874",
   trade_type: "Plumbing",

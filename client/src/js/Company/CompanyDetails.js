@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { Component } from 'react';
 import { buildStyles, CircularProgressbarWithChildren  } from 'react-circular-progressbar';
-import CreateDialog from '../Quotation/quotationForm'
+import CreateDialog from '../Quotation/quotationForm';
 
 import { Button } from "@material-ui/core";
 import { Rating } from '@material-ui/lab';
@@ -244,10 +244,12 @@ class Company extends Component {
                {this.renderDetails()}
              </Container>
              <Container maxWidth="md"  className="back-btn">
-           <Grid container style={{ color: '#D35400' }} direction='row' justify='flex-end' alignItems="center">
-             <CreateDialog />
-           </Grid>
-         </Container>
+               <Grid container style={{ color: '#D35400' }} direction='row' justify='flex-end' alignItems="center">
+                 <CreateDialog
+                   company={this.state.company}
+                 />
+               </Grid>
+             </Container>
 
              <Divider variant="middle" />
 
