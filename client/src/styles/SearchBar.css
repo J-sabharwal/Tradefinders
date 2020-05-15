@@ -1,8 +1,10 @@
-.home-pic {
-  width: 100%;
+#home-pic {
+  width: 80%;
+  display: flex;
+  justify-content: center;
 }
 
 .footer {
-  position: fixed;
+  margin-top: 94vh;
   bottom: 0;
 }

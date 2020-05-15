@@ -236,6 +236,26 @@ Review.create!({
   comment: "Great Job",
 })
 
+Review.create!({
+  user_id: 2,
+  company_id: 6,
+  cleanliness: 3,
+  reliability: 4,
+  value: 3,
+  workmanship: 5,
+  comment: "Helped redecorate our living room, looks amazing!",
+})
+
+Review.create!({
+  user_id: 3,
+  company_id: 7,
+  cleanliness: 4,
+  reliability: 3,
+  value: 4,
+  workmanship: 5,
+  comment: "They did a very good job repainting our kitchen.",
+})
+
 Photo.destroy_all
 
 Photo.create!({

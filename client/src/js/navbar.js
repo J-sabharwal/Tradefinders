@@ -29,14 +29,13 @@ export default function NavBar(props) {
   const cookies = new Cookies();
 
   useEffect(()=>{
-    let userEmail = cookies.get('userEmail');
-    // console.log(userEmail);
-    if (userEmail) {
-      axios.get(`/api/user?email=${userEmail}`)
+    let userID = cookies.get('userID');
+    // console.log(userID);
+    if (userID) {
+      axios.get(`/api/user/${userID}`)
         .then((res) => {
-          console.log(res);
-          console.log(res.data.users[0]);
-          props.setCurrentUser(res.data.users[0]);
+          // console.log(res);
+          props.setCurrentUser(res.data.user);
         });
     } else {
       props.setCurrentUser(undefined);
@@ -45,7 +44,9 @@ export default function NavBar(props) {
 
   const logout = () => {
     props.setCurrentUser(undefined);
-    cookies.remove('userEmail');
+    cookies.remove('userID', { path: '/' });
+    // console.log(cookies.get('userID'));
+    // console.log("Logout Success");
   };
 
   const LoginButton = () => {
@@ -81,12 +82,12 @@ export default function NavBar(props) {
             className={classes.menuButton}
             color="inherit"
             aria-label="menu"
-          >
-            {/* <MenuIcon /> */}
-          </IconButton>
+          />
+          
           <Typography variant="h6" className={classes.title}>
             News
           </Typography>
+          
           <LoginButton/>
         </Toolbar>
       </AppBar>
