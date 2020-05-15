@@ -50,7 +50,9 @@ export default function SearchResultItem(props) {
     <>
       <div
         style={{
-          margin: "20px",
+          marginRight: "10px",
+          marginLeft: "10px",
+          marginBottom: "20px"
         }}
       >
         <Card
