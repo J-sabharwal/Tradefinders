@@ -7,6 +7,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import LiveHelpIcon from '@material-ui/icons/LiveHelp';
+import Snackbar from '@material-ui/core/Snackbar';
 
 const mailgun = require("mailgun-js");
 const DOMAIN = process.env.REACT_APP_MAILGUN_DOMAIN;
@@ -31,7 +32,7 @@ export default function QuotationForm(props) {
     const data = {
       from: `Tradefinder User <Tradefinder@${DOMAIN}>`,
       to: `${props.company.email}`,
-      subject: `New Quotation Request from ${currentDetails.name}`,
+      subject: `Quotation Request Form`,
       text: mailText,
     };
 
@@ -47,7 +48,6 @@ export default function QuotationForm(props) {
   };
 
   const generateMailText = () => {
-    //TODO Please format and make this mailText look better when possible.
 
     // let mailText = JSON.stringify(currentDetails);
     let mailText = "";
@@ -225,6 +225,11 @@ export default function QuotationForm(props) {
           >
             Send
           </Button>
+          <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+            <Alert onClose={handleClose} severity="success">
+              Your message has been sent.
+            </Alert>
+          </Snackbar>
         </DialogActions>
       </Dialog>
     </>

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :company
     resources :review
     resources :photo
+    resources :quotation
 
     # This is manually hooking the routes.
     # The ":" on the HTML indicated that everything after this is treated as Parameters
