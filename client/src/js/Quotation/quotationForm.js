@@ -48,10 +48,20 @@ export default function QuotationForm(props) {
   };
 
   const generateMailText = () => {
-    //TODO Please format and make this mailText look better when possible.
 
-    let mailText = JSON.stringify(currentDetails);
+    // let mailText = JSON.stringify(currentDetails);
+    let mailText = "";
 
+    mailText += `Customer Name: ${currentDetails.name}\n`;
+    mailText += `Customer Email: ${currentDetails.email}\n`;
+    mailText += `Customer Contact: ${currentDetails.contact}\n`;
+    mailText += `Customer Location: ${currentDetails.location}\n`;
+    mailText += `Preferred Date: ${currentDetails.date}\n`;
+    mailText += `Subject: ${currentDetails.subject}\n`;
+    mailText += `${currentDetails.message}\n`;
+    
+    // name, contact, location, email, date, subject, message
+    
     return mailText;
   };
   
