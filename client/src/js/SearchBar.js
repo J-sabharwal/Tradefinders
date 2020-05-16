@@ -49,7 +49,6 @@ export default function SearchBar(props) {
           <img src={electrician} className="home-pic" />
           <img src={tradespeople} className="home-pic" />
         </Carousel>
-        {/* <img alt="" id="home-pic" src={handymen} /> */}
       </div>
       <div
         style={{
