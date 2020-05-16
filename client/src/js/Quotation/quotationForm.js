@@ -1,4 +1,6 @@
+/* eslint-disable camelcase */
 import React from 'react';
+import axios from "axios";
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -16,7 +18,6 @@ const API_KEY = process.env.REACT_APP_MAILGUN_API_KEY;
 export default function QuotationForm(props) {
   const [open, setOpen] = React.useState(false);
   const [currentDetails, setCurrentDetails] = React.useState({});
-  const mg = mailgun({apiKey: API_KEY, domain: DOMAIN});
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -29,22 +30,37 @@ export default function QuotationForm(props) {
   const handleSubmit = () => {
     const mailText = generateMailText();
 
-    const data = {
-      from: `Tradefinder User <Tradefinder@${DOMAIN}>`,
-      to: `${props.company.email}`,
-      subject: `Quotation Request Form`,
-      text: mailText,
-    };
+    // const data = {
+    //   from: `Tradefinder User <Tradefinder@${DOMAIN}>`,
+    //   to: `${props.company.email}`,
+    //   subject: `Quotation Request Form`,
+    //   text: mailText,
+    // };
 
-    mg.messages().send(data, function(error, body) {
-      console.log("error:");
-      console.log(error);
-      console.log("body:");
-      console.log(body);
+    // mg.messages().send(data, function(error, body) {
+    //   console.log("error:");
+    //   console.log(error);
+    //   console.log("body:");
+    //   console.log(body);
 
-      //TODO Add Art or alert or a message or something to show success
-      // If error is undefined then it's success.
+    //
+    // });
+    axios.post("/api/quotation", null, {
+      params: {
+        api_key: API_KEY,
+        domain: DOMAIN,
+        sender: "Tradefinder",
+        recipient: props.company.email,
+        subject: `Quotation Request Form - From ${currentDetails.name}`,
+        text: mailText
+      }
+    }).then((response) => {
+      console.log(response);
     });
+    
+    
+    //TODO Add Art or alert or a message or something to show success
+    // If error is undefined then it's success.
   };
 
   const generateMailText = () => {
@@ -52,13 +68,34 @@ export default function QuotationForm(props) {
     // let mailText = JSON.stringify(currentDetails);
     let mailText = "";
 
-    mailText += `Customer Name: ${currentDetails.name}\n`;
-    mailText += `Customer Email: ${currentDetails.email}\n`;
-    mailText += `Customer Contact: ${currentDetails.contact}\n`;
-    mailText += `Customer Location: ${currentDetails.location}\n`;
-    mailText += `Preferred Date: ${currentDetails.date}\n`;
-    mailText += `Subject: ${currentDetails.subject}\n`;
-    mailText += `${currentDetails.message}\n`;
+    if (currentDetails.name) {
+      mailText += `Customer Name: ${currentDetails.name}\n`;
+    }
+    
+    if (currentDetails.email) {
+      mailText += `Customer Email: ${currentDetails.email}\n`;
+    }
+
+    if (currentDetails.contact) {
+      mailText += `Customer Contact: ${currentDetails.contact}\n`;
+    }
+
+    if (currentDetails.location) {
+      mailText += `Customer Location: ${currentDetails.location}\n`;
+    }
+
+    if (currentDetails.date) {
+      mailText += `Preferred Date: ${currentDetails.date}\n`;
+    }
+
+    if (currentDetails.subject) {
+      mailText += `Subject: ${currentDetails.subject}\n`;
+    }
+
+    if (currentDetails.message) {
+      mailText += `Message: \n`;
+      mailText += `${currentDetails.message}\n`;
+    }
     
     // name, contact, location, email, date, subject, message
     
@@ -225,11 +262,11 @@ export default function QuotationForm(props) {
           >
             Send
           </Button>
-          <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+          {/* <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
             <Alert onClose={handleClose} severity="success">
               Your message has been sent.
             </Alert>
-          </Snackbar>
+          </Snackbar> */}
         </DialogActions>
       </Dialog>
     </>
