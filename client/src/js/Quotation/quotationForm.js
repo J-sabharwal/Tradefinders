@@ -31,7 +31,7 @@ export default function QuotationForm(props) {
     const data = {
       from: `Tradefinder User <Tradefinder@${DOMAIN}>`,
       to: `${props.company.email}`,
-      subject: `Quotation Request Form`,
+      subject: `New Quotation Request from ${currentDetails.name}`,
       text: mailText,
     };
 
@@ -49,8 +49,19 @@ export default function QuotationForm(props) {
   const generateMailText = () => {
     //TODO Please format and make this mailText look better when possible.
 
-    let mailText = JSON.stringify(currentDetails);
+    // let mailText = JSON.stringify(currentDetails);
+    let mailText = "";
 
+    mailText += `Customer Name: ${currentDetails.name}\n`;
+    mailText += `Customer Email: ${currentDetails.email}\n`;
+    mailText += `Customer Contact: ${currentDetails.contact}\n`;
+    mailText += `Customer Location: ${currentDetails.location}\n`;
+    mailText += `Preferred Date: ${currentDetails.date}\n`;
+    mailText += `Subject: ${currentDetails.subject}\n`;
+    mailText += `${currentDetails.message}\n`;
+    
+    // name, contact, location, email, date, subject, message
+    
     return mailText;
   };
   
