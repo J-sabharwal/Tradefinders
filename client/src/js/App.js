@@ -19,6 +19,40 @@ export default function App() {
   //   addResponseMessage("Hi! This is Norman! How can I help you today?");
   // }, []);
 
+
+  document.addEventListener("DOMContentLoaded", () => {
+    if (document.querySelector(".chat")) {
+      window.chat = new Chat();
+    }
+  });
+
+
+  axios.post("/api/tokens", null, {
+  }).then(((response) => {
+     Twilio.Chat.Client.create(data.token).then(function (chatClient) {
+       chatClient
+         .getChannelByUniqueName("general")
+         .then(function (channel) {
+           // general channel exists
+         })
+         .catch(function () {
+            chatClient
+              .createChannel({
+                uniqueName: "general",
+                friendlyName: "General Chat Channel",
+              })
+              .then(function (channel) {
+                if (channel.state.status !== "joined") {
+                  channel.join().then(function (channel) {
+                    console.log("Joined General Channel");
+                  });
+                }
+              });
+           // general channel does not exist
+         });
+     });
+  }));
+
   let i = 0;
   const response = [
     "Hi! My name is Norman! How can I help you today?",
