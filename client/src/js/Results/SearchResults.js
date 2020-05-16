@@ -12,7 +12,6 @@ export default function SearchResults(props) {
   return companies.map(company => {
 
     return (
-      <>
           <SearchResultItem
             key={company.id}
             id={company.id}
@@ -20,9 +19,8 @@ export default function SearchResults(props) {
             description={company.description}
             trade={company.trade_type}
             location={company.location}
-            photo={company.photo_url}
+            photo={company.company_photo}
           />
-      </>
     );
   });
 }

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Redirect } from "react-router-dom";
-
 import { Button } from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -30,7 +29,13 @@ export default function SearchBar(props) {
 
   return (
     <>
-      <img alt="" className="home-pic" src={handymen} />
+      <div style={{
+        display: "flex",
+        justifyContent: "center",
+        paddingBottom: "20px",
+         }}>
+        <img alt="" id="home-pic" src={handymen} />
+      </div>
       <div
         style={{
           display: "flex",
@@ -75,7 +80,7 @@ export default function SearchBar(props) {
           <FormHelperText>Choose your location</FormHelperText>
         </FormControl>
 
-        <Button style={{ color: 'white', backgroundColor: '#707B7C ' }}variant="contained" onClick={Search}>
+        <Button style={{ color: 'white', backgroundColor: '#707B7C' }}variant="contained" onClick={Search}>
           Search
         </Button>
 
@@ -87,8 +92,10 @@ export default function SearchBar(props) {
             location: state.location,
           }} />
         )}
+        <div>
 
-      </div>
+        </div>
+        </div>
     </>
   );
 }
