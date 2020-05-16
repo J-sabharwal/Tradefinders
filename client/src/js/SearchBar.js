@@ -9,10 +9,12 @@ import NativeSelect from '@material-ui/core/NativeSelect';
 
 import '../styles/SearchBar.css';
 import handymen from '../images/handymen.jpg';
-import tradespeople from '../images/tradespeople.png'
+import construction from '../images/construction-worker.jpg'
+import electrician from '../images/Electrician.jpg'
+import homereno from '../images/home-renovation.jpg'
 
 import useApplicationData from '../hooks/useApplicationData';
-import Carousel, { Dots } from "@brainhubeu/react-carousel";
+import Carousel from "@brainhubeu/react-carousel";
 import "@brainhubeu/react-carousel/lib/style.css";
 
 const useStyles = makeStyles((theme) => ({
@@ -41,9 +43,9 @@ export default function SearchBar(props) {
       >
         <Carousel autoPlay={3000} animationSpeed={2000} infinite>
           <img src={handymen} className="home-pic" />
-          <img src={tradespeople} className="home-pic" />
-          <img src={handymen} className="home-pic" />
-          <img src={tradespeople} className="home-pic" />
+          <img src={homereno} className="home-pic" />
+          <img src={construction} className="home-pic" />
+          <img src={electrician} className="home-pic" />
         </Carousel>
         {/* <img alt="" id="home-pic" src={handymen} /> */}
       </div>
