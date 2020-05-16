@@ -118,6 +118,7 @@ export default function ReviewForm(props) {
           <TextField
             id="outlined-static"
             label="Password"
+            type="password"
             placeholder=""
             variant="outlined"
             onChange={(event) => {
