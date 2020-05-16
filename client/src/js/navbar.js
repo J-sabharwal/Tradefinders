@@ -10,7 +10,7 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 
-import logo from "../images/tradefinder_logo.png";
+import logo from "../images/new-company-logo.png";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -85,7 +85,7 @@ export default function NavBar(props) {
           />
           
           <Typography variant="h6" className={classes.title}>
-            News
+            {/* News */}
           </Typography>
           
           <LoginButton/>
