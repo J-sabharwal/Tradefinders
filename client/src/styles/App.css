@@ -42,3 +42,26 @@ body {
   background-color: #c3c3c93b;
   background-image: url("https://www.transparenttextures.com/patterns/egg-shell.png");
 }
+
+
+/* Chat app styles */
+
+.rcw-conversation-container > .rcw-header {
+  background-color: #d35400;
+}
+
+ 
+.rcw-message > .rcw-response {
+  /* background-color: black; */
+  color: rgb(0, 0, 0);
+}
+
+.rcw-message-text {
+  background-color: #d35400;
+}
+
+.rcw-launcher {
+  margin-bottom: 75px;
+  margin-right: 25px;
+  background-color: #D35400;
+}
