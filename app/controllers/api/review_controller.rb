@@ -19,6 +19,9 @@ class Api::ReviewController < ApplicationController
       "users.avatar as #{:user_avatar}",
     )
 
+    # Make the newest review show first
+    reviews = reviews.order(created_at: :desc)
+
     cleanliness_avg, reliability_avg, value_avg, workmanship_avg, total_avg = calculate_avg(reviews)
 
     render :json => {
