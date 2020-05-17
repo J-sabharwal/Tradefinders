@@ -1,5 +1,8 @@
 import React from "react";
 
+import axios from 'axios'
+import './chat'
+
 import {
   Widget,
   addResponseMessage,
@@ -14,11 +17,15 @@ import logo from "../images/Norman-Plumber.png";
 
 import "../styles/App.css";
 
+const Twilio = require("twilio");
+const Chat = require('twilio-chat')
+
 export default function App() {
   // useEffect(() => {
   //   addResponseMessage("Hi! This is Norman! How can I help you today?");
   // }, []);
 
+  
 
   document.addEventListener("DOMContentLoaded", () => {
     if (document.querySelector(".chat")) {
@@ -27,15 +34,18 @@ export default function App() {
   });
 
 
-  axios.post("/api/tokens", null, {
-  }).then(((response) => {
-     Twilio.Chat.Client.create(data.token).then(function (chatClient) {
-       chatClient
-         .getChannelByUniqueName("general")
-         .then(function (channel) {
-           // general channel exists
-         })
-         .catch(function () {
+  const msgSend = () => {
+    axios.post("/api/tokens")
+      .then(((data) => {
+      console.log(data);
+      
+      Twilio.Chat.Client.create(data.token).then(function (chatClient) {
+        chatClient
+          .getChannelByUniqueName("general")
+          .then(function (channel) {
+            // general channel exists
+          })
+          .catch(function () {
             chatClient
               .createChannel({
                 uniqueName: "general",
@@ -48,10 +58,11 @@ export default function App() {
                   });
                 }
               });
-           // general channel does not exist
-         });
-     });
-  }));
+            // general channel does not exist
+          });
+      });
+    }));
+  }
 
   let i = 0;
   const response = [
@@ -64,6 +75,7 @@ export default function App() {
 
   const handleNewUserMessage = (newMessage) => {
     console.log(`New message: ${newMessage}`);
+    msgSend()
     // Now send the message throught the backend API
     setTimeout(function () {
       addResponseMessage(response[i]);

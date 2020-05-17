@@ -1,3 +1,5 @@
+require "twilio-ruby"
+
 class TokensController < ApplicationController
 
   def create

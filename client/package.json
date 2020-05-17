@@ -16,6 +16,8 @@
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.1.2",
     "react-scripts": "2.1.8",
+    "twilio": "^3.43.1",
+    "twilio-chat": "^3.3.7",
     "typeface-roboto": "0.0.75",
     "universal-cookie": "^4.0.3"
   },
