@@ -36,6 +36,18 @@ class Api::CompanyController < ApplicationController
   end
 
   def create
+    company = Company.create(
+      name: params[:name],
+      email: params[:email],
+      description: params[:description],
+      phone_number: params[:phone_number],
+      trade_type: params[:trade_type],
+      location: params[:location],
+      company_photo: params[:company_photo],
+    )
+    render :json => {
+      new_company: company,
+    }
   end
 
   def destroy
