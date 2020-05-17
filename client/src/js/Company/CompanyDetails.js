@@ -19,7 +19,6 @@ import Fab from '@material-ui/core/Fab';
 import Tooltip from '@material-ui/core/Tooltip';
 import Link from '@material-ui/core/Link';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
-// import LiveHelpIcon from '@material-ui/icons/LiveHelp';
 import Carousel from "@brainhubeu/react-carousel";
 import "@brainhubeu/react-carousel/lib/style.css";
 
@@ -119,44 +118,37 @@ class Company extends Component {
             </Typography>
           </div>
         </Grid>
-
-        {/* <Grid container item mt={10} spacing={2}>
-          <Grid item xs={12}>
-            <img className="profile-photo" alt="Profile" src={this.state.company.company_photo}/>
-          </Grid>
-        </Grid>  */}
-
       </Grid>
     );
   }
 
   renderPhotosCarousel() {
     
-      return (
-        <Carousel slidesPerPage={1} centered arrows infinite >
-          {this.state.review.reviews && this.state.review.reviews.reverse().map(rev => {
-            return (
-              <img
-                style={{
-                  flex: 0,
-                  width: "75%",
-                  height: "75%",
-                  resizeMode: "contain",
-                }} 
-                alt=""
-                src={rev.photo_url}
-              />
-            );
-          })}
-        </Carousel>
-      );
+    return (
+      <Carousel slidesPerPage={1} centered arrows infinite >
+        {this.state.review.reviews && this.state.review.reviews.map(rev => {
+          return (
+            <img
+              style={{
+                flex: 0,
+                width: "75%",
+                height: "75%",
+                resizeMode: "contain",
+              }}
+              alt=""
+              src={rev.photo_url}
+            />
+          );
+        })}
+      </Carousel>
+    );
   }
 
   
 
 
   renderReviewData() {
-    return this.state.review.reviews && this.state.review.reviews.reverse().map(rev => {
+    return this.state.review.reviews && this.state.review.reviews.map(rev => {
       return (
         <div key={rev.id} className="review">
           <Paper xs={12} elevation={2} m={5} key={rev.id} className="avg-review-comment" >
