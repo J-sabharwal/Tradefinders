@@ -1,5 +1,6 @@
-#home-pic {
-  width: 80%;
+.home-pic {
+  max-width: 80%;
+  height: auto;
   display: flex;
   justify-content: center;
 }

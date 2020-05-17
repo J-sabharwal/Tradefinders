@@ -9,8 +9,14 @@ import NativeSelect from '@material-ui/core/NativeSelect';
 
 import '../styles/SearchBar.css';
 import handymen from '../images/handymen.jpg';
+import construction from '../images/construction-worker.jpg'
+import electrician from '../images/Electrician.jpg'
+import homereno from '../images/home-renovation.jpg'
+import tradespeople from '../images/tradespeople.jpg'
 
 import useApplicationData from '../hooks/useApplicationData';
+import Carousel from "@brainhubeu/react-carousel";
+import "@brainhubeu/react-carousel/lib/style.css";
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -29,12 +35,20 @@ export default function SearchBar(props) {
 
   return (
     <>
-      <div style={{
-        display: "flex",
-        justifyContent: "center",
-        paddingBottom: "20px",
-         }}>
-        <img alt="" id="home-pic" src={handymen} />
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          paddingBottom: "20px",
+        }}
+      >
+        <Carousel autoPlay={3000} animationSpeed={2000} infinite>
+          <img src={handymen} className="home-pic" />
+          <img src={homereno} className="home-pic" />
+          <img src={construction} className="home-pic" />
+          <img src={electrician} className="home-pic" />
+          <img src={tradespeople} className="home-pic" />
+        </Carousel>
       </div>
       <div
         style={{
@@ -80,22 +94,26 @@ export default function SearchBar(props) {
           <FormHelperText>Choose your location</FormHelperText>
         </FormControl>
 
-        <Button style={{ color: 'white', backgroundColor: '#707B7C' }}variant="contained" onClick={Search}>
+        <Button
+          style={{ color: "white", backgroundColor: "#707B7C" }}
+          variant="contained"
+          onClick={Search}
+        >
           Search
         </Button>
 
-        { state.goToSearchResults && (
-          <Redirect to={{
-            pathname: '/results',
-            state: state,
-            trade: state.trade,
-            location: state.location,
-          }} />
+        {state.goToSearchResults && (
+          <Redirect
+            to={{
+              pathname: "/results",
+              state: state,
+              trade: state.trade,
+              location: state.location,
+            }}
+          />
         )}
-        <div>
-
-        </div>
-        </div>
+        <div></div>
+      </div>
     </>
   );
 }
