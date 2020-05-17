@@ -1,11 +1,8 @@
 require "twilio-ruby"
 
-class TokensController < ApplicationController
+class Api::TokensController < ApplicationController
 
   def create
-    #  # Define User Identity
-    # identity = current_user.email
-
     # Create Grant for Access Token
     grant = Twilio::JWT::AccessToken::ChatGrant.new
     grant.service_sid = ENV['TWILIO_CHAT_SERVICE_SID']
@@ -18,7 +15,10 @@ class TokensController < ApplicationController
       [grant]
     )
 
+    names = ['Brad', 'Kevin', 'Jas']
+    token.identity = names.sample
+
     # Generate the token and send to client
-    render json: { token: token.to_jwt }
+    render json: { identity: token.identity, jwt: token.to_jwt }
   end
 end
