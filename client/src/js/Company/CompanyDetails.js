@@ -20,6 +20,8 @@ import Tooltip from '@material-ui/core/Tooltip';
 import Link from '@material-ui/core/Link';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 // import LiveHelpIcon from '@material-ui/icons/LiveHelp';
+import Carousel from "@brainhubeu/react-carousel";
+import "@brainhubeu/react-carousel/lib/style.css";
 
 import 'react-circular-progressbar/dist/styles.css';
 import '../../styles/Company.css';
@@ -34,7 +36,7 @@ class Company extends Component {
   }
   
   async componentDidMount() {
-    const {match: {params}} = this.props;
+    const { match: { params } } = this.props;
     const companyDeets = axios.get(`/api/company/${params.id}`);
     const companyReviews = axios.get(`/api/review?company_id=${params.id}`);
     
@@ -50,47 +52,107 @@ class Company extends Component {
 
   renderDetails() {
     return (
-      <Grid container className="profile" spacing={2} direction='row' justify='flex-start' >
+      <Grid
+        container
+        className="profile"
+        spacing={2}
+        direction="row"
+        justify="flex-start"
+      >
         <Grid container item xs={9}>
           <div className="Company-details">
-            <Typography  className="details" variant="h4" component="h5">
+            <Typography className="details" variant="h4" component="h5">
               {this.state.company.name}
             </Typography>
-            <Typography component="a" href="mailto:info@tradefinder.com?subject=Message%20from%20Tradefinder%20-%20Information%20about%20your%20services." style={{textDecoration: 'none'}} className="details-email" variant="body1" >
-              <EmailIcon style={{minWidth: '40px', color: '#D35400'}} color="inherit" fontSize="small" m={5}/>
+            <Typography
+              component="a"
+              href="mailto:info@tradefinder.com?subject=Message%20from%20Tradefinder%20-%20Information%20about%20your%20services."
+              style={{ textDecoration: "none" }}
+              className="details-email"
+              variant="body1"
+            >
+              <EmailIcon
+                style={{ minWidth: "40px", color: "#D35400" }}
+                color="inherit"
+                fontSize="small"
+                m={5}
+              />
               {this.state.company.email}
             </Typography>
             <Typography className="details-phone" variant="body1">
-              <PhoneIcon style={{minWidth: '40px', color: '#D35400'}} fontSize="small" mr={10}/>
+              <PhoneIcon
+                style={{ minWidth: "40px", color: "#D35400" }}
+                fontSize="small"
+                mr={10}
+              />
               {this.state.company.phone_number}
             </Typography>
             <Typography className="details-info" variant="body2">
-              <InfoTwoToneIcon style={{minWidth: '40px', color: '#D35400'}} fontSize="small" mr={5}/>
+              <InfoTwoToneIcon
+                style={{ minWidth: "40px", color: "#D35400" }}
+                fontSize="small"
+                mr={5}
+              />
               {this.state.company.description}
             </Typography>
           </div>
         </Grid>
 
-        <Grid container item xs={3} direction='row' justify='flex-end' >
+        <Grid container item xs={3} direction="row" justify="flex-end">
           <div>
             <Box borderColor="transparent" className="avg-ratings">
-              <Rating name="half-rating-read" size="large" value={this.state.review.total_avg ? this.state.review.total_avg : 0.0} precision={0.2} readOnly />
+              <Rating
+                name="half-rating-read"
+                size="large"
+                value={
+                  this.state.review.total_avg
+                    ? this.state.review.total_avg
+                    : 0.0
+                }
+                precision={0.2}
+                readOnly
+              />
             </Box>
-            <Typography className="avg-rating" align="right" variant="body1" >
-              ({this.state.review.reviews && this.state.review.reviews.length} Reviews)
+            <Typography className="avg-rating" align="right" variant="body1">
+              ({this.state.review.reviews && this.state.review.reviews.length}{" "}
+              Reviews)
             </Typography>
           </div>
         </Grid>
-      
 
-        <Grid container item mt={10} spacing={2}>
+        {/* <Grid container item mt={10} spacing={2}>
           <Grid item xs={12}>
             <img className="profile-photo" alt="Profile" src={this.state.company.company_photo}/>
           </Grid>
-        </Grid>
+        </Grid>  */}
+
       </Grid>
     );
   }
+
+  renderPhotosCarousel() {
+    
+      return (
+        <Carousel slidesPerPage={1} centered arrows infinite >
+          {this.state.review.reviews && this.state.review.reviews.reverse().map(rev => {
+            return (
+              <img
+                style={{
+                  flex: 0,
+                  width: "75%",
+                  height: "75%",
+                  resizeMode: "contain",
+                }} 
+                alt=""
+                src={rev.photo_url}
+              />
+            );
+          })}
+        </Carousel>
+      );
+  }
+
+  
 
 
   renderReviewData() {
@@ -225,66 +287,97 @@ class Company extends Component {
   render() {
     return (
       <>
-       <div>
-         <Container maxWidth="md"  className="back-btn">
-           <Grid container style={{ color: '#D35400' }} direction='row' justify='flex-start' alignItems="center">
-             <Button
-               style={{ color: '#D35400'}}
-               component="button"
-               onClick={this.props.history.goBack}
-               startIcon={<NavigateBeforeIcon />}
-             >
-            Back to Search Results
-             </Button>
-           </Grid>
-         </Container>
-         <Container maxWidth="md" >
-           <Paper xs={12} elevation={4} m={10} className="page-container">
-             <Container maxWidth="md">
-               {this.renderDetails()}
-             </Container>
-             <Container maxWidth="md"  className="back-btn">
-               <Grid container style={{ color: '#D35400' }} direction='row' justify='flex-end' alignItems="center">
-                 <CreateDialog
-                   company={this.state.company}
-                 />
-               </Grid>
-             </Container>
+        <div>
+          <Container maxWidth="md" className="back-btn">
+            <Grid
+              container
+              style={{ color: "#D35400" }}
+              direction="row"
+              justify="flex-start"
+              alignItems="center"
+            >
+              <Button
+                style={{ color: "#D35400" }}
+                component="button"
+                onClick={this.props.history.goBack}
+                startIcon={<NavigateBeforeIcon />}
+              >
+                Back to Search Results
+              </Button>
+            </Grid>
+          </Container>
+          <Container maxWidth="md">
+            <Paper xs={12} elevation={4} m={10} className="page-container">
+              <Container maxWidth="md">{this.renderDetails()}</Container>
+              <Container> {this.renderPhotosCarousel()} </Container>
+              <Container maxWidth="md" className="back-btn">
+                <Grid
+                  container
+                  style={{ color: "#D35400" }}
+                  direction="row"
+                  justify="flex-end"
+                  alignItems="center"
+                >
+                  <CreateDialog company={this.state.company} />
+                </Grid>
+              </Container>
 
-             <Divider variant="middle" />
+              <Divider variant="middle" />
 
-             <Container maxWidth="md">
-               {this.renderDashboard()}
-             </Container>
+              <Container maxWidth="md">{this.renderDashboard()}</Container>
 
-             <Link href={`/review/${this.props.match.params.id}/new`} className="add-review" style={{ textDecoration: 'none'}}>
-               <Grid container direction='row' justify='flex-end' alignItems="center" >
-                 <Typography style={{ color: '#D35400', marginRight: '10px', marginBottom: '10px' , fontWeight: 'bold'}} className="add-review" variant="body1">
+              <Link
+                href={`/review/${this.props.match.params.id}/new`}
+                className="add-review"
+                style={{ textDecoration: "none" }}
+              >
+                <Grid
+                  container
+                  direction="row"
+                  justify="flex-end"
+                  alignItems="center"
+                >
+                  <Typography
+                    style={{
+                      color: "#D35400",
+                      marginRight: "10px",
+                      marginBottom: "10px",
+                      fontWeight: "bold",
+                    }}
+                    className="add-review"
+                    variant="body1"
+                  >
                     Add Review
-                 </Typography>
-                 <Tooltip style={{ color: '#D35400', marginRight: '30px', marginBottom: '15px' }} title="Add" aria-label="add" >
-                   <Fab  size="small" className="add-btn">
-                     <AddIcon/>
-                   </Fab>
-                 </Tooltip>
-               </Grid>
-             </Link>
+                  </Typography>
+                  <Tooltip
+                    style={{
+                      color: "#D35400",
+                      marginRight: "30px",
+                      marginBottom: "15px",
+                    }}
+                    title="Add"
+                    aria-label="add"
+                  >
+                    <Fab size="small" className="add-btn">
+                      <AddIcon />
+                    </Fab>
+                  </Tooltip>
+                </Grid>
+              </Link>
 
-             <Divider variant="middle" />
+              <Divider variant="middle" />
 
-             <Container maxWidth="md">
-               <Container className="reviews-section">
-                 <Typography  className="reviews" variant="h5">
-                  Customer Reviews
-                 </Typography>
-               </Container>
-               <Grid item >
-                 {this.renderReviewData()}
-               </Grid>
-             </Container>
-           </Paper>
-         </Container>
-       </div>
+              <Container maxWidth="md">
+                <Container className="reviews-section">
+                  <Typography className="reviews" variant="h5">
+                    Customer Reviews
+                  </Typography>
+                </Container>
+                <Grid item>{this.renderReviewData()}</Grid>
+              </Container>
+            </Paper>
+          </Container>
+        </div>
       </>
     );
   }
