@@ -1,6 +1,8 @@
 /* eslint-disable camelcase */
 import React from 'react';
 import axios from "axios";
+
+import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -10,14 +12,31 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import LiveHelpIcon from '@material-ui/icons/LiveHelp';
 import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
 
 const mailgun = require("mailgun-js");
 const DOMAIN = process.env.REACT_APP_MAILGUN_DOMAIN;
 const API_KEY = process.env.REACT_APP_MAILGUN_API_KEY;
 
+const Alert = function(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+};
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    width: '100%',
+    '& > * + *': {
+      marginTop: theme.spacing(2),
+    },
+  },
+}));
+
 export default function QuotationForm(props) {
+  const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+  const [openSuccess, setOpenSuccess] = React.useState(false);
   const [currentDetails, setCurrentDetails] = React.useState({});
+
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -30,21 +49,6 @@ export default function QuotationForm(props) {
   const handleSubmit = () => {
     const mailText = generateMailText();
 
-    // const data = {
-    //   from: `Tradefinder User <Tradefinder@${DOMAIN}>`,
-    //   to: `${props.company.email}`,
-    //   subject: `Quotation Request Form`,
-    //   text: mailText,
-    // };
-
-    // mg.messages().send(data, function(error, body) {
-    //   console.log("error:");
-    //   console.log(error);
-    //   console.log("body:");
-    //   console.log(body);
-
-    //
-    // });
     axios.post("/api/quotation", null, {
       params: {
         api_key: API_KEY,
@@ -63,9 +67,16 @@ export default function QuotationForm(props) {
     // If error is undefined then it's success.
   };
 
+  const handleSucClick = () => {
+    setOpenSuccess(true);
+  };
+
+  const handleSucClose = () => {
+    setOpenSuccess(false);
+  };
+
   const generateMailText = () => {
 
-    // let mailText = JSON.stringify(currentDetails);
     let mailText = "";
 
     if (currentDetails.name) {
@@ -104,15 +115,14 @@ export default function QuotationForm(props) {
   
   return (
     <>
-
-        <Button
-          style={{ color: '#D35400'}}
-          component="button"
-          onClick={handleClickOpen}
-          startIcon={<LiveHelpIcon />}
-        >
+      <Button
+        style={{ color: '#D35400'}}
+        component="button"
+        onClick={handleClickOpen}
+        startIcon={<LiveHelpIcon />}
+      >
         Request a Quotation
-        </Button>
+      </Button>
   
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">Quotation Request Form</DialogTitle>
@@ -269,6 +279,16 @@ export default function QuotationForm(props) {
           </Snackbar> */}
         </DialogActions>
       </Dialog>
+    
+      <Button variant="outlined" onClick={handleSucClick}>
+        Open success snackbar
+      </Button>
+      
+      <Snackbar open={openSuccess} autoHideDuration={6000} onClose={handleSucClose}>
+        <Alert onClose={handleSucClose} severity="success">
+          Quotation Request Sent!
+        </Alert>
+      </Snackbar>
     </>
   );
 }
