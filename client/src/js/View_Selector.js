@@ -8,6 +8,7 @@ import ReviewForm from './Review/ReviewForm';
 import SearchBar from './SearchBar';
 import ResultsPage from './Results/ResultsPage';
 import Login from './Login';
+import TwilioChatBox from "./Chat/TwilioChatBox";
 
 
 export default function ViewSelector(props) {
@@ -56,6 +57,10 @@ export default function ViewSelector(props) {
       />
 
       <Footer />
+
+      <TwilioChatBox
+        currentUser={currentUser}
+      />
 
     </Router>
   
