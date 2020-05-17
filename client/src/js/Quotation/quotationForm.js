@@ -14,7 +14,6 @@ import LiveHelpIcon from '@material-ui/icons/LiveHelp';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 
-const mailgun = require("mailgun-js");
 const DOMAIN = process.env.REACT_APP_MAILGUN_DOMAIN;
 const API_KEY = process.env.REACT_APP_MAILGUN_API_KEY;
 

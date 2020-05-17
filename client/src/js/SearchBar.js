@@ -43,11 +43,11 @@ export default function SearchBar(props) {
         }}
       >
         <Carousel autoPlay={3000} animationSpeed={2000} infinite>
-          <img src={handymen} className="home-pic" />
-          <img src={homereno} className="home-pic" />
-          <img src={construction} className="home-pic" />
-          <img src={electrician} className="home-pic" />
-          <img src={tradespeople} className="home-pic" />
+          <img alt="" src={handymen} className="home-pic" />
+          <img alt="" src={homereno} className="home-pic" />
+          <img alt="" src={construction} className="home-pic" />
+          <img alt="" src={electrician} className="home-pic" />
+          <img alt="" src={tradespeople} className="home-pic" />
         </Carousel>
       </div>
       <div
