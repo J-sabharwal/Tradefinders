@@ -46,6 +46,14 @@ export default function QuotationForm(props) {
     setOpen(false);
   };
 
+  const handleSnackOpen = () => {
+    setOpenSuccess(true);
+  };
+
+  const handleSnackClose = () => {
+    setOpenSuccess(false);
+  };
+
   const handleSubmit = () => {
     const mailText = generateMailText();
 
@@ -60,19 +68,9 @@ export default function QuotationForm(props) {
       }
     }).then((response) => {
       console.log(response);
+      handleSnackOpen();
+      handleClose();
     });
-    
-    
-    //TODO Add Art or alert or a message or something to show success
-    // If error is undefined then it's success.
-  };
-
-  const handleSucClick = () => {
-    setOpenSuccess(true);
-  };
-
-  const handleSucClose = () => {
-    setOpenSuccess(false);
   };
 
   const generateMailText = () => {
@@ -272,20 +270,11 @@ export default function QuotationForm(props) {
           >
             Send
           </Button>
-          {/* <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-            <Alert onClose={handleClose} severity="success">
-              Your message has been sent.
-            </Alert>
-          </Snackbar> */}
         </DialogActions>
       </Dialog>
-    
-      <Button variant="outlined" onClick={handleSucClick}>
-        Open success snackbar
-      </Button>
       
-      <Snackbar open={openSuccess} autoHideDuration={6000} onClose={handleSucClose}>
-        <Alert onClose={handleSucClose} severity="success">
+      <Snackbar open={openSuccess} autoHideDuration={6000} onClose={handleSnackClose}>
+        <Alert onClose={handleSnackClose} severity="success">
           Quotation Request Sent!
         </Alert>
       </Snackbar>
