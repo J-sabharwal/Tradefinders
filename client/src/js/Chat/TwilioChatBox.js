@@ -10,16 +10,8 @@ import "react-chat-widget/lib/styles.css";
 const TwilioChat = require('twilio-chat');
 
 export default function TwilioChatBox(props) {
-  const [state, setState] = useState({
-    messages: [],
-    username: null,
-    token: null,
-    channel: null,
-  });
-
   const [messages, setMessage] = useState([]);
   const [username, setUsername] = useState(null);
-  const [token, setToken] = useState(null);
   const [channel, setChannel] = useState(null);
 
 
@@ -36,9 +28,7 @@ export default function TwilioChatBox(props) {
   // Grabs the token data and sets state with username
   const getToken = () => {
     return new Promise((resolve, reject) => {
-      setState({
-        messages: [...state.messages, { body: `Connecting...` }],
-      });
+      setMessage([...messages, { body: `Connecting...` }]);
 
       const username = props.currentUser ? props.currentUser.name : "Guest";
 
@@ -50,12 +40,9 @@ export default function TwilioChatBox(props) {
         .then((data) => {
           console.log("data.data.identity is ");
           console.log(data.data.identity);
-          setState(prev => ({
-            ...prev,
-            username: data.data.identity
-          }));
-          console.log("state is");
-          console.log(state);
+          setUsername(data.data.identity);
+          console.log("username is");
+          console.log(username);
           resolve(data.data);
         })
         .catch(() => {
@@ -66,12 +53,10 @@ export default function TwilioChatBox(props) {
 
   // Passed in message author and message body, then state is set with data. A response if only sent back if the user name is not the same as the author (stops your message from duplicating)
   const addMessage = (message) => {
-    const messageData = { ...message, me: message.author === state.username };
-    setState({
-      messages: [...state.messages, messageData],
-    });
+    const messageData = { ...message, me: message.author === username };
+    setMessage([...messages, messageData]);
     if (messageData.me === false) {
-      addResponseMessage(message.body, state.username);
+      addResponseMessage(message.body, username);
     }
   };
 
@@ -86,17 +71,17 @@ export default function TwilioChatBox(props) {
   const joinGeneralChannel = (chatClient) => {
     return new Promise((resolve, reject) => {
       chatClient.getSubscribedChannels().then(() => {
-        chatClient.getChannelByUniqueName('general').then((channel) => {
+        chatClient.getChannelByUniqueName('general').then((receivedChannel) => {
 
           addMessage({ body: 'Joining general channel...' });
-          setState({ channel });
+          setChannel(receivedChannel);
 
-          channel.join().then(() => {
-            addMessage({ body: `Joined general channel as ${state.username}` });
-            window.addEventListener('beforeunload', () => channel.leave());
+          receivedChannel.join().then(() => {
+            addMessage({ body: `Joined general channel as ${username}` });
+            window.addEventListener('beforeunload', () => receivedChannel.leave());
           }).catch(() => reject(Error('Could not join general channel.')));
 
-          resolve(channel);
+          resolve(receivedChannel);
         }).catch(() => createGeneralChannel(chatClient));
       }).catch(() => reject(Error('Could not get channel list.')));
     });
@@ -132,10 +117,8 @@ export default function TwilioChatBox(props) {
 
   // If the channel exists then send the message
   const handleNewMessage = (text) => {
-    console.log(text);
-    console.log(state.channel);
-    if (state.channel) {
-      state.channel.sendMessage(text);
+    if (channel) {
+      channel.sendMessage(text);
     }
   };
   
