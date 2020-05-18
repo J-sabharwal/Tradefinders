@@ -19,6 +19,7 @@ import painter from '../images/painters-Vancouver.jpg'
 import electrician from '../images/Electrician.jpg'
 import decorator from '../images/Interior-Designer.jpg'
 import plumber from '../images/woman+plumber.jpg'
+import fixer from '../images/fixer.jpg'
 
 import useApplicationData from '../hooks/useApplicationData';
 import Carousel from "@brainhubeu/react-carousel";
@@ -54,6 +55,7 @@ export default function SearchBar(props) {
           <img alt="" src={painter} className="home-pic" />
           <img alt="" src={electrician} className="home-pic" />
           <img alt="" src={decorator} className="home-pic" />
+          <img alt="" src={fixer} className="home-pic" />
         </Carousel>
       </div>
       <div
