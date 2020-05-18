@@ -140,7 +140,7 @@ class Company extends Component {
                   style={{
                     flex: 0,
                     width: "75%",
-                    height: "80%",
+                    height: "90%",
                     resizeMode: "contain",
                   }}
                   key={Math.floor(Math.random()*100)}
@@ -154,7 +154,7 @@ class Company extends Component {
   }
 
   renderReviewData() {
-    return this.state.review.reviews && this.state.review.reviews.reverse().map(rev => {
+    return this.state.review.reviews && this.state.review.reviews.map(rev => {
       return (
         <div key={rev.id} className="review">
           <Paper xs={12} elevation={2} m={5} key={rev.id} className="avg-review-comment" >

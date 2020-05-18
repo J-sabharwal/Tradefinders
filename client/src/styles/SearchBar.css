@@ -9,3 +9,12 @@
   margin-top: 94vh;
   bottom: 0;
 }
+
+.blog-section {
+  display: flex;
+  justify-content: center;
+  /* margin: 20px; */
+  text-align: center;
+  color: #616A6B;
+  padding: 20px;
+}
