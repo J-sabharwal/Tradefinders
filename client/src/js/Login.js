@@ -58,9 +58,7 @@ export default function ReviewForm(props) {
     <div
       style={{
         color: "#D35400",
-        // direction: "row",
         display: "flex",
-        // justifyContent: "center",
         alignItems: "center",
         marginLeft: "40px",
         marginTop: "10px",

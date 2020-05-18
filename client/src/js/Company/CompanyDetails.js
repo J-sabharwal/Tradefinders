@@ -44,7 +44,7 @@ class Company extends Component {
       .then((all) => {
         let photos_array = []
         photos_array.push(all[0].data.company.company_photo)
-        all[1].data.reviews.map(review => {
+        all[1].data.reviews.forEach(review => {
           photos_array.push(review.photo_url)
         })
 
