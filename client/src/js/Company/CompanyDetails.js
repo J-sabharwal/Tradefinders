@@ -134,7 +134,7 @@ class Company extends Component {
     
       return (
         <Carousel slidesPerPage={1} centered arrows infinite >
-          {this.state.photos && this.state.photos.reverse().map(photo => {
+          {this.state.photos && this.state.photos.map(photo => {
             return (
                 <img
                   style={{
