@@ -191,9 +191,13 @@ export default function NewCompany(props) {
                 <MenuItem value="">
                   <em></em>
                 </MenuItem>
-                <MenuItem value={"Plumbing"}>Plumbing</MenuItem>
+                <MenuItem value={"Alarm & Security"}>Alarm & Security</MenuItem>
+                <MenuItem value={"Appliance Repair"}>Appliance Repair</MenuItem>
+                <MenuItem value={"Carpet & Flooring"}>Carpet & Flooring</MenuItem>
                 <MenuItem value={"Electrical"}>Electrical</MenuItem>
                 <MenuItem value={"Painter/Decorator"}>Painter/Decorator</MenuItem>
+                <MenuItem value={"Plumbing"}>Plumbing</MenuItem>
+                <MenuItem value={"Roofing"}>Roofing</MenuItem>
               </Select>
           </FormControl>
           <TextField

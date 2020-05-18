@@ -77,9 +77,13 @@ export default function SearchBar(props) {
             }}
           >
             <option aria-label="None" value="" />
-            <option value={"Plumbing"}>Plumbing</option>
+            <option value={"Alarm & Security"}>Alarm & Security</option>
+            <option value={"Appliance Repair"}>Appliance Repair</option>
+            <option value={"Carpet & Flooring"}>Carpet & Flooring</option>
             <option value={"Electrical"}>Electrical</option>
             <option value={"Painter/Decorator"}>Painting/Decorating</option>
+            <option value={"Plumbing"}>Plumbing</option>
+            <option value={"Roofing"}>Roofing</option>
           </NativeSelect>
           <FormHelperText>Choose desired trade</FormHelperText>
         </FormControl>
@@ -95,9 +99,13 @@ export default function SearchBar(props) {
             }}
           >
             <option aria-label="None" value="" />
-            <option value={"Vancouver"}>Vancouver</option>
+            <option value={"Burnaby"}>Burnaby</option>
+            <option value={"Coquitlam"}>Coquitlam</option>
+            <option value={"Delta"}>Delta</option>
+            <option value={"North Vancouver"}>North Vancouver</option>
             <option value={"Richmond"}>Richmond</option>
             <option value={"Surrey"}>Surrey</option>
+            <option value={"Vancouver"}>Vancouver</option>
           </NativeSelect>
           <FormHelperText>Choose your location</FormHelperText>
         </FormControl>
