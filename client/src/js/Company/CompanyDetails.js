@@ -30,21 +30,29 @@ class Company extends Component {
     super(props);
     this.state = {
       company: {},
-      review: {}
+      review: {},
+      photos: [],
     };
   }
   
   async componentDidMount() {
     const { match: { params } } = this.props;
-    const companyDeets = axios.get(`/api/company/${params.id}`);
+    const companyDetails = axios.get(`/api/company/${params.id}`);
     const companyReviews = axios.get(`/api/review?company_id=${params.id}`);
-    
-    Promise.all([companyDeets, companyReviews])
+
+    Promise.all([companyDetails, companyReviews])
       .then((all) => {
+        let photos_array = []
+        photos_array.push(all[0].data.company.company_photo)
+        all[1].data.reviews.forEach(review => {
+          photos_array.push(review.photo_url)
+        })
+
         this.setState(prev => ({
           ...prev,
           company: all[0].data.company,
-          review: all[1].data
+          review: all[1].data,
+          photos: photos_array
         }));
       });
   }
@@ -124,28 +132,26 @@ class Company extends Component {
 
   renderPhotosCarousel() {
     
-    return (
-      <Carousel slidesPerPage={1} centered arrows infinite >
-        {this.state.review.reviews && this.state.review.reviews.map(rev => {
-          return (
-            <img
-              style={{
-                flex: 0,
-                width: "75%",
-                height: "75%",
-                resizeMode: "contain",
-              }}
-              alt=""
-              src={rev.photo_url}
-            />
-          );
-        })}
-      </Carousel>
-    );
+      return (
+        <Carousel slidesPerPage={1} centered arrows infinite >
+          {this.state.photos && this.state.photos.reverse().map(photo => {
+            return (
+                <img
+                  style={{
+                    flex: 0,
+                    width: "75%",
+                    height: "90%",
+                    resizeMode: "contain",
+                  }}
+                  key={Math.floor(Math.random()*100)}
+                  alt=""
+                  src={photo}
+                />
+            );
+          })}
+        </Carousel>
+      );
   }
-
-  
-
 
   renderReviewData() {
     return this.state.review.reviews && this.state.review.reviews.map(rev => {

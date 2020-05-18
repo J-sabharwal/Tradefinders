@@ -9,6 +9,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
+import NewTrade from "./NewTrade";
 
 import logo from "../images/new-company-logo.png";
 
@@ -53,7 +54,7 @@ export default function NavBar(props) {
     // getCurrentUser();
     if (props.currentUser) {
       return <>
-        <Button color="inherit">Welcome {props.currentUser.name}!</Button>
+        <Button style={{ color: grey[900] }}>Welcome {props.currentUser.name}</Button>
         <Button
           color="inherit"
           onClick={logout}
@@ -83,11 +84,9 @@ export default function NavBar(props) {
             color="inherit"
             aria-label="menu"
           />
-          
           <Typography variant="h6" className={classes.title}>
-            {/* News */}
           </Typography>
-          
+          <NewTrade />
           <LoginButton/>
         </Toolbar>
       </AppBar>
