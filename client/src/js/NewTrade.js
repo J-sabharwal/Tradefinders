@@ -45,7 +45,7 @@ export default function NewCompany(props) {
   };
 
   const handleClose = () => {
-    setOpen(false)
+    setOpen(false);
   };
 
   const handleSnackOpen = () => {
@@ -66,25 +66,25 @@ export default function NewCompany(props) {
         phone_number: state.phone,
         trade_type: state.trade,
         location: state.location,
-        company_photo: state.photo,
+        company_photo: state.photo || "https://theplumbingco.com/wp-content/uploads/2016/11/about-the-original-plumbing-company.jpg",
       }
     }).then((response) => {
       console.log(response);
       handleSnackOpen();
       handleClose();
-        setState({
-          ...state,
-          goBackToHomePage: true,
-        });
+      setState({
+        ...state,
+        goBackToHomePage: true,
+      });
     });
   };
 
   return (
     <>
       <Button
-      style={{
-        color: "white",
-      }}
+        style={{
+          color: "white",
+        }}
         component="button"
         onClick={handleClickOpen}
       >
@@ -133,28 +133,28 @@ export default function NewCompany(props) {
           <div>
             <FormControl fullWidth style={{ marginBottom: 20,}}variant="outlined" className='location'>
               <InputLabel id="demo-simple-select-outlined-label">Location</InputLabel>
-                <Select
-                  labelId="demo-simple-select-outlined-label"
-                  id="demo-simple-select-outlined"
-                  value={state.location}
-                  onChange={handleChange}
-                  inputProps={{
-                    name: 'location',
-                    id: 'location-native-simple'
-                  }}
-                  label="Location"
-                >
-                  <MenuItem value="">
-                    <em></em>
-                  </MenuItem>
-                  <MenuItem value={"Burnaby"}>Burnaby</MenuItem>
-                  <MenuItem value={"Coquitlam"}>Coquitlam</MenuItem>
-                  <MenuItem value={"Delta"}>Delta</MenuItem>
-                  <MenuItem value={"North Vancouver"}>North Vancouver</MenuItem>
-                  <MenuItem value={"Richmond"}>Richmond</MenuItem>
-                  <MenuItem value={"Surrey"}>Surrey</MenuItem>
-                  <MenuItem value={"Vancouver"}>Vancouver</MenuItem>
-                </Select>
+              <Select
+                labelId="demo-simple-select-outlined-label"
+                id="demo-simple-select-outlined"
+                value={state.location}
+                onChange={handleChange}
+                inputProps={{
+                  name: 'location',
+                  id: 'location-native-simple'
+                }}
+                label="Location"
+              >
+                <MenuItem value="">
+                  <em></em>
+                </MenuItem>
+                <MenuItem value={"Burnaby"}>Burnaby</MenuItem>
+                <MenuItem value={"Coquitlam"}>Coquitlam</MenuItem>
+                <MenuItem value={"Delta"}>Delta</MenuItem>
+                <MenuItem value={"North Vancouver"}>North Vancouver</MenuItem>
+                <MenuItem value={"Richmond"}>Richmond</MenuItem>
+                <MenuItem value={"Surrey"}>Surrey</MenuItem>
+                <MenuItem value={"Vancouver"}>Vancouver</MenuItem>
+              </Select>
             </FormControl>
           </div>
           <TextField
@@ -175,26 +175,26 @@ export default function NewCompany(props) {
           />
           <FormControl fullWidth style={{ marginBottom: 20,}}variant="outlined" className='trade-type'>
             <InputLabel id="demo-simple-select-outlined-label">Type of Trade</InputLabel>
-              <Select
-                labelId="demo-simple-select-outlined-label"
-                id="demo-simple-select-outlined"
-                onChange={handleChange}
-                inputProps={{
-                  name: 'trade',
-                  id: 'trade-native-simple',
-                }}
-                label="Type of Trade"
-                value={state.trade}
+            <Select
+              labelId="demo-simple-select-outlined-label"
+              id="demo-simple-select-outlined"
+              onChange={handleChange}
+              inputProps={{
+                name: 'trade',
+                id: 'trade-native-simple',
+              }}
+              label="Type of Trade"
+              value={state.trade}
 
                 
-              >
-                <MenuItem value="">
-                  <em></em>
-                </MenuItem>
-                <MenuItem value={"Plumbing"}>Plumbing</MenuItem>
-                <MenuItem value={"Electrical"}>Electrical</MenuItem>
-                <MenuItem value={"Painter/Decorator"}>Painter/Decorator</MenuItem>
-              </Select>
+            >
+              <MenuItem value="">
+                <em></em>
+              </MenuItem>
+              <MenuItem value={"Plumbing"}>Plumbing</MenuItem>
+              <MenuItem value={"Electrical"}>Electrical</MenuItem>
+              <MenuItem value={"Painter/Decorator"}>Painter/Decorator</MenuItem>
+            </Select>
           </FormControl>
           <TextField
             style={{
