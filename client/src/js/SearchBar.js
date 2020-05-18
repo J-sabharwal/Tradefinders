@@ -15,10 +15,10 @@ import Typography from "@material-ui/core/Typography";
 
 import '../styles/SearchBar.css';
 import handymen from '../images/handymen.jpg';
-import construction from '../images/construction-worker.jpg'
+import painter from '../images/painters-Vancouver.jpg'
 import electrician from '../images/Electrician.jpg'
-import homereno from '../images/home-renovation.jpg'
-import tradespeople from '../images/tradespeople.jpg'
+import decorator from '../images/Interior-Designer.jpg'
+import plumber from '../images/woman+plumber.jpg'
 
 import useApplicationData from '../hooks/useApplicationData';
 import Carousel from "@brainhubeu/react-carousel";
@@ -48,12 +48,12 @@ export default function SearchBar(props) {
           paddingBottom: "20px",
         }}
       >
-        <Carousel autoPlay={3000} animationSpeed={2000} infinite>
+        <Carousel autoPlay={5000} animationSpeed={2000} infinite>
           <img alt="" src={handymen} className="home-pic" />
-          <img alt="" src={homereno} className="home-pic" />
-          <img alt="" src={construction} className="home-pic" />
+          <img alt="" src={plumber} className="home-pic" />
+          <img alt="" src={painter} className="home-pic" />
           <img alt="" src={electrician} className="home-pic" />
-          <img alt="" src={tradespeople} className="home-pic" />
+          <img alt="" src={decorator} className="home-pic" />
         </Carousel>
       </div>
       <div
@@ -137,6 +137,9 @@ export default function SearchBar(props) {
             marginLeft: "30px",
             marginRight: "30px",
             marginBottom: "20px",
+            backgroundColor: "#e8e8e8",
+            backgroundImage:
+              "url(https://www.transparenttextures.com/patterns/egg-shell.png)",
             // display: "flex",
             // flexWrap: "wrap",
             // justifyContent: "center",
@@ -183,12 +186,14 @@ export default function SearchBar(props) {
             height: "250px",
             marginLeft: "30px",
             marginRight: "30px",
+            backgroundColor: "#e8e8e8",
+            backgroundImage:
+              "url(https://www.transparenttextures.com/patterns/egg-shell.png)",
           }}
         >
           <div
             style={{
               display: "flex",
-
               justifyContent: "space-between",
             }}
           >
