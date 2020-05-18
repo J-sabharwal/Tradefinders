@@ -19,7 +19,6 @@ import Fab from '@material-ui/core/Fab';
 import Tooltip from '@material-ui/core/Tooltip';
 import Link from '@material-ui/core/Link';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
-// import LiveHelpIcon from '@material-ui/icons/LiveHelp';
 import Carousel from "@brainhubeu/react-carousel";
 import "@brainhubeu/react-carousel/lib/style.css";
 
@@ -31,21 +30,29 @@ class Company extends Component {
     super(props);
     this.state = {
       company: {},
-      review: {}
+      review: {},
+      photos: [],
     };
   }
   
   async componentDidMount() {
     const { match: { params } } = this.props;
-    const companyDeets = axios.get(`/api/company/${params.id}`);
+    const companyDetails = axios.get(`/api/company/${params.id}`);
     const companyReviews = axios.get(`/api/review?company_id=${params.id}`);
-    
-    Promise.all([companyDeets, companyReviews])
+
+    Promise.all([companyDetails, companyReviews])
       .then((all) => {
+        let photos_array = []
+        photos_array.push(all[0].data.company.company_photo)
+        all[1].data.reviews.map(review => {
+          photos_array.push(review.photo_url)
+        })
+
         this.setState(prev => ({
           ...prev,
           company: all[0].data.company,
-          review: all[1].data
+          review: all[1].data,
+          photos: photos_array
         }));
       });
   }
@@ -119,13 +126,6 @@ class Company extends Component {
             </Typography>
           </div>
         </Grid>
-
-        {/* <Grid container item mt={10} spacing={2}>
-          <Grid item xs={12}>
-            <img className="profile-photo" alt="Profile" src={this.state.company.company_photo}/>
-          </Grid>
-        </Grid>  */}
-
       </Grid>
     );
   }
@@ -134,26 +134,24 @@ class Company extends Component {
     
       return (
         <Carousel slidesPerPage={1} centered arrows infinite >
-          {this.state.review.reviews && this.state.review.reviews.reverse().map(rev => {
+          {this.state.photos && this.state.photos.reverse().map(photo => {
             return (
-              <img
-                style={{
-                  flex: 0,
-                  width: "75%",
-                  height: "75%",
-                  resizeMode: "contain",
-                }} 
-                alt=""
-                src={rev.photo_url}
-              />
+                <img
+                  style={{
+                    flex: 0,
+                    width: "75%",
+                    height: "80%",
+                    resizeMode: "contain",
+                  }}
+                  key={Math.floor(Math.random()*100)}
+                  alt=""
+                  src={photo}
+                />
             );
           })}
         </Carousel>
       );
   }
-
-  
-
 
   renderReviewData() {
     return this.state.review.reviews && this.state.review.reviews.reverse().map(rev => {

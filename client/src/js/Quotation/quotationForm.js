@@ -66,7 +66,6 @@ export default function QuotationForm(props) {
         text: mailText
       }
     }).then((response) => {
-      console.log(response);
       handleSnackOpen();
       handleClose();
     });
