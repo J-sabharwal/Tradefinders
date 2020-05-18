@@ -42,17 +42,17 @@ class Company extends Component {
 
     Promise.all([companyDetails, companyReviews])
       .then((all) => {
-        let photos_array = []
-        photos_array.push(all[0].data.company.company_photo)
+        let photos = [];
+        photos.push(all[0].data.company.company_photo);
         all[1].data.reviews.forEach(review => {
-          photos_array.push(review.photo_url)
-        })
+          photos.push(review.photo_url || "https://atlascare.ca/wp-content/uploads/2020/03/IMG_7576.jpg");
+        });
 
         this.setState(prev => ({
           ...prev,
           company: all[0].data.company,
           review: all[1].data,
-          photos: photos_array
+          photos: photos
         }));
       });
   }
@@ -132,25 +132,25 @@ class Company extends Component {
 
   renderPhotosCarousel() {
     
-      return (
-        <Carousel slidesPerPage={1} centered arrows infinite >
-          {this.state.photos && this.state.photos.map(photo => {
-            return (
-                <img
-                  style={{
-                    flex: 0,
-                    width: "75%",
-                    height: "90%",
-                    resizeMode: "contain",
-                  }}
-                  key={Math.floor(Math.random()*100)}
-                  alt=""
-                  src={photo}
-                />
-            );
-          })}
-        </Carousel>
-      );
+    return (
+      <Carousel slidesPerPage={1} centered arrows infinite >
+        {this.state.photos && this.state.photos.map(photo => {
+          return (
+            <img
+              style={{
+                flex: 0,
+                width: "75%",
+                height: "90%",
+                resizeMode: "contain",
+              }}
+              key={Math.floor(Math.random() * 100)}
+              alt=""
+              src={photo}
+            />
+          );
+        })}
+      </Carousel>
+    );
   }
 
   renderReviewData() {
@@ -160,7 +160,7 @@ class Company extends Component {
           <Paper xs={12} elevation={2} m={5} key={rev.id} className="avg-review-comment" >
             <Grid container mt={10} spacing={2} direction='row' justify='flex-start'>
               <Grid item>
-                <img className="review-img" alt="Review" src={rev.photo_url} />
+                <img className="review-img" alt="Review" src={rev.photo_url || "https://atlascare.ca/wp-content/uploads/2020/03/IMG_7576.jpg"} />
               </Grid>
 
               <Grid container item xs={12} sm={true}>
