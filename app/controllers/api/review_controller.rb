@@ -13,6 +13,7 @@ class Api::ReviewController < ApplicationController
     # Get photo and user data
     reviews = reviews.left_outer_joins(:photos).left_outer_joins(:user).select(
       "reviews.*",
+      "photos.id as #{:photo_url}",
       "photos.photo_url as #{:photo_url}",
       "users.name as #{:user_name}",
       "users.email as #{:user_email}",
@@ -39,6 +40,7 @@ class Api::ReviewController < ApplicationController
     # Get photo and user data
     reviews = Review.all.left_outer_joins(:photos).left_outer_joins(:user).select(
       "reviews.*",
+      "photos.id as #{:photo_url}",
       "photos.photo_url as #{:photo_url}",
       "users.name as #{:user_name}",
       "users.email as #{:user_email}",

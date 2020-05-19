@@ -47,6 +47,8 @@ class Company extends Component {
         all[1].data.reviews.forEach(review => {
           photos.push(review.photo_url || "https://atlascare.ca/wp-content/uploads/2020/03/IMG_7576.jpg");
         });
+        console.log("All review of this company");
+        console.log(all[1]);
 
         this.setState(prev => ({
           ...prev,
