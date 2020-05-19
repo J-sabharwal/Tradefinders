@@ -127,8 +127,7 @@ export default function ReviewForm(props) {
           </Button>
         </Grid>
       </Container>
-      
-      {props.currentUser &&
+
         <>
           <Container className="dashboard-section">
             <Typography
@@ -356,19 +355,7 @@ export default function ReviewForm(props) {
             </Paper>
           </Container>
         </>
-      }
-
-      {!props.currentUser &&
-        <Container className="dashboard-section">
-          <Typography
-            style={{marginBottom: '20px'}}
-            className="reviews"
-            variant="h5"
-          >
-          Please login first
-          </Typography>
-        </Container>
-      }
+      
     </div>
   );
 }
