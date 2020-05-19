@@ -32,7 +32,7 @@ class App extends Component {
           ...prev,
           username: data.data.identity
        }))
-        console.log(this.state.username)
+        console.log(this.state.username) // Left this here so we know which user we are logged into chat with.
         resolve(data.data)
       })
       .catch(() => {

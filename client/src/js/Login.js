@@ -32,23 +32,17 @@ export default function ReviewForm(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(inputEmail);
-    console.log(inputPassword);
 
     axios.get(`/api/user?email=${inputEmail}`).then((res) => {
-      console.log(res);
-      console.log(res.data.users[0]);
       if (
         res.data.users[0] &&
         res.data.users[0].password &&
         res.data.users[0].password === inputPassword
       ) {
-        console.log("Login Success");
         cookies.set("userID", res.data.users[0].id, { path: "/" });
         props.setCurrentUser(res.data.users[0]);
         history && history.goBack();
       } else {
-        console.log("Login Failed");
         setLoginFails(true);
       }
     });

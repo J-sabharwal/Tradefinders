@@ -71,8 +71,6 @@ export default function ReviewForm(props) {
 
   const handleSubmit = event => {
     event.preventDefault();
-    // console.log(photoLink);
-    
 
     //TODO Currently user_id and company_id are hard coded.
     //     Later, I will need to get the user_id from the cookie, and company_id from the url.
@@ -90,13 +88,11 @@ export default function ReviewForm(props) {
         comment: commentText,
       }
     }).then((response) => {
-      // console.log(response.data.new_review);
       axios.post("/api/photo", null, {
         params: {
           review_id: response.data.new_review.id,
           photo_url: photoLink
         }}).then(((response) => {
-        // console.log(response);
         setState({
           ...state,
           goBackToCompanyPage: true,
