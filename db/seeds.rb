@@ -329,6 +329,13 @@ Company.create!({
 User.destroy_all
 
 User.create!({
+  name: "Richard Hu",
+  email: "richie@hotmail.com",
+  password: "password123",
+  avatar: "https://i.imgur.com/nPywAp1.jpg",
+})
+
+User.create!({
   name: "Jas Sabharwal",
   email: "jas@gmail.com",
   password: "password123",
@@ -357,19 +364,12 @@ User.create!({
   avatar: "https://i.imgur.com/TdOAdde.jpg",
 })
 
-User.create!({
-  name: "Richard Hu",
-  email: "richie@hotmail.com",
-  password: "password123",
-  avatar: "https://i.imgur.com/nPywAp1.jpg",
-})
-
 Review.destroy_all
 
 # Plumbing Reviews  ------------------------------------------
 
 Review.create!({
-  user_id: 1,
+  user_id: 2,
   company_id: 2,
   cleanliness: 4,
   reliability: 5,
@@ -379,9 +379,9 @@ Review.create!({
 })
 
 Review.create!({
-  user_id: 2,
+  user_id: 1,
   company_id: 1,
-  cleanliness: 4,
+  cleanliness: 2,
   reliability: 2,
   value: 2,
   workmanship: 2,
@@ -389,13 +389,13 @@ Review.create!({
 })
 
 Review.create!({
-  user_id: 3,
+  user_id: 2,
   company_id: 1,
   cleanliness: 3,
-  reliability: 4,
+  reliability: 1,
   value: 2,
-  workmanship: 4,
-  comment: "Did an ok job, though for the price I paid, the quality of work should have been higher.",
+  workmanship: 1,
+  comment: "I had to call someone else, as they caused more damage than when they first arrived. Do not use these guys. They also charged a lot for the work and added extra costs on top of the already agreed quotation",
 })
 
 Review.create!({
@@ -441,11 +441,11 @@ Review.create!({
 Review.create!({
   user_id: 3,
   company_id: 1,
-  cleanliness: 4,
-  reliability: 4,
-  value: 2,
-  workmanship: 4,
-  comment: "Did the job, though for the work done, I don't think the price was reasonable",
+  cleanliness: 1,
+  reliability: 1,
+  value: 1,
+  workmanship: 1,
+  comment: "Expensive! Unreliable! Should not be running a Plumbing service. I don't even think any of them are certified plumbers.",
 })
 
 Review.create!({
@@ -459,13 +459,13 @@ Review.create!({
 })
 
 Review.create!({
-  user_id: 1,
+  user_id: 5,
   company_id: 2,
   cleanliness: 5,
   reliability: 5,
   value: 4,
   workmanship: 5,
-  comment: "Affordable and reliabile. would use again",
+  comment: "Affordable and reliabile. they did my bathroom and it looks amazing",
 })
 
 Review.create!({
@@ -479,13 +479,13 @@ Review.create!({
 })
 
 Review.create!({
-  user_id: 3,
-  company_id: 2,
-  cleanliness: 4,
-  reliability: 4,
-  value: 4,
-  workmanship: 5,
-  comment: "I would highly recommend, they was cheap compared to other companies.",
+  user_id: 4,
+  company_id: 1,
+  cleanliness: 1,
+  reliability: 1,
+  value: 1,
+  workmanship: 1,
+  comment: "I don't think I would ever call this company again. I called them to fix a leak in the bathroom. Woke up next day to find the bathroom floor full of water, even more than before. When I complained they kept me on hold for over an hour and then hung up on.",
 })
 
 Review.create!({
@@ -935,23 +935,23 @@ Photo.destroy_all
 
 Photo.create!({
   review_id: 1,
-  photo_url: "https://cdn.vox-cdn.com/thumbor/pRy3gGPmO5o17FGa5lhCWkQrTeA=/1400x788/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/19519682/gallery_green_towels.jpg",
+  photo_url: "https://luxehomebydouglah.com/wp-content/uploads/2018/11/43469942_1906732186029857_500773657497305088_o-1.jpg",
 })
 
 Photo.create!({
   review_id: 2,
-  photo_url: "https://cdn.vox-cdn.com/thumbor/pRy3gGPmO5o17FGa5lhCWkQrTeA=/1400x788/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/19519682/gallery_green_towels.jpg",
+  photo_url: "https://www.anthonyphc.com/wp-content/uploads/water-damage-kitchen-sink-leak.jpg",
 })
 
 Photo.create!({
   review_id: 3,
-  photo_url: "https://atlascare.ca/wp-content/uploads/2020/03/IMG_7576.jpg",
+  photo_url: "https://nationaldisasterrecovery.org/images/flood-water-pipe.jpg",
 
 })
 
 Photo.create!({
   review_id: 4,
-  photo_url: "https://cdn.vox-cdn.com/thumbor/pRy3gGPmO5o17FGa5lhCWkQrTeA=/1400x788/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/19519682/gallery_green_towels.jpg",
+  photo_url: "https://arc.plumbing/wp-content/uploads/2019/10/75478528_679119995909683_8341002642620678144_o-1024x783.jpg",
 })
 
 Photo.create!({
@@ -966,7 +966,7 @@ Photo.create!({
 
 Photo.create!({
   review_id: 7,
-  photo_url: "https://cdn.vox-cdn.com/thumbor/pRy3gGPmO5o17FGa5lhCWkQrTeA=/1400x788/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/19519682/gallery_green_towels.jpg",
+  photo_url: "https://wirralplumbers.com/wp-content/uploads/2019/07/open-vent-boiler-installer-chester.jpg",
 })
 
 Photo.create!({
@@ -976,12 +976,12 @@ Photo.create!({
 
 Photo.create!({
   review_id: 8,
-  photo_url: "https://cdn.vox-cdn.com/thumbor/pRy3gGPmO5o17FGa5lhCWkQrTeA=/1400x788/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/19519682/gallery_green_towels.jpg",
+  photo_url: "https://southfeasterdelphia.files.wordpress.com/2012/03/dsc_0155.jpg",
 })
 
 Photo.create!({
   review_id: 10,
-  photo_url: "https://cdn.vox-cdn.com/thumbor/pRy3gGPmO5o17FGa5lhCWkQrTeA=/1400x788/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/19519682/gallery_green_towels.jpg",
+  photo_url: "https://heatshine.com/wp-content/uploads/2017/08/2017-09-06-PHOTO-00000016.jpg",
 })
 
 Photo.create!({
@@ -991,7 +991,7 @@ Photo.create!({
 
 Photo.create!({
   review_id: 12,
-  photo_url: "https://cdn.vox-cdn.com/thumbor/pRy3gGPmO5o17FGa5lhCWkQrTeA=/1400x788/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/19519682/gallery_green_towels.jpg",
+  photo_url: "https://hallert.net/kinston/bathroom/ADSC0001.JPG",
 })
 
 Photo.create!({
