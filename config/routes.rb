@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :review
     resources :photo
     resources :quotation
-    resources :tokens
+    resources :tokens, only: [:create]
 
     # This is manually hooking the routes.
     # The ":" on the HTML indicated that everything after this is treated as Parameters
