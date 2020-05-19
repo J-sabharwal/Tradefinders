@@ -76,7 +76,7 @@ class App extends Component {
       chatClient.getSubscribedChannels().then(() => {
         chatClient.getChannelByUniqueName('general').then((channel) => {
 
-          this.addMessage({ body: 'Connecting you with one of our experts...' })
+          this.addMessage({ body: `Connecting you with ${this.state.username}...` })
           this.setState({ channel })
 
           channel.join().then(() => {
