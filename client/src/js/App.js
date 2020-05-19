@@ -76,11 +76,11 @@ class App extends Component {
       chatClient.getSubscribedChannels().then(() => {
         chatClient.getChannelByUniqueName('general').then((channel) => {
 
-          this.addMessage({ body: 'Joining general channel...' })
+          this.addMessage({ body: 'Connecting you with one of our experts...' })
           this.setState({ channel })
 
           channel.join().then(() => {
-            this.addMessage({ body: `Joined general channel as ${this.state.username}` })
+            this.addMessage({ body: `${this.state.username} has joined the chat!` })
             window.addEventListener('beforeunload', () => channel.leave())
           }).catch(() => reject(Error('Could not join general channel.')))
 

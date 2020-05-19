@@ -8,7 +8,6 @@ import FormControl from '@material-ui/core/FormControl';
 import NativeSelect from '@material-ui/core/NativeSelect';
 import Divider from '@material-ui/core/Divider';
 import Card from "@material-ui/core/Card";
-import ArrowForwardRoundedIcon from "@material-ui/icons/ArrowForwardRounded";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 
@@ -162,28 +161,28 @@ export default function SearchBar(props) {
             <p></p>
             <Typography variant="body2" color="textSecondary" component="p">
               How to fix a leaky faucet -
-              <a href="https://www.familyhandyman.com/plumbing/faucet-repair/how-to-repair-a-kitchen-faucet/">
+              <a href="https://www.familyhandyman.com/plumbing/faucet-repair/how-to-repair-a-kitchen-faucet/" target="_blank" rel="noopener noreferrer">
                 familyhandiman.com
               </a>
             </Typography>
             <p></p>
             <Typography variant="body2" color="textSecondary" component="p">
               TOP 5 DIY Electrical Tools Every Homeowner Should Own -
-              <a href="https://www.youtube.com/watch?v=A_oPk3UIIa4">
+              <a href="https://www.youtube.com/watch?v=A_oPk3UIIa4" target="_blank" rel="noopener noreferrer">
                 MrFixitDIY - youtube.com
               </a>
             </Typography>
             <p></p>
             <Typography variant="body2" color="textSecondary" component="p">
               20 painting secrets the pros won't tell you -
-              <a href="https://www.popularmechanics.com/home/interior-projects/how-to/g151/13-painting-secrets-the-pros-wont-tell-you/">
+              <a href="https://www.popularmechanics.com/home/interior-projects/how-to/g151/13-painting-secrets-the-pros-wont-tell-you/" target="_blank" rel="noopener noreferrer"> 
                 popularmechanics.com
               </a>
             </Typography>
             <p></p>
             <Typography variant="body2" color="textSecondary" component="p">
               How to fix a hole in the wall -
-              <a href="https://www.instructables.com/id/Introduction-26/">
+              <a href="https://www.instructables.com/id/Introduction-26/" target="_blank" rel="noopener noreferrer">
                 instructables.com
               </a>
             </Typography>
@@ -216,10 +215,9 @@ export default function SearchBar(props) {
               gutterBottom
               variant="h5"
               component="h2"
-              style={{ marginTop: "50px" }}
+              style={{ marginTop: "50px", marginRight: "50px" }}
             >
               Live Chat with an Expert!
-              <ArrowForwardRoundedIcon fontSize="large" />
             </Typography>
           </div>
           <div style={{ margin: "25px" }}>
