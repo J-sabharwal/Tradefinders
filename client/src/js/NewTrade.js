@@ -69,7 +69,6 @@ export default function NewCompany(props) {
         company_photo: state.photo || "https://theplumbingco.com/wp-content/uploads/2016/11/about-the-original-plumbing-company.jpg",
       }
     }).then((response) => {
-      console.log(response);
       handleSnackOpen();
       handleClose();
       setState({

@@ -31,11 +31,9 @@ export default function NavBar(props) {
 
   useEffect(()=>{
     let userID = cookies.get('userID');
-    // console.log(userID);
     if (userID) {
       axios.get(`/api/user/${userID}`)
         .then((res) => {
-          // console.log(res);
           props.setCurrentUser(res.data.user);
         });
     } else {
@@ -46,8 +44,6 @@ export default function NavBar(props) {
   const logout = () => {
     props.setCurrentUser(undefined);
     cookies.remove('userID', { path: '/' });
-    // console.log(cookies.get('userID'));
-    // console.log("Logout Success");
   };
 
   const LoginButton = () => {
