@@ -1,4 +1,4 @@
-import React from 'react';
+import React  from 'react';
 import axios from 'axios';
 
 import { Rating } from '@material-ui/lab';
@@ -28,15 +28,15 @@ export default function SearchResultItem(props) {
   
   //Get the avg rating for each company before rendering the card in search results - Brad
   const companyRating = () => {
-    const companyReview = axios.get(`/api/review?company_id=${props.id}`);
-    Promise.all([companyReview])
-      .then((all) => {
+    axios.get(`/api/review?company_id=${props.id}`)
+      .then((res) => {
         setState(prev => ({
           ...prev,
-          review: all[0].data.total_avg
+          review: res.data.total_avg
         }));
       });
   };
+
 
   if (state.review === 0) {
     companyRating();
