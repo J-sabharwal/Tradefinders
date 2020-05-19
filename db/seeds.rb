@@ -997,7 +997,6 @@ Photo.create!({
 Photo.create!({
   review_id: 13,
   photo_url: "https://atlascare.ca/wp-content/uploads/2020/03/IMG_7576.jpg",
-
 })
 
 Photo.create!({
@@ -1048,7 +1047,6 @@ Photo.create!({
 Photo.create!({
   review_id: 23,
   photo_url: "https://atlascare.ca/wp-content/uploads/2020/03/IMG_7576.jpg",
-
 })
 
 Photo.create!({
@@ -1099,7 +1097,6 @@ Photo.create!({
 Photo.create!({
   review_id: 33,
   photo_url: "https://atlascare.ca/wp-content/uploads/2020/03/IMG_7576.jpg",
-
 })
 
 Photo.create!({
@@ -1150,7 +1147,6 @@ Photo.create!({
 Photo.create!({
   review_id: 43,
   photo_url: "https://atlascare.ca/wp-content/uploads/2020/03/IMG_7576.jpg",
-
 })
 
 Photo.create!({
@@ -1201,7 +1197,6 @@ Photo.create!({
 Photo.create!({
   review_id: 53,
   photo_url: "https://atlascare.ca/wp-content/uploads/2020/03/IMG_7576.jpg",
-
 })
 
 Photo.create!({
