@@ -31,15 +31,12 @@ export default function useApplicationData(props) {
   };
 
   const Search = () => {
-    const companySearch = axios
-      .get(`/api/company?trade_type=${state.trade}&location=${state.location}`);
-
-    Promise.all([companySearch])
+   axios.get(`/api/company?trade_type=${state.trade}&location=${state.location}`)
       .then((response) => {
         const companies = "companies";
         setState({
           ...state,
-          [companies]: response[0].data.companies,
+          [companies]: response.data.companies,
           goToSearchResults: true,
         });
       });

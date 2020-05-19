@@ -20,7 +20,7 @@ Company.create!({
   description: "For all your Plumbing needs, available to work on bathrooms, kitchens, and central heating. ",
   phone_number: "623-854-9875",
   trade_type: "Plumbing",
-  location: "Richmond",
+  location: "Coquitlam",
   company_photo: "https://theplumbingco.com/wp-content/uploads/2016/11/about-the-original-plumbing-company.jpg",
 })
 
@@ -37,7 +37,7 @@ Company.create!({
 Company.create!({
   name: "Mario Bros Plumbers",
   email: "Mario@gmail.com",
-  description: "Established in 1960. Family run business.",
+  description: "Established in 1960. Family run business - Luigi and I will be happy to help.",
   phone_number: "623-824-9872",
   trade_type: "Plumbing",
   location: "Surrey",
@@ -45,9 +45,9 @@ Company.create!({
 })
 
 Company.create!({
-  name: "Mr.Rooters Plumbers",
+  name: "Mr. Rooters Plumbers",
   email: "Rooters@gmail.com",
-  description: "Same Price, Any Time, Any Day! Mr. Rooter Plumbing is available on Saturdays, Sundays, nights and holidays, at no additional charge!",
+  description: "Same Price, Any Time, Any Day! Available on holidays, at no additional charge!",
   phone_number: "604-262-0517",
   trade_type: "Plumbing",
   location: "Richmond",
@@ -55,9 +55,9 @@ Company.create!({
 })
 
 Company.create!({
-  name: "Milani Plumbing Heating & Air Conditioning",
+  name: "Milani Air Conditioning",
   email: "MPHAC@gmail.com",
-  description: "Family owned since 1956.",
+  description: "Family owned since 1956. We will keep you cool all year long.",
   phone_number: "604-888-8888",
   trade_type: "Plumbing",
   location: "Burnaby",
@@ -65,19 +65,19 @@ Company.create!({
 })
 
 Company.create!({
-  name: "Lambert Plumbing Heating & Air",
+  name: "Lambert Plumbing/Heating",
   email: "lambert@lambert.com",
-  description: "With Lambert Plumbing & Heating, Ltd, you have on-time service, upfront pricing, 100% guarantee on all services.",
+  description: "With Lambert Plumbing & Heating, Ltd, you have 100% guarantee on all services.",
   phone_number: "604-330-3841",
   trade_type: "Plumbing",
   location: "Vancouver",
-  company_photo: "https://lh3.googleusercontent.com/proxy/9D1N5p4L6_gOL_ctVjybxQoWTeAO3CUol-om7lWXjXD216j1uEU4_bU9HCHzi1jnqXhd_1pxEBWw4vNTQVzzyAZKuuXXRGcXLVQOVITlMWX1cU8w-Y1hN9IUETDzgRCQQ1lBKRLDZHMnQ4tiqeHy-NSWllXeJj0",
+  company_photo: "https://www.zhasotan.kz/wp-content/uploads/2019/05/Plubming.jpg",
 })
 
 Company.create!({
-  name: "Papa Plumbing, Heating & Drainage",
+  name: "Papa Plumbing & Drainage",
   email: "papaplums@hotmail.com",
-  description: "Residential Plumbing, Heating and Drainage Repair Services in Surrey and throughout Metro Vancouver.",
+  description: "Residential Plumbing, Heating and Drainage Repair Services throughout Metro Vancouver.",
   phone_number: "604-437-7272",
   trade_type: "Plumbing",
   location: "Surrey",
@@ -87,7 +87,7 @@ Company.create!({
 Company.create!({
   name: "Ocean Park",
   email: "info@hiltopplumbing.com",
-  description: "Proudly serving the White Rock and South Surrey area for many years. Offering a full range of plumbing, heating and drain cleaning services.",
+  description: "Offering a full range of plumbing, heating and drain cleaning services.",
   phone_number: "604-614-6550",
   trade_type: "Plumbing",
   location: "Surrey",
@@ -99,7 +99,7 @@ Company.create!({
 Company.create!({
   name: "Wicks Electric Inc",
   email: "info@wickselectric.ca",
-  description: "Wicks Electric is a team of highly-motivated professional electricians, proudly serving the entire lower mainland.",
+  description: "Wicks Electric is a team of highly-motivated professional electricians.",
   phone_number: "604-765-8439",
   trade_type: "Electrical",
   location: "Vancouver",
@@ -129,7 +129,7 @@ Company.create!({
 Company.create!({
   name: "Badesha Electrical Ltd",
   email: "infob@badeshaelectric.ca",
-  description: "Well Trained Courteous Technicians - we successfully perform repair to thousands of electrical problems every year.",
+  description: "Well Trained Technicians - repair to thousands of electrical problems every year.",
   phone_number: "604-780-6000",
   trade_type: "Electrical",
   location: "Surrey",
@@ -137,9 +137,9 @@ Company.create!({
 })
 
 Company.create!({
-  name: "WESPAC Electrical Contractors Ltd",
+  name: "WESPAC Electrical",
   email: "info@wespacelectric.com",
-  description: "With our fleet of over 35 fully equipped service vehicles a qualified technician is always available 24 hours a day 365 days a year.",
+  description: "A qualified technician is always available 24 hours a day 365 days a year.",
   phone_number: "604-552-1322",
   trade_type: "Electrical",
   location: "Coquitlam",
@@ -149,7 +149,7 @@ Company.create!({
 Company.create!({
   name: "McRae Electric",
   email: "info@mcraeelectric.ca",
-  description: "McRae Electric is a marine installer, integrator and supplier for electrical and electronic automation systems with over 35 years of experience.",
+  description: "McRae Electric has worked with electronic automation systems for over 35 years.",
   phone_number: "604-291-7131",
   trade_type: "Electrical",
   location: "Burnaby",
@@ -161,7 +161,7 @@ Company.create!({
 Company.create!({
   name: "Cooper Roofing",
   email: "info@coopersroofs.ca",
-  description: "A roof is so much more than a bunch of material. It’s what makes your home special. It’s what protects your family.",
+  description: "A roof is so much more than a bunch of material. It’s what protects your family.",
   phone_number: "604-674-0319",
   trade_type: "Roofing",
   location: "Vancouver",
@@ -171,7 +171,7 @@ Company.create!({
 Company.create!({
   name: "Larentian Roofing",
   email: "info@laurentianroofing.com",
-  description: "BBB A+ Accredited Roofers",
+  description: "BBB A+ Accredited Roofers. Feel a drip drip drip on your head? Call us to help.",
   phone_number: "604-345-7663",
   trade_type: "Roofing",
   location: "Vancouver",
@@ -181,7 +181,7 @@ Company.create!({
 Company.create!({
   name: "Cedar Roofing",
   email: "info@cedarroofs.ca",
-  description: "Cedar Roofing is a team of highly-motivated professional roofers, proudly serving the entire lower mainland.",
+  description: "Cedar Roofing is a team of professional roofers, proudly serving the entire lower mainland.",
   phone_number: "604-243-8439",
   trade_type: "Roofing",
   location: "Burnaby",
@@ -191,9 +191,9 @@ Company.create!({
 # Appliance Repair  ------------------------------------------
 
 Company.create!({
-  name: "Vancouver Appliance Company",
+  name: "Vancouver Appliance",
   email: "info@appliances.ca",
-  description: "Appliance Repair Service in Vancouver.",
+  description: "Appliance Repair Service in Vancouver, serving you for over 40 years.",
   phone_number: "604-628-2434",
   trade_type: "Appliance Repair",
   location: "Vancouver",
@@ -203,7 +203,7 @@ Company.create!({
 Company.create!({
   name: "Metrotown Appliance Repair",
   email: "info@metroappliance.ca",
-  description: "Appliance Repair Service in Burnaby",
+  description: "Appliance Repair Service in Burnaby. We will come to you, anytime, anywhere.",
   phone_number: "604-628-9462",
   trade_type: "Appliance Repair",
   location: "Burnaby",
@@ -213,7 +213,7 @@ Company.create!({
 Company.create!({
   name: "Ben's Appliances",
   email: "info@bensappliances.ca",
-  description: "Ben's Appliances is located in Surrey and proudly serves The Lower Mainland including Surrey, Coquitlam, Burnaby, Vancouver.",
+  description: "Ben's Appliances is located in Surrey and proudly serves The entire Lower Mainland.",
   phone_number: "604-654-8569",
   trade_type: "Appliance Repair",
   location: "Surrey",
@@ -225,7 +225,7 @@ Company.create!({
 Company.create!({
   name: "Ideal Painting & Decorating",
   email: "bobby@idealpaintinganddecorating.com",
-  description: "Ideal Painting is a team of highly-motivated professional painters, proudly serving the entire lower mainland.",
+  description: "Ideal Painting is a team of highly-motivated professional painters.",
   phone_number: "788-240-5056",
   trade_type: "Painter/Decorator",
   location: "Surrey",
@@ -277,7 +277,7 @@ Company.create!({
 Company.create!({
   name: "Interglobe Security",
   email: "info@interglobesecurity.com",
-  description: "When you choose Interglobe Security, you can be confident that the things that matter most to you are being looked after.",
+  description: "When you choose Interglobe Security, you can be confident that you are being looked after.",
   phone_number: "604-472-8965",
   trade_type: "Alarm & Security",
   location: "Surrey",
@@ -287,7 +287,7 @@ Company.create!({
 Company.create!({
   name: "A.M. Alarm Systems Ltd",
   email: "AMalarms@hotmail.com",
-  description: "Keeping your home safe.",
+  description: "Keeping your home and family safe, so that you can have peace of mind and body.",
   phone_number: "604-685-1999",
   trade_type: "Alarm & Security",
   location: "Richmond",
@@ -317,9 +317,9 @@ Company.create!({
 })
 
 Company.create!({
-  name: "Carpet Vancouver lTD",
+  name: "Carpet Vancouver LTD",
   email: "carpets@hotmail.com",
-  description: "Carpet Installations 7 days a week",
+  description: "Carpet Installations 7 days a week. We work fast and have great carpet selection.",
   phone_number: "778-852-6498",
   trade_type: "Carpet & Flooring",
   location: "Vancouver",
@@ -380,7 +380,7 @@ Review.create!({
 
 Review.create!({
   user_id: 2,
-  company_id: 2,
+  company_id: 1,
   cleanliness: 4,
   reliability: 2,
   value: 2,
@@ -390,7 +390,7 @@ Review.create!({
 
 Review.create!({
   user_id: 3,
-  company_id: 3,
+  company_id: 1,
   cleanliness: 3,
   reliability: 4,
   value: 2,
@@ -400,7 +400,7 @@ Review.create!({
 
 Review.create!({
   user_id: 3,
-  company_id: 4,
+  company_id: 2,
   cleanliness: 5,
   reliability: 5,
   value: 1,
@@ -430,7 +430,7 @@ Review.create!({
 
 Review.create!({
   user_id: 4,
-  company_id: 4,
+  company_id: 2,
   cleanliness: 5,
   reliability: 5,
   value: 4,
@@ -440,7 +440,7 @@ Review.create!({
 
 Review.create!({
   user_id: 3,
-  company_id: 5,
+  company_id: 1,
   cleanliness: 4,
   reliability: 4,
   value: 2,
@@ -460,7 +460,57 @@ Review.create!({
 
 Review.create!({
   user_id: 1,
-  company_id: 5,
+  company_id: 2,
+  cleanliness: 5,
+  reliability: 5,
+  value: 4,
+  workmanship: 5,
+  comment: "Affordable and reliabile. would use again",
+})
+
+Review.create!({
+  user_id: 2,
+  company_id: 6,
+  cleanliness: 3,
+  reliability: 4,
+  value: 3,
+  workmanship: 5,
+  comment: "Reasonably priced and did a decent job on the bathroom plumbing",
+})
+
+Review.create!({
+  user_id: 3,
+  company_id: 2,
+  cleanliness: 4,
+  reliability: 4,
+  value: 4,
+  workmanship: 5,
+  comment: "I would highly recommend, they was cheap compared to other companies.",
+})
+
+Review.create!({
+  user_id: 3,
+  company_id: 8,
+  cleanliness: 4,
+  reliability: 4,
+  value: 2,
+  workmanship: 4,
+  comment: "Did the job, though for the work done, I don't think the price was reasonable",
+})
+
+Review.create!({
+  user_id: 2,
+  company_id: 4,
+  cleanliness: 4,
+  reliability: 5,
+  value: 4,
+  workmanship: 5,
+  comment: "Fixed a leaky toilet, can't complain",
+})
+
+Review.create!({
+  user_id: 1,
+  company_id: 3,
   cleanliness: 5,
   reliability: 5,
   value: 4,
@@ -590,6 +640,76 @@ Review.create!({
   comment: "They did a good job, price was ok still a bit on the pricey side but not as much as some of the other quotes I;ve received.",
 })
 
+Review.create!({
+  user_id: 5,
+  company_id: 9,
+  cleanliness: 3,
+  reliability: 2,
+  value: 1,
+  workmanship: 1,
+  comment: "Really expensive and had to be called back as we had fusebox issues afterwards.",
+})
+
+Review.create!({
+  user_id: 3,
+  company_id: 10,
+  cleanliness: 4,
+  reliability: 5,
+  value: 2,
+  workmanship: 5,
+  comment: "They did an amazing job, fixed all my chandeliers in the house and they look amazing. Thank you so much",
+})
+
+Review.create!({
+  user_id: 3,
+  company_id: 11,
+  cleanliness: 4,
+  reliability: 4,
+  value: 4,
+  workmanship: 5,
+  comment: "Needed some additional sockets added, came same day and fitted them within an hour. Very cheap too so glad I used this company.",
+})
+
+Review.create!({
+  user_id: 1,
+  company_id: 12,
+  cleanliness: 4,
+  reliability: 4,
+  value: 5,
+  workmanship: 5,
+  comment: "This guy was amazing, he came straight away and carried the work that needed to doing and it was so cheap. I would highly recommend.",
+})
+
+Review.create!({
+  user_id: 2,
+  company_id: 13,
+  cleanliness: 1,
+  reliability: 1,
+  value: 1,
+  workmanship: 1,
+  comment: "Do not use this company, they are terrible and overpriced. I had to bring in someone else to finish the work as they touched things that didnt even need fixing",
+})
+
+Review.create!({
+  user_id: 5,
+  company_id: 14,
+  cleanliness: 4,
+  reliability: 4,
+  value: 4,
+  workmanship: 5,
+  comment: "They added some lighting in my newly added pool. Looks amazing. I would use these guys again",
+})
+
+Review.create!({
+  user_id: 4,
+  company_id: 14,
+  cleanliness: 5,
+  reliability: 5,
+  value: 5,
+  workmanship: 5,
+  comment: "OMG! These guys are really cheap, I was worried the work was going to be rubbish, but they came explained as they were working along what they are doing and didn't even make a mess.",
+})
+
 # Roofing Reviews  ------------------------------------------
 
 Review.create!({
@@ -632,6 +752,184 @@ Review.create!({
   comment: "Not cheap but work done was good.",
 })
 
+Review.create!({
+  user_id: 4,
+  company_id: 15,
+  cleanliness: 4,
+  reliability: 4,
+  value: 4,
+  workmanship: 5,
+  comment: "We had some roof damage caused by the recent storm. The were able to come the next day and repair everything for a reasonable price. The work looks good.",
+})
+
+Review.create!({
+  user_id: 5,
+  company_id: 17,
+  cleanliness: 4,
+  reliability: 4,
+  value: 4,
+  workmanship: 5,
+  comment: "I would highly recommend, they was cheap compared to other companies.",
+})
+
+Review.create!({
+  user_id: 3,
+  company_id: 16,
+  cleanliness: 4,
+  reliability: 4,
+  value: 4,
+  workmanship: 5,
+  comment: "Excellent work done on my roofing",
+})
+
+# Appliance repair --------------------------------------
+
+Review.create!({
+  user_id: 4,
+  company_id: 18,
+  cleanliness: 4,
+  reliability: 4,
+  value: 4,
+  workmanship: 5,
+  comment: "They fixed my appliance.",
+})
+
+Review.create!({
+  user_id: 5,
+  company_id: 19,
+  cleanliness: 4,
+  reliability: 4,
+  value: 4,
+  workmanship: 5,
+  comment: "I would highly recommend, they was cheap compared to other companies.",
+})
+
+Review.create!({
+  user_id: 3,
+  company_id: 20,
+  cleanliness: 4,
+  reliability: 4,
+  value: 4,
+  workmanship: 5,
+  comment: "Excellent work done on my dishwasher",
+})
+
+# Painter/Decorator --------------------------------------
+
+Review.create!({
+  user_id: 4,
+  company_id: 21,
+  cleanliness: 4,
+  reliability: 4,
+  value: 4,
+  workmanship: 5,
+  comment: "We had some roof damage caused by the recent storm. The were able to come the next day and repair everything for a reasonable price. The work looks good.",
+})
+
+Review.create!({
+  user_id: 5,
+  company_id: 22,
+  cleanliness: 4,
+  reliability: 4,
+  value: 4,
+  workmanship: 5,
+  comment: "I would highly recommend, they was cheap compared to other companies.",
+})
+
+Review.create!({
+  user_id: 3,
+  company_id: 23,
+  cleanliness: 4,
+  reliability: 4,
+  value: 4,
+  workmanship: 5,
+  comment: "Excellent work done on my roofing",
+})
+
+Review.create!({
+  user_id: 3,
+  company_id: 24,
+  cleanliness: 4,
+  reliability: 4,
+  value: 2,
+  workmanship: 5,
+  comment: "Not cheap but work done was good.",
+})
+
+Review.create!({
+  user_id: 3,
+  company_id: 25,
+  cleanliness: 4,
+  reliability: 4,
+  value: 2,
+  workmanship: 5,
+  comment: "Not cheap but work done was good.",
+})
+
+# Alarm & Security reviews --------------------------------------
+
+Review.create!({
+  user_id: 4,
+  company_id: 26,
+  cleanliness: 4,
+  reliability: 4,
+  value: 4,
+  workmanship: 5,
+  comment: "They fixed my appliance.",
+})
+
+Review.create!({
+  user_id: 5,
+  company_id: 27,
+  cleanliness: 4,
+  reliability: 4,
+  value: 4,
+  workmanship: 5,
+  comment: "I would highly recommend, they was cheap compared to other companies.",
+})
+
+Review.create!({
+  user_id: 3,
+  company_id: 27,
+  cleanliness: 4,
+  reliability: 4,
+  value: 4,
+  workmanship: 5,
+  comment: "Excellent work done on my dishwasher",
+})
+
+
+# Carpet & Flooring Reviews  ------------------------------------------
+
+Review.create!({
+  user_id: 3,
+  company_id: 28,
+  cleanliness: 4,
+  reliability: 4,
+  value: 2,
+  workmanship: 5,
+  comment: "Not cheap but work done was good.",
+})
+
+Review.create!({
+  user_id: 3,
+  company_id: 29,
+  cleanliness: 4,
+  reliability: 4,
+  value: 2,
+  workmanship: 5,
+  comment: "Not cheap but work done was good.",
+})
+
+Review.create!({
+  user_id: 3,
+  company_id: 30,
+  cleanliness: 4,
+  reliability: 4,
+  value: 2,
+  workmanship: 5,
+  comment: "Not cheap but work done was good.",
+})
 
 Photo.destroy_all
 
