@@ -1,110 +1,76 @@
 # Tradefinder
 
-Tradefinder description, replace later.
+Tradefinder is a multi-page app where users who are in need of services from tradespeople, are able to search for reputable business in their local area. 
 
+Live Chat Feature
+
+!["Navigating Week"](https://github.com/J-sabharwal/Tradefinders/blob/master/client/src/images/Live-Chat.gif?raw=true)
+
+Search Feature
+
+!["Add/Edit View"](https://github.com/J-sabharwal/Tradefinders/blob/master/client/src/images/Search-Feature.gif?raw=true)
+
+
+# 
 ## Setup
 
-You need TWO terminals for this.
+### Please follow the set of instructions below to demo this application:
 
-In the terminal that will host the Ruby on Rails API server.
-- run `bundle` to install the dependencies. 
-- Run `bin/rake db:setup` to create the databases.
-- Run `bin/rake db:reset` to reset the databases after messing with data.
-- ~~Run `bin/rails s` to run the server.~~
-- Run `rails server -b 0.0.0.0 -p 3001` when you are trying to run the server inside vagrant. 
-  - This will allow you browser and other programs on the host machine to access the API server.
-- Go to `0.0.0.0:3001` to access the Rails server.
-- An example API access is on `http://0.0.0.0:3001/api/data`
-  - Will be moved to `http://0.0.0.0:3001/api/datatest` later.
+An account with Twilio and Mailgun are required to run some of our features. please visit https://www.twilio.com/ to signup for the live chat functionality and https://www.mailgun.com/homepage/ for the mailing service.
 
-In the other terminal, `cd` into `client`. We will run the React server on here.
-- Run `npm install`. 
-- Copy the `.env.example` file and name it `.env`. 
-- Run `npm start` to start the server.
-- Go to `0.0.0.0:3000` in your browser to see the result.
+Once these accounts have been created, a `.env` file will need to created in both the `client` directory and `root` directory.
 
+There will account credentials within the Twilio and Mailgun account which will be required to go into these files. please see below an example:
 
-Below is the original README.md from the boilerplate:
-
-# React + Rails No-Fluff Boilerplate
-
-A boilerplate project for anyone interested in making a project that uses React and Rails.
-
-Note! This boilerplate has _no fluff_! That means that there's nothing set up for you to do authentication stuff, there's no Redux stuff, and there's no React Router stuff.
-
-The main important bit is that the React project has `proxy` set to `localhost:3001` in the `package.json` file. Take a look!
-
-## Hall of Fame
-
-Here are some projects that have been built using this boilerplate.
-
-- [latercart](https://github.com/bonitac/latercart)
-- [Cards-Against-the-Internet](https://github.com/csx773/Cards-Against-the-Internet)
-- [Jetify](https://github.com/shadeying/Jetify)
-- [watchpoll](https://github.com/grey275/watchpoll)
-- [StartDuck](https://github.com/JerChuang/StartDuck)
-- [Change-App](https://github.com/ZHShang/Change-App)
-
-## Using the boilerplate
-
-First, fork this boilerplate so you get your own copy of it. Once you have done that, you can clone your new repo to your machine, and get started.
-
-You need TWO terminals for this.
-
-In one terminal, run `bundle` to install the dependencies. Run `bin/rake db:setup` to create the databases (called rails_project_development by default). Run `bin/rails s` to run the server.
-
-In the other terminal, `cd` into `client`. Run `npm install`. Rename the `.env.example` file to be called `.env`. Then run `npm start` and go to `localhost:3000` in your browser.
-
-In the browser, you can click on the button and see the data get loaded.
-
-If this doesn't work, please message me!
-
-## Next steps
-
-From here, you can start working on your project!
-
-On the Rails side, you may make new `resources` routes in your `routes.rb` file, e.g. :
-
-```rb
-namespace :api do
-  resources :dogs # to generate GET /api/dogs, POST /api/dogs, etc...
-end
+#### `Root` Directory:
+```
+TWILIO_API_KEY=SKXXXXXXXX
+TWILIO_API_SECRET=ELXXXXXXXX
+TWILIO_CHAT_SERVICE_SID=ISXXXXXXXXXX
+TWILIO_ACCOUNT_SID=ACXXXXXXXXXXXXX
 ```
 
-Then you can make your various controllers, models, migrations, etc. as you need! The one funky thing is that instead of rendering an HTML view you'll be rendering JSON. [You can return anything from a Rails controller as JSON like this.](https://guides.rubyonrails.org/v5.2/layouts_and_rendering.html#rendering-json) See the example in my "tests_controller".
-
-On the React side, the important bit is that you make you make your AJAXy HTTP requests using something like `axios` or `superagent`. I've set this up to use `axios` already. Check the React code to see an example request being made on-click to the Rails server! You can make your HTTP requests to `/api/anything/you/want`, as long as the route exists on your Rails app.
-
-**NOTE:** I recommend that you namespace all your routes under `api` on the Rails side! Look at how I've done that in the `routes.rb` file, and also how the `tests_controller` is written as:
-
-```rb
-class Api::TestsController < ApplicationController
+#### `Client` Directory:
+```
+REACT_APP_MAILGUN_DOMAIN=XXXXXXXXXXX
+REACT_APP_MAILGUN_API_KEY=XXXXXXXXXXX
 ```
 
-and it lives in the `api` folder! Put all your controllers in there!
+#
+### For this demo you will require the use of two terminals. 
 
-<!-- ## Deployment to Heroku
+In the first terminal, you will start the Ruby on Rails API server.
+1. Run `bundle install` to install the required dependencies. 
+2. Run `bin/rake db:setup` to create the database.
+3. Run `bin/rake db:reset` to reset/ seed the database.
+4. Run `rails server -b 0.0.0.0 -p 3001` or `bin/rails server` to start the server. 
+  - This will allow your browser and other programs on the host machine to access the API server.
 
-This boilerplate is _almost_ all set up to deal with deploying to Heroku. If you have the Heroku CLI tools installed you can run `heroku create` to create the Heroku project.
+In the second terminal, you will start the React Development server.
+1. Navigate to the client folder in the terminal.
+2. Run `npm install` to install the required dependencies.
+3. Run `npm start` to start the service.
+4. Go to `http://localhost:3000` in the browser.
 
-Then we must run two commands to tell Heroku to first build our React app, and _then_ build the Rails app.
+## Dependencies
+- React
+- Ruby on Rails
+- Mailgun
+- Twillio
+- Postgres
 
-1. `heroku buildpacks:add heroku/nodejs --index 1`
-2. `heroku buildpacks:add heroku/ruby --index 2`
+## User Experience
 
-Once you've done that, you can run `git push heroku master` to deploy your project any time you want! Note, however, that deploying to Heroku can be a _little_ slow since Heroku needs to build your React app. Just give it some time.
+The user will be able to search for categorized trade types and locations. They can then navigate through the application and view the various search results meeting that criteria and view the company profiles.
 
-Once it's deployed, you can run the following commands to manage your app:
+Within the company profiles the user can see reviews and ratings. The average rating system is based on 4 main criterias: Cleanliness, Reliability, Value and Workmanship. Reviews can be added by visiting the add review page.
 
-- `heroku run rake db:schema:load` to set up your database the first time
-- `heroku run rake db:migrate` for any additional migrations
-- `heroku run rake db:seed` for seeds
-- `heroku run rake db:rollback` to rollback a migration
+The user can also request a quotation by completing the quotation form.
 
-There are other commands, but these are good to get you started!
+If a company wishes to list their business on the website, they can do so by completing the form by clicking on the Add Company button in the navigation panel.
 
-To make your app work properly with React Router (if you end up using it) on Heroku, I've added a special route to the `routes.rb` file (`get '*path' ... `).
+#### Created by Jaspinder Sabharwal, Brad Ruud and Kevin Cheng @ Lighthouse Labs 2020
 
-## Contact
 
-Please contact me at `nima@lighthouselabs.com` if you have any questions or requests, or post an issue to this repo. -->
+
+
