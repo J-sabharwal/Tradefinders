@@ -14,7 +14,7 @@
     "react-circular-progressbar": "^2.0.3",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "2.1.8",
+    "react-scripts": "5.0.1",
     "twilio": "^3.43.1",
     "twilio-chat": "^3.3.7",
     "typeface-roboto": "0.0.75",
